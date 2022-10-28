@@ -1,0 +1,66 @@
+﻿
+<br />
+<br />
+<br />
+@if (false)
+{
+    <div class="row">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            O Template escolhido não possui este item ou está desabilitado.
+        </div>
+    </div>
+}
+else
+{
+    int imgfiletype = int.Parse(this.ViewData["fileType"].ToString());
+
+    switch (imgfiletype)
+    {
+        case 1:
+        case 2:
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="btn-group no-gutter3" role="group">
+                        <button type="button" class="btn btn-default" id="load">Carregar</button>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle active" id="views" style="width:170px" data-toggle="dropdown">
+                                Selecione uma view
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach (var view in ViewBag.views)
+                                {
+                                    <li><a id="@view.ViewCod">@view.Text</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <input class="btn btn-info pull-right no-gutter2" type="button" id="addImg" value="Adicionar Imagens" />
+                    <input id="alt" type="button" value="Salvar Posições" class="btn btn-primary pull-right" />
+                </div>
+            </div>
+        break;
+        case 3:
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Adicionar Imagens", "ImageUpLoad", "ImgUpload", new { fileType = imgfiletype, viewCod = 0 }, new { @class = "btn btn-info pull-right no-gutter2" })
+                    <input id="alt" type="button" value="Salvar Posições" class="btn btn-primary pull-right" /><text id="sucess">&nbsp; &nbsp; &nbsp;</text>
+                </div>
+            </div>
+        break;
+        default:
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Adicionar Imagens", "ImageUpLoad", "ImgUpload", new { fileType = imgfiletype, viewCod = 0 }, new { @class = "btn btn-info pull-right" })
+                </div>
+            </div>
+        break;
+    }
+}
+<hr />
+
+

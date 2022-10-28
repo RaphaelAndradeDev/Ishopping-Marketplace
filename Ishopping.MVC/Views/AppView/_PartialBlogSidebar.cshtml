@@ -1,0 +1,72 @@
+﻿
+
+<div class="col-lg-3">
+    <!-- Useful Links -->
+    <div class="g-mb-50">
+        <div class="u-heading-v3-1 g-mb-30">
+            <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Categorias</h2>
+        </div>
+
+        <ul class="list-unstyled">
+            @foreach (var item in ViewBag.Categorys)
+            {
+                <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
+                    <h4 class="h6">
+                        <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
+                        <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="@Url.Action("Blog", new { category = item})">@item</a>
+                    </h4>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End Useful Links -->
+    <!-- Recent Posts -->
+    <div class="g-mb-30">
+        <div class="u-heading-v3-1 g-mb-30">
+            <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Recentes Posts</h2>
+        </div>
+
+        @foreach (var item in ViewBag.PostSummary)
+        {
+            <!-- Article -->
+            <article class="media g-mb-30">
+                <a class="d-flex u-shadow-v25 mr-3" href="@Url.Action("SinglePost", new { id = item.Id })">
+                    <img class="g-width-60 g-height-60" src="~/Content/uploads/@item.UserImageGallery[0].Folder/@item.UserImageGallery[0].FileName" alt="Image Ishoopping">
+                </a>
+                <div class="media-body">
+                    <h3 class="h6">
+                        <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="@Url.Action("SinglePost", new { id = item.Id })">@item._Titulo</a>
+                    </h3>
+                </div>
+            </article>
+            <!-- End Article -->
+        }
+    </div>
+    <!-- End Recent Posts -->
+
+    <div id="stickyblock-start" class="js-sticky-block g-sticky-block--lg g-pt-20" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
+        <!-- News Feed -->
+        <div class="g-mb-40">
+            <div class="u-heading-v3-1 g-mb-30">
+                <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Mais visualizados</h2>
+            </div>
+
+            @foreach (var item in ViewBag.TopViews)
+            {
+                <!-- Article -->
+                <article>
+                    <span class="g-font-size-12">
+                        <a class="u-link-v5 g-color-gray-dark-v4" href="@Url.Action("SinglePost", new { id = item.Id })">@item.Autor</a>
+                    </span>
+                    <h3 class="h6">
+                        <a class="g-color-gray-dark-v1" href="@Url.Action("SinglePost", new { id = item.Id })">@item._Titulo</a>
+                    </h3>
+                </article>
+                <!-- End Article -->
+                <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-10">
+            }
+
+        </div>
+        <!-- End News Feed -->
+    </div>
+</div>

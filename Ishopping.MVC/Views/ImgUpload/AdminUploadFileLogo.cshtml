@@ -1,0 +1,23 @@
+﻿@using MvcFileUploader.HtmlHelper
+@using MvcFileUploader.Models
+@{
+    ViewBag.Title = "Upload Logo";
+    var showingInline = Model != null && Model == true; 
+}
+
+<div class="well">
+    <h3>Upload Inline</h3>
+    <p class="help-block">Arquivos em miniatura do tipo JPEG ou PNG mas com tamanho máximo de 600 kb</p>
+    <p>@Html.ActionLink("Galeria de Imagens", "GetImgLogo", "AdminImageGallery", new { id = ViewBag.ViewDataId }, new { @class = "btn btn-info" })</p>
+    @(
+ Html.MvcFileUpload()
+        .UploadAt(Url.Action("AdminUploadFile", new { id = ViewBag.ViewDataId }))
+        .UIStyle(0)
+        .WithFileTypes(@"/(\.|\/)(jpe?g|png)$/i")
+        .WithMaxFileSize(600000)
+        .AddFormField("entityId", "3")
+        .RenderInline("_MvcFileupload")
+    )
+
+</div>
+

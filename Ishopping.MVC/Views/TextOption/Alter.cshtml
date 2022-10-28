@@ -1,0 +1,85 @@
+﻿@model Ishopping.ViewModels.Option.TextOptionViewModel
+
+@{
+    ViewBag.Title = "Conteúdo Textos Estilos";
+    Layout = "~/Views/Shared/_LayoutOption.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.png" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h2>Propriedades do Conteúdo Textos</h2>
+        <p>Em propriedades do conteúdo você pode definir uma classe de estilo para os campos que tenham essa propriedade, assim você pode alterar todos de uma só vez.</p>
+        <a href="@Url.Action("About","Home")#Content" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+
+<div class="well">
+    <form id="defaultForm" method="post">
+        <br />
+        <br />
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Texto Pequeno :</h5>
+                <select class="selectpicker" id="Text32" data-text32="@Model.ContentTextOption.Text32" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Texto Médio :</h5>
+                <select class="selectpicker" id="Text512" data-text512="@Model.ContentTextOption.Text512" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Texto Grande :</h5>
+                <select class="selectpicker" id="Text5120" data-text5120="@Model.ContentTextOption.Text5120" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br />
+        <p>
+            <div class="form-group">
+                <a href="@Url.Action("Alter", "Text")" class="btn btn-primary ">Voltar</a>
+                <button type="button" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Option/ContentTextOption.min.js"></script>
+}
+
+
+
+
+
+

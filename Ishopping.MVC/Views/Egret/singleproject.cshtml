@@ -1,0 +1,19 @@
+﻿@model Ishopping.Models.ImageSingle
+
+
+	<div class="container">
+		<div class="portfolio-project">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 center section-title">
+					<h4>@Html.Raw(Model.Title)</h4>
+				</div>
+				<div class="col-md-5 project-photo">
+                    <img src="~/Content/uploads/@Model.ImgFolder/@Model.ImgFileName" alt="" />
+				</div>		
+				<div class="col-md-4 project-info">
+					<h5>@Html.Raw(Model.Category)</h5>
+					<p>@Html.Raw(Model.Description)</p>
+				</div>
+			</div>
+		</div>
+	</div>	

@@ -1,0 +1,30 @@
+﻿@model Ishopping.ViewModels.User.ImageGalleryResponseViewModel
+
+@using MvcFileUploader.HtmlHelper
+@using MvcFileUploader.Models
+@{  
+    ViewBag.Title = Model.Title;  
+    var ui = UploadUI.Bootstrap;
+    Layout = "~/Views/Shared/_MvcFileUploaderLayout.cshtml";    
+}
+
+<div class="well">
+    <h3>Imagem Upload</h3>
+    <p class="help-block">@Model.Text  @Model.ImageCount de  @Model.ImageQuantity</p>
+    <p>@Html.ActionLink("Galeria de Imagens", Model.Action, "ImageGallery", null, new { @class = "btn btn-info" })</p>
+
+    @(
+ Html.MvcFileUpload()
+        .UploadAt(Url.Action("UploadFile", new { viewCod = Model.ViewCod }))
+        .UIStyle(ui)
+        .WithFileTypes(@"/(\.|\/)(jpe?g|png)$/i")
+        .MaxNumberOfFiles(Model.MaxImageQuantity)
+        .WithMaxFileSize(Model.MaxFileSize)
+        .AddFormField("entityId", Model.FileType)
+        .RenderInline("_MvcFileupload")
+    )
+
+</div>
+
+
+

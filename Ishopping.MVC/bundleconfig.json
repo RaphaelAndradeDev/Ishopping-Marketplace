@@ -1,0 +1,56 @@
+[
+  {
+    "outputFileName": "Scripts/Ishopping/User/ProfileEdit.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/User/ProfileEdit.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/SocialNetworks.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/SocialNetworks.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/User/ProfileCreate.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/User/ProfileCreate.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/Component/ComponentService.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/Component/ComponentService.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/Component/ComponentPortfolio.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/Component/ComponentPortfolio.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/Component/ComponentPost.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/Component/ComponentPost.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/Component/ComponentSimpleProduct.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/Component/ComponentSimpleProduct.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Ishopping/Option/ComponentServiceOption.min.js",
+    "inputFiles": [
+      "Scripts/Ishopping/Option/ComponentServiceOption.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/bootstrap_select/js/bootstrap-select.min.js",
+    "inputFiles": [
+      "Content/bootstrap_select/js/bootstrap-select.js"
+    ]
+  }
+]

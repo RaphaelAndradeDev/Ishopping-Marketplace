@@ -1,0 +1,50 @@
+﻿@model Ishopping.MVC.ViewModels.Admin.AdminTemplateViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Template</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TemplateCod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemplateCod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminAparencia.Cor1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminAparencia.Cor1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

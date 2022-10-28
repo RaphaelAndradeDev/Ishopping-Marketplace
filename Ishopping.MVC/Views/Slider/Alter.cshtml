@@ -1,0 +1,541 @@
+﻿@{
+    ViewBag.Title = "Conteúdo Slider";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+@Html.Partial("_StylePartial")
+
+<input type="hidden" name="_goGallery" value="@Url.Action("GetImgSlider", "ImageGallery", null)">
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.png" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Conteúdo Slider</h1>
+        <p>Conteúdos são itens fixos que já estão presentes na página e possuem uma quantidade determinada de elementos. Você pode editar um conteúdo ou deixa-lo em branco (nulo), mas não pode adicionar ou remove-lo. Use a posição ou texto para pesquisar algum conteúdo. Esse item pode variar de acordo com cada template.</p>
+        <a href="@Url.Action("About","Home")#Content" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<!-- Split button -->
+<div class="row">
+    <div class="btn-group col-md-3">
+        <button type="button" class="btn btn-primary views" id="btnView" style="width:225px">Selecione uma view</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" id="ddmViews">
+            @foreach (var item in ViewBag.views)
+            {
+                <li><a id="@item.ViewCod" name="@item.StringKey">@item.Text</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<br />
+<form id="defaultForm" method="post">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="input-group no-gutter">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success" id="btnSelect">Selecione 0/0</button>
+                </span>
+                <input type="number" class="form-control" id="txtSlider" name="txtSlider" placeholder="slider" min="1" max="8">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-3">
+            <div class="input-group no-gutter">
+                <input type="number" class="form-control search" id="txtItem" name="txtsearch" placeholder="item max 12" min="1" max="8">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success" name="search">Pesquisar</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <br />
+    <div class="well">
+        <br />
+        <h4 class="color1">Configurações do Slider :</h4>
+        <br />
+        <!-- Split button -->
+        <div class="row">
+            <div class="col-md-8">
+                <br />
+                <div class="row">
+                    <div class="btn-group col-md-offset-3 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                        <p class="text-muted text-center">Selecione o tipo do slider</p>
+                        <button type="button" class="btn btn-default dropdown-toggle sltype" id="btnSliderType" data-toggle="dropdown" style="width:100%">
+                            Selecione o tipo do slider &nbsp
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" id="ddmSliderType"></ul>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="btn-group col-md-offset-3 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                        <p class="text-muted text-center">Selecione o slider</p>
+                        <button type="button" class="btn btn-default dropdown-toggle slname" id="btnSliderName" data-toggle="dropdown" style="width:100%">
+                            Selecione o slider &nbsp
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" id="ddmSliderName"></ul>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="btn-group col-md-offset-3 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                        <p class="text-muted text-center">Selecione a classe do slider</p>
+                        <button type="button" class="btn btn-default dropdown-toggle slclass" id="btnSliderClass" data-toggle="dropdown" style="width:100%">
+                            Selecione a classe do slider &nbsp
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" id="ddmSliderClass"></ul>
+                    </div>
+                </div>
+                <br />
+                <div id="textValuexx"></div>
+                <br />
+                <br />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Posição :</h4>
+            </div>
+            <div class="btn-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">X</span>
+                <input type="text" class="btn btn-default ddm config" name="DataX" id="DataX" value="center" style="width:84%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a>left</a></li>
+                    <li><a>center</a></li>
+                    <li><a>right</a></li>
+                </ul>
+            </div>
+            <div class="btn-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Y</span>
+                <input type="text" class="btn btn-default ddm config" name="DataY" id="DataY" value="center" style="width:84%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a>top</a></li>
+                    <li><a>center</a></li>
+                    <li><a>bottom</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">OffSet :</h4>
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">X</span>
+                <input type="text" class="form-control config" id="DataHoffset" name="DataHoffset">
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Y</span>
+                <input type="text" class="form-control config" id="DataVoffset" name="DataVoffset">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Atraso :</h4>
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Início</span>
+                <input type="text" class="form-control config" id="DataStart" name="DataStart">
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Fim</span>
+                <input type="text" class="form-control config" id="DataEnd" name="DataEnd">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Transição :</h4>
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Início</span>
+                <input type="text" class="form-control config" id="DataSpeed" name="DataSpeed">
+            </div>
+            <div class="form-group input-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <span class="input-group-addon">Fim</span>
+                <input type="text" class="form-control config" id="DataEndSpeed" name="DataEndSpeed">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Sentido :</h4>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm config" name="Incoming" id="Incoming" value="lfb" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>sft</a></li>
+                    <li><a>sfb</a></li>
+                    <li><a>sfr</a></li>
+                    <li><a>sfl</a></li>
+                    <li><a>lft</a></li>
+                    <li><a>lfb</a></li>
+                    <li><a>lfr</a></li>
+                    <li><a>lfl</a></li>
+                    <li><a>skewfromleft</a></li>
+                    <li><a>skewfromright</a></li>
+                    <li><a>skewfromleftshort</a></li>
+                    <li><a>skewfromrightshort</a></li>
+                    <li><a>fade</a></li>
+                    <li><a>randomrotate</a></li>
+                </ul>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm config" name="Outgoing" id="Outgoing" value="ltt" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>stt</a></li>
+                    <li><a>stb</a></li>
+                    <li><a>str</a></li>
+                    <li><a>stl</a></li>
+                    <li><a>ltt</a></li>
+                    <li><a>ltb</a></li>
+                    <li><a>ltr</a></li>
+                    <li><a>ltl</a></li>
+                    <li><a>skewtoleft</a></li>
+                    <li><a>skewtoright</a></li>
+                    <li><a>skewtoleftshort</a></li>
+                    <li><a>skewtorightshort</a></li>
+                    <li><a>fadeout</a></li>
+                    <li><a>randomrotateout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Separar :</h4>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm textconfig" name="DataSplitin" id="DataSplitin" value="chars" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle textconfig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a>words</a></li>
+                    <li><a>chars</a></li>
+                    <li><a>lines</a></li>
+                </ul>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm textconfig" name="DataSplitout" id="DataSplitout" value="chars" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle textconfig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a>words</a></li>
+                    <li><a>chars</a></li>
+                    <li><a>lines</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Atraso :</h4>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm textconfig" name="DataElementdelay" id="DataElementdelay" value="0.1" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle textconfig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>0.1</a></li>
+                    <li><a>0.2</a></li>
+                    <li><a>0.3</a></li>
+                    <li><a>0.4</a></li>
+                    <li><a>0.5</a></li>
+                    <li><a>0.6</a></li>
+                    <li><a>0.7</a></li>
+                    <li><a>0.8</a></li>
+                    <li><a>0.9</a></li>
+                    <li><a>1</a></li>
+                </ul>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm textconfig" name="DataEndelementdelay" id="DataEndelementdelay" value="0.1" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle textconfig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>0.1</a></li>
+                    <li><a>0.2</a></li>
+                    <li><a>0.3</a></li>
+                    <li><a>0.4</a></li>
+                    <li><a>0.5</a></li>
+                    <li><a>0.6</a></li>
+                    <li><a>0.7</a></li>
+                    <li><a>0.8</a></li>
+                    <li><a>0.9</a></li>
+                    <li><a>1</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Efeito :</h4>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm config" name="DataEasing" id="DataEasing" value="Power3.easeInOut" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class=" caret">
+                    </span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>Power0.easeIn</a></li>
+                    <li><a>Power1.easeIn</a></li>
+                    <li><a>Power2.easeIn</a></li>
+                    <li><a>Power3.easeIn</a></li>
+                    <li><a>Power4.easeIn</a></li>
+                    <li><a>Power0.easeInOut</a></li>
+                    <li><a>Power1.easeInOut</a></li>
+                    <li><a>Power2.easeInOut</a></li>
+                    <li><a>Power3.easeInOut</a></li>
+                    <li><a>Power4.easeInOut</a></li>
+                    <li><a>Power0.easeOut</a></li>
+                    <li><a>Power1.easeOut</a></li>
+                    <li><a>Power2.easeOut</a></li>
+                    <li><a>Power3.easeOut</a></li>
+                    <li><a>Power4.easeOut</a></li>
+                    <li><a>Back.easeIn</a></li>
+                    <li><a>Back.easeInOut</a></li>
+                    <li><a>Back.easeOut</a></li>
+                    <li><a>Bounce.easeIn</a></li>
+                    <li><a>Bounce.easeInOut</a></li>
+                    <li><a>Bounce.easeOut</a></li>
+                    <li><a>Circ.easeIn</a></li>
+                    <li><a>Circ.easeInOut</a></li>
+                    <li><a>Circ.easeOut</a></li>
+                    <li><a>Elastic.easeIn</a></li>
+                    <li><a>Elastic.easeInOut</a></li>
+                    <li><a>Elastic.easeOut</a></li>
+                    <li><a>Expo.easeIn</a></li>
+                    <li><a>Expo.easeInOut</a></li>
+                    <li><a>Expo.easeOut</a></li>
+                    <li><a>Sine.easeIn</a></li>
+                    <li><a>Sine.easeInOut</a></li>
+                    <li><a>Sine.easeOut</a></li>
+                    <li><a>SlowMo.ease</a></li>
+                    <li><a>easeOutBack</a></li>
+                    <li><a>easeInQuad</a></li>
+                    <li><a>easeOutQuad</a></li>
+                    <li><a>easeInOutQuad</a></li>
+                    <li><a>easeInCubic</a></li>
+                    <li><a>easeOutCubic</a></li>
+                    <li><a>easeInOutCubic</a></li>
+                    <li><a>easeInQuart</a></li>
+                    <li><a>easeOutQuart</a></li>
+                    <li><a>easeInOutQuart</a></li>
+                    <li><a>easeInQuint</a></li>
+                    <li><a>easeOutQuint</a></li>
+                    <li><a>easeInOutQuint</a></li>
+                    <li><a>easeInSine</a></li>
+                    <li><a>easeOutSine</a></li>
+                    <li><a>easeInOutSine</a></li>
+                    <li><a>easeInExpo</a></li>
+                    <li><a>easeOutExpo</a></li>
+                    <li><a>easeInOutExpo</a></li>
+                    <li><a>easeInCirc</a></li>
+                    <li><a>easeOutCirc</a></li>
+                    <li><a>easeInOutCirc</a></li>
+                    <li><a>easeInElastic</a></li>
+                    <li><a>easeOutElastic</a></li>
+                    <li><a>easeInOutElastic</a></li>
+                    <li><a>easeInBack</a></li>
+                    <li><a>easeOutBack</a></li>
+                    <li><a>easeInOutBack</a></li>
+                    <li><a>easeInBounce</a></li>
+                    <li><a>easeOutBounce</a></li>
+                    <li><a>easeInOutBounce</a></li>
+                </ul>
+            </div>
+            <div class="btn-group mgbt col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <input type="button" class="btn btn-default ddm config" name="DataEndEasing" id="DataEndEasing" value="Power3.easeInOut" style="width:87%">
+                <button type="button" class="btn btn-default dropdown-toggle config" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><a>Power0.easeIn</a></li>
+                    <li><a>Power1.easeIn</a></li>
+                    <li><a>Power2.easeIn</a></li>
+                    <li><a>Power3.easeIn</a></li>
+                    <li><a>Power4.easeIn</a></li>
+                    <li><a>Power0.easeInOut</a></li>
+                    <li><a>Power1.easeInOut</a></li>
+                    <li><a>Power2.easeInOut</a></li>
+                    <li><a>Power3.easeInOut</a></li>
+                    <li><a>Power4.easeInOut</a></li>
+                    <li><a>Power0.easeOut</a></li>
+                    <li><a>Power1.easeOut</a></li>
+                    <li><a>Power2.easeOut</a></li>
+                    <li><a>Power3.easeOut</a></li>
+                    <li><a>Power4.easeOut</a></li>
+                    <li><a>Back.easeIn</a></li>
+                    <li><a>Back.easeInOut</a></li>
+                    <li><a>Back.easeOut</a></li>
+                    <li><a>Bounce.easeIn</a></li>
+                    <li><a>Bounce.easeInOut</a></li>
+                    <li><a>Bounce.easeOut</a></li>
+                    <li><a>Circ.easeIn</a></li>
+                    <li><a>Circ.easeInOut</a></li>
+                    <li><a>Circ.easeOut</a></li>
+                    <li><a>Elastic.easeIn</a></li>
+                    <li><a>Elastic.easeInOut</a></li>
+                    <li><a>Elastic.easeOut</a></li>
+                    <li><a>Expo.easeIn</a></li>
+                    <li><a>Expo.easeInOut</a></li>
+                    <li><a>Expo.easeOut</a></li>
+                    <li><a>Sine.easeIn</a></li>
+                    <li><a>Sine.easeInOut</a></li>
+                    <li><a>Sine.easeOut</a></li>
+                    <li><a>SlowMo.ease</a></li>
+                    <li><a>easeOutBack</a></li>
+                    <li><a>easeInQuad</a></li>
+                    <li><a>easeOutQuad</a></li>
+                    <li><a>easeInOutQuad</a></li>
+                    <li><a>easeInCubic</a></li>
+                    <li><a>easeOutCubic</a></li>
+                    <li><a>easeInOutCubic</a></li>
+                    <li><a>easeInQuart</a></li>
+                    <li><a>easeOutQuart</a></li>
+                    <li><a>easeInOutQuart</a></li>
+                    <li><a>easeInQuint</a></li>
+                    <li><a>easeOutQuint</a></li>
+                    <li><a>easeInOutQuint</a></li>
+                    <li><a>easeInSine</a></li>
+                    <li><a>easeOutSine</a></li>
+                    <li><a>easeInOutSine</a></li>
+                    <li><a>easeInExpo</a></li>
+                    <li><a>easeOutExpo</a></li>
+                    <li><a>easeInOutExpo</a></li>
+                    <li><a>easeInCirc</a></li>
+                    <li><a>easeOutCirc</a></li>
+                    <li><a>easeInOutCirc</a></li>
+                    <li><a>easeInElastic</a></li>
+                    <li><a>easeOutElastic</a></li>
+                    <li><a>easeInOutElastic</a></li>
+                    <li><a>easeInBack</a></li>
+                    <li><a>easeOutBack</a></li>
+                    <li><a>easeInOutBack</a></li>
+                    <li><a>easeInBounce</a></li>
+                    <li><a>easeOutBounce</a></li>
+                    <li><a>easeInOutBounce</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Estilo :</h4>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control ddm textconfig" aria-label="..." name="Caption" id="Caption" value="very_large_text">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle textconfig" id="btnCaptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Selecione <span class="caret"></span></button>
+                        <ul class="dropdown-menu scrollable-menu" id="ddmCaptions" style="max-height: 180px;" role="menu">
+                            <li><a>very_large_text</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="input-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                <h4 class="color1">Imagem :</h4>
+            </div>
+            <div class="input-group mgbt col-xs-12 col-sm-3 col-md-2 col-lg-2">
+                <span class="input-group-addon">Larg</span>
+                <input type="number" class="form-control imgconfig" id="DataImgWidth" name="DataImgWidth">
+            </div>
+            <div class="input-group mgbt col-xs-12 col-sm-3 col-md-2 col-lg-2">
+                <span class="input-group-addon">Alt</span>
+                <input type="number" class="form-control imgconfig" id="DataImgHeight" name="DataImgHeight">
+            </div>
+            <div class="input-group mgbt col-xs-12 col-sm-3 col-md-2 col-lg-2">
+                <span class="input-group-addon">Z</span>
+                <input type="number" class="form-control imgconfig" id="DataImgZindex" name="DataImgZindex">
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Texto :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control txt" type="text" id="Text" name="Text" placeholder="Título" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="sttext"></span></small>
+            </div>
+        </div>
+        <h4 class="color1">URL :</h4>
+        <div class="form-group">
+            <input class="form-control txt" id="Url" type="text" name="Url" placeholder="http://algumsite.com" />
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                <h4 class=" color1">Nome da imagem :</h4>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+                <div class="form-group">
+                    <input class="form-control texto txt" type="text" id="ImageFileName" name="ImageFileName" placeholder="Nome da imagem" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" id="goToGallery" style="margin:2px">Ir para Galeria</button>
+            </div>
+        </div>
+        <p>
+            <div id="Info"></div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="novo" style="margin:2px">Novo</button>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </div>
+</form>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Content/ContentSlider.min.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+

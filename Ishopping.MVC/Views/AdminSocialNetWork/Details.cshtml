@@ -1,0 +1,67 @@
+﻿@model Ishopping.MVC.ViewModels.Admin.AdminSocialNetWorkViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdminSocialNetWork</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminTemplate.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminTemplate.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rede)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rede)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classe4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classe4)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

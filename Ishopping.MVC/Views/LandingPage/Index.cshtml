@@ -1,0 +1,202 @@
+﻿@model Ishopping.ViewModels.TemplateBasic.IndexLandingPageViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@Model.Profile.Empresa</title>
+
+    <link href="~/Componentes/Basic/LandingPage/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/landing-page.css" rel="stylesheet">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">@Model.Profile.Empresa</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li><a href="@item.Link">@item.TextMenu</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header" style="background: url(../../Content/uploads/@Model.ImagensForm[0]) no-repeat center center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1 class="@Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                        <h3 class="@Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</h3>
+                        <hr class="intro-divider">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.intro-header -->
+    <!-- Page Content -->
+
+    <a name="services"></a>
+
+    @if (Model.ItemService.ItemActive)
+    {
+        i = 0;
+        foreach (var item in Model.ItemService.ListItens)
+        {
+            if (i % 2 == 0)
+            {
+                <div class="content-section-a">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-sm-6">
+                                <hr class="section-heading-spacer">
+                                <div class="clearfix"></div>
+                                <h2 class="section-heading">@Html.Raw(item.Title)</h2>
+                                <p class="lead">@Html.Raw(item.Description)</p>
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                                <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            }
+            else
+            {
+                <div class="content-section-b">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-sm-6 col-lg-offset-1 col-sm-push-6">
+                                <hr class="section-heading-spacer">
+                                <div class="clearfix"></div>
+                                <h2 class="section-heading">@Html.Raw(item.Title)</h2>
+                                <p class="lead">@Html.Raw(item.Description)</p>
+                            </div>
+                            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                                <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            i++;
+        }
+    }
+    <a name="contact"></a>
+    <div class="banner" style="background: url(../../Content/uploads/@Model.ImagensForm[1]) no-repeat center center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h2 class="@Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h2>
+                        <h4 class="@Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</h4>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.banner -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">                
+                <div class="col-sm-6">
+                    <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h4 class="@Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h4>
+                        <ul style="list-style: none;">
+                            <li><i class="fa fa-map-marker"></i> <span></span>@Model.Profile.Adress</li>
+                            <li><i class="fa fa-phone"></i> <span> Telefone: </span>@Model.Profile.Phone</li>
+                            @if (Model.Profile.WhatsApp != "")
+                            {
+                                <li><i class="fa fa-whatsapp"></i> <span> WhatsApp: </span>@Model.Profile.WhatsApp</li>
+                            }
+                            <li><i class="fa fa-envelope"></i> <span> E-mail: </span>@Model.Profile.Email</li>
+                            @if (Model.Profile.Website != "")
+                            {
+                                <li><i class="fa fa-globe"></i> <span> Website: </span> <a href="@Model.Profile.Website" target="_blank">@Model.Profile.Website</a></li>
+                            }                            
+                        </ul>
+                        <br />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                        <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                        <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome" required="required">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Seu Email" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Assunto" required="required">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Sua Mensagem" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="pull-right btn btn-default btn-submit">Enviar email</button>
+                        </div>
+                    </form>
+                </div>
+            </div>         
+        </div>
+    </footer>    
+    <script src="~/Componentes/Basic/LandingPage/js/jquery.js"></script>
+    <script src="~/Componentes/Basic/LandingPage/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/Basic/LandingPage/js/main.js"></script>
+</body>
+</html>
+

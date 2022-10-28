@@ -1,0 +1,173 @@
+﻿@model Ishopping.MVC.ViewModels.Admin.AdminViewData_ViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ViewDatas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewDefault)
+        </dt>        
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewDefault)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controller)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Controller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewCod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewCod)
+        </dd>      
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewTipo)
+        </dd>      
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewCod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewCod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListIconPng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListIconPng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListVectorIcon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListVectorIcon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListList)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListList)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumBtn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumBtn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloqueado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExSlider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExSlider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddSingle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddSingle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewSingle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewSingle)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

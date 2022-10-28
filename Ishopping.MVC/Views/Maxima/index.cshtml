@@ -1,0 +1,638 @@
+﻿@model Ishopping.ViewModels.TemplateProfessional.IndexMaximaViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0; var cl = "";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Partial("_PartialMetaTags")
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/css/bootstrap.min.css" type="text/css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/owl-carousel/owl.transitions.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/flexslider/flexslider.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/isotope/isotope.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/js/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/css/style.css">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Maxima/css/icomoon/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/default-black.css" type="text/css">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+
+</head>
+
+<body id="header6">
+    <div id="page-top"></div>
+    <div class="outer-wrapper">
+        <div class="header-wrap">
+
+            <!-- HEADER -->
+            <header id="header-main">
+                <div class="container">
+                    <div class="navbar yamm navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="index.html" class="navbar-brand"><img src="~/Content/uploads/@Model.ImagensLogo[0]" width="40" alt="" /></a>
+                        </div>
+
+                        <div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
+                            <ul class="nav navbar-nav">
+                                @foreach (var menu in Model.Menu)
+                                {
+                                    <li class="page-scroll"><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                                    foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                    {
+                                        <li class="page-scroll"><a href="@item.Link">@item.TextMenu</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- SLIDER -->
+        <div class="slider-wrap">
+            <div class="tp-banner-container">
+                <div class="tp-banner">
+                    <ul>
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-saveperformance="on" data-title="Ken Burns Slide">
+                            <!-- MAIN IMAGE -->
+                            <img src="~/Componentes/Professional/Maxima/images/dummy.png" alt="2" data-lazyload="../../Content/uploads/@Model.ImagensForm[0]" data-bgposition="center top" data-bgfit="cover" data-kenburns="off" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="center bottom">
+                            <div class="tp-caption tentered_white_huge lft tp-resizeme" data-endspeed="300" data-easing="Power4.easeOut" data-start="400" data-speed="600" data-y="280" data-hoffset="0" data-x="center"
+                                 style="    color: #fff;
+							text-transform: uppercase;
+							font-size: 40px;
+							letter-spacing: 6px;
+							font-family: Open Sans;
+							font-weight: 400;
+							">
+                                @Html.Raw(Model.Textos[0].Text)
+                            </div>
+                            <div class="tp-caption tentered_white_huge lfb tp-resizeme" data-endspeed="300" data-easing="Power4.easeOut" data-start="800" data-speed="600" data-y="350" data-hoffset="0" data-x="center"
+                                 style="    color: #fff;
+							font-size: 13px;
+							text-transform: uppercase;
+							letter-spacing: 10px;
+							">
+                                @Html.Raw(Model.Textos[1].Text)
+                            </div>
+
+                            <div>
+                                <a href="@Model.Buttons[0].UrlButton" alt="" class="tp-caption lfb tp-resizeme rs-parallaxlevel-0"
+                                   data-x="center"
+                                   data-y="400"
+                                   data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                   data-speed="500"
+                                   data-start="1200"
+                                   data-easing="Power3.easeInOut"
+                                   data-splitin="none"
+                                   data-splitout="none"
+                                   data-elementdelay="0.1"
+                                   data-endelementdelay="0.1"
+                                   data-linktoslide="next"
+                                   style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;padding:15px 28px;
+							color: #fff;
+							text-transform: uppercase;
+							border: none;
+							background:#000;
+							font-size: 12px;
+							letter-spacing: 3px;
+							font-family: Montserrat;
+							border-radius: 0px;
+							display: table;
+							transition: .4s;
+							">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                        </div>
+
+
+                    </li>
+
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-saveperformance="on" data-title="Ken Burns Slide">
+                        <!-- MAIN IMAGE -->
+                        <img src="~/Componentes/Professional/Maxima/images/dummy.png" alt="2" data-lazyload="../../Content/uploads/@Model.ImagensForm[1]" data-bgposition="right top" data-bgfit="cover" data-kenburns="off" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="center bottom">
+                        <div class="tp-caption tentered_white_huge lft tp-resizeme" data-endspeed="300" data-easing="Power4.easeOut" data-start="400" data-speed="600" data-y="280" data-hoffset="0" data-x="center"
+                             style="    color: #fff;
+							text-transform: uppercase;
+							font-size: 40px;
+							letter-spacing: 6px;
+							font-family: Montserrat;
+							font-weight: 400;
+							">
+                            @Html.Raw(Model.Textos[2].Text)
+                        </div>
+                        <div class="tp-caption tentered_white_huge lfb tp-resizeme" data-endspeed="300" data-easing="Power4.easeOut" data-start="800" data-speed="600" data-y="350" data-hoffset="0" data-x="center"
+                             style="    color: #fff;
+							font-size: 13px;
+							text-transform: uppercase;
+							letter-spacing: 10px;
+							">
+                            @Html.Raw(Model.Textos[3].Text)
+                        </div>
+
+                        <a href="@Model.Buttons[1].UrlButton" alt="" class="tp-caption lfb tp-resizeme rs-parallaxlevel-0"
+                           data-x="center"
+                           data-y="400"
+                           data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                           data-speed="500"
+                           data-start="1200"
+                           data-easing="Power3.easeInOut"
+                           data-splitin="none"
+                           data-splitout="none"
+                           data-elementdelay="0.1"
+                           data-endelementdelay="0.1"
+                           data-linktoslide="next"
+                           style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;padding:15px 28px;
+							color: #fff;
+							text-transform: uppercase;
+							border: none;
+							background:#000;
+							font-size: 12px;
+							letter-spacing: 3px;
+							font-family: Montserrat;
+							border-radius: 0px;
+							display: table;
+							transition: .4s;
+							">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                        </li>
+                    </ul>
+                    <div class="tp-bannertimer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INNER CONTENT -->
+
+        <div class="container-fluid no-padding">
+            <div class="container padding80">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center space50" id="1">
+                        <h2 class="uppercase @Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h2>
+                        <p class="@Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="section-info ">
+                            @if (Model.ItemPanel.ItemActive)
+                            {
+                                <div class="col-md-6">
+                                    <h4 class="@Model.ItemPanel.ItemStTitle">@Html.Raw(Model.ItemPanel.ItemTitle)</h4>
+                                    <div class="space30"></div>
+                                    <div class="panel-group" id="accordion">
+                                        @{i = 1;}
+                                        @foreach (var item in Model.ItemPanel.ListItens)
+                                        {
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_@i">
+                                                            @Html.Raw(item.Title)
+                                                            <span class="fa fa-plus"></span>
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse_@i" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <p>@item.Text</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix space10"></div>
+                                            i++;
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.ItemSkill.ItemActive)
+                            {
+                                <div class="col-md-6">
+                                    <h4 class="@Model.ItemSkill.ItemStTitle">@Html.Raw(Model.ItemSkill.ItemTitle)</h4>
+                                    <div class="space30"></div>
+                                    <div id="skills">
+                                        @{ cl = "%";}
+                                        @foreach (var item in Model.ItemSkill.ListItens)
+                                        {
+                                            <div class="b-progress-bar" data-capacity="100" data-value="@item.Level">
+                                                <div class="progress-label">@item.Category - @item.Level@cl</div>
+                                                <div class="progress-scale">
+                                                    <div style="width: @item.Level@cl;" class="progress-line"></div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="gap" style="height: 20px;">
+                                    </div>
+                                </div>
+                            }
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        @if (Model.ItemActivity.ItemActive)
+        {
+            <div class="padding80 border-top">
+                <div class="container" id="2">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center space50">
+                            <h2 class="@Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h2>
+                            <p class="@Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model.ItemActivity.ListItens)
+                        {
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <div class="feature-box-icon">
+                                        <i class="@item.VectorIcon"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h4>
+                                        <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Model.ItemFeatures.ItemActive)
+        {
+            <div class="pattern-grey">
+                <div id="stats1" class="container">
+                    <div class="row">
+                        @foreach (var item in Model.ItemFeatures.ListItens)
+                        {
+                            <div class="col-md-3 col-sm-6">
+                                <div class="stats1-info">
+                                    <i class="@item.Icon"></i>
+                                    <p><span class="count count1 @item.ComponentFeaturesOption.Count">@item.Count</span></p>
+                                    <h2 class="@item.ComponentFeaturesOption.Title">@Html.Raw(item.Title)</h2>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="clearfix space90"></div>
+        @if (Model.ItemPortofolio.ItemActive)
+        {
+            <section id="portfolio-section">
+                <div class="container container-full" id="3">
+                    <section id="portfolio-section">
+                        <div class="text-center space40">                        
+                            <h2 class="title uppercase @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                            <p class="@Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</p>
+                        </div>
+                        <ul class="filter" data-option-key="filter">
+                            <li><a class="selected" href="#filter" data-option-value="*">Todas</a></li>
+                            @foreach (var item in Model.ItemPortofolio.ListItens.Select(x => x.Category).Distinct())
+                            {
+                                <li><a href="" data-option-value=".@item.Replace(" ","")">@item</a></li>
+                            }
+                        </ul>
+                        <div id="portfolio-home" class="isotope folio-boxed-3col" style="position: relative; height: 867px;">
+                            @foreach (var item in Model.ItemPortofolio.ListItens)
+                            {
+                                <div class="project-item  @item.Category.Replace(" ", "")" style="position: absolute; left: 0; top: 0;">
+                                    <a href="./portfoliosingleslider">
+                                        <div class="project-gal">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="">
+                                            <div class="overlay-folio2">
+                                                <div class="project-info">
+                                                    <h2 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h2>
+                                                    <p class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </section>
+                </div>
+            </section>
+        }
+
+        @if (Model.ItemScope.ItemActive)
+        {
+            <div class="container padding70">
+                <div class="text-center space40" id="4">
+                    <h2 class="title uppercase @Model.ItemScope.ItemStTitle">@Html.Raw(Model.ItemScope.ItemTitle)</h2>
+                    <p class="@Model.ItemScope.ItemStSubTitle">@Html.Raw(Model.ItemScope.ItemSubTitle)</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="space90"></div>
+                        <ul class="features-left">
+                            @{i = 0;}
+                            @foreach (var item in Model.ItemScope.ListItens)
+                            {
+                                if (i % 2 == 0)
+                                {
+                                    <li>
+                                        <i class="@item.VectorIcon"></i>
+                                        <h3 class="@item.ComponentScopeOption.Title">@Html.Raw(item.Title)</h3>
+                                        <p class="@item.ComponentScopeOption.Description"> @Html.Raw(item.Description)</p>
+                                    </li>
+                                }
+                                i++;
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-sm-push-4">
+                        <div class="space90"></div>
+                        <ul class="features-right">
+                            @{i = 0;}
+                            @foreach (var item in Model.ItemScope.ListItens)
+                            {
+                                if (i % 2 != 0)
+                                {
+                                    <li>
+                                        <i class="@item.VectorIcon"></i>
+                                        <h3 class="@item.ComponentScopeOption.Title">@Html.Raw(item.Title)</h3>
+                                        <p class="@item.ComponentScopeOption.Description"> @Html.Raw(item.Description)</p>
+                                    </li>
+                                }
+                                i++;
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-sm-pull-4">
+                        <div> <img src="~/Content/uploads/@Model.ImagensForm[2]" class="img-responsive center-block" alt=""> </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="pattern-grey padding70">
+            <div class="container">
+                <div class="row cta-dark">
+                    <div class="col-md-9">
+                        <h2 class="@Model.Textos[6].StText">@Html.Raw(Model.Textos[6].Text)</h2>
+                        <p class="@Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</p>
+                    </div>
+                    <div class="col-md-3">
+                        @if (Model.Buttons[2].TextButton != "")
+                        {
+                            <a href="@Model.Buttons[2].UrlButton" class="button btn btn-exlg pull-right @Model.Buttons[2].StButton">@Html.Raw(Model.Buttons[2].TextButton)</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.ItemSimpleProduct.ItemActive)
+        {
+            <div class="container home-blog padding80">
+                <div class="text-center space40" id="6">
+                    <h2 class="title uppercase @Model.ItemSimpleProduct.ItemStTitle">@Html.Raw(Model.ItemSimpleProduct.ItemTitle)</h2>
+                    <p class="@Model.ItemSimpleProduct.ItemStSubTitle">@Html.Raw(Model.ItemSimpleProduct.ItemSubTitle)</p>
+                </div>
+                <div class="row">
+                    <ul class="shop-grid">
+                        @foreach (var item in Model.ItemSimpleProduct.ListItens)
+                        {
+                            <li>
+                                <div class="product">
+                                    <div class="text-center">
+                                        <div class="product-thumbnail">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.ElementAt(0).Folder/@item.UserImageGallery.ElementAt(0).FileName" class="img-responsive" alt="">
+                                        </div>
+                                        <h3 class="product-title"><a href="">@Html.Raw(item.Name)</a></h3>
+                                        <span class="product-price">R$ @item.Price</span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+
+        @if (Model.ItemThumbnail.ItemActive)
+        {
+            <div class="clients container">
+                <div id="carousel_five" class="owl-carousel">
+                    @foreach (var item in Model.ItemThumbnail.ListItens)
+                    {
+                        <div class="item client-logo">
+                            <a href="@item.WebSite" target="_blank"><img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="" /></a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        <div class="border-top"></div>
+        @if (Model.ItemPost.ItemActive)
+        {
+            <div class="border-top padding80">
+                <div class="container home-blog" id="5">
+                    <div class="text-center space40">
+                        <h2 class="title uppercase @Model.ItemPost.ItemStTitle">@Html.Raw(Model.ItemPost.ItemTitle)</h2>
+                        <p class="@Model.ItemPost.ItemStSubTitle">@Html.Raw(Model.ItemPost.ItemSubTitle)</p>
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model.ItemPost.ListItens)
+                        {
+                            <div class="col-md-4">
+                                <div class="hb-info">
+                                    <div class="hb-thumb">
+                                        <a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.ElementAt(0).Folder/@item.UserImageGallery.ElementAt(0).FileName" class="img-responsive" alt="" />
+                                        </a>
+                                        <div class="date-meta">
+                                            @item.DatePartMonth<span>@item.DatePartDay</span>@item.DatePartYear
+                                        </div>
+                                    </div>
+                                    <h4><a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank">@Html.Raw(item.Titulo)</a></h4>
+                                    <p>@Html.Raw(item.Paragrafo1)</p>
+                                    <a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank" class="readmore">Leia mais...</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="space80"></div>
+        <div class="container-fluid no-padding" id="7">
+            <div>
+                <div class="space40"></div>
+                <div class="row">
+                    <div class="col-md-12 no-padding">
+                        <div class="map-greyscale" data-latitude="@Model.Profile._Latitude" data-longitude="@Model.Profile._Longitude" id="map-greyscale"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4 class="space30 @Model.Textos[8].StText">@Html.Raw(Model.Textos[8].Text)</h4>
+                    <img src="~/Content/uploads/@Model.ImagensLogo[1]" class="img-responsive space20" width="262" alt="" />
+                    <p class="@Model.Textos[9].StText">@Html.Raw(Model.Textos[9].Text)</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h4 class="space30 @Model.Textos[10].StText">@Html.Raw(Model.Textos[10].Text)</h4>
+                    <ul class="c-info">
+                        <li>
+                            <i class="fa fa-map-marker"></i> @Model.Profile.Rua nº @Model.Profile.NumRua<br>@Model.Profile.Cidade @Model.Profile.Estado <br />@Model.Profile.Pais
+                        </li>
+                        <li>
+                        </li>
+                        <li><i class="fa fa-phone"></i> @Model.Profile.Phone</li>
+                        @if (Model.Profile.WhatsApp != null)
+                        {
+                            <li><i class="fa fa-whatsapp"></i> @Model.Profile.WhatsApp</li>
+                        }
+                        <li><i class="fa fa-envelope-o"></i> @Model.Profile.Email</li>
+                        @if (Model.Profile.Website != null)
+                        {
+                            <li><i class="fa fa-globe"></i> @Model.Profile.Website</li>
+                        }
+                    </ul>
+                    <div class="clearfix space10"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                        <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                        <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome" required="required">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Seu Email" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Assunto" required="required">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Sua Mensagem" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default pull-right">Enviar Email</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER COPYRIGHT -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>&copy; Copyright 2015. Maxima. Designed by <a href="http://www.ckthemes.com" target="_blank"> CK Themes</a></p>
+                </div>
+                <div class="col-md-4">
+                    <div class="f-social pull-right">
+                        @if (Model.ItemSocialNetwork.ItemActive)
+                        {
+                            if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                            {
+                                foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                {
+                                    <a class="@item.Classe1" href="@item.Link" target="_blank"></a>
+                                }
+                            }
+                            else
+                            {
+                                <a class="fa fa-facebook popup" href="https://www.facebook.com/sharer/sharer.php?u="></a>
+                                <a class="fa fa-twitter popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="></a>
+                                <a class="fa fa-google-plus popup" href="https://plus.google.com/share?url="></a>
+                                <a class="fa fa-linkedin popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="></a>
+                                <a class="fa fa-tumblr popup" href="http://www.tumblr.com/share/link?url="></a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Componentes/Professional/Maxima/js/jquery.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/Componentes/Professional/Maxima/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/menu.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.easing.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/isotope/isotope.pkgd.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jflickrfeed.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/tweecool.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/flexslider/jquery.flexslider.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/easypie/jquery.easypiechart.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery-ui.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.appear.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.inview.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.countdown.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.sticky.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Componentes/Professional/Maxima/js/jquery.easing/jquery.easing.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+    <script src="~/Componentes/Professional/Maxima/js/main.js"></script>
+
+    <script src="~/Componentes/Professional/Maxima/js/gmaps/greyscale.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&callback=initMap" async defer></script>
+
+
+</body>
+</html>

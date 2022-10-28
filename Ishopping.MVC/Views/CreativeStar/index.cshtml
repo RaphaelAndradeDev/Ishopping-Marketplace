@@ -1,0 +1,392 @@
+﻿@model Ishopping.ViewModels.TemplateProfessional.IndexCreativeStarViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0; var cl = ""; var ms = "ms";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+        
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/css/animate.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/nivo-lightbox/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/nivo-lightbox/nivo-lightbox-theme.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/main.css">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Componentes/Professional/CreativeStar/css/preserv.css">
+
+</head>
+<body>
+
+    <!--== 4. Header ==-->
+
+    <section class="header" id="header">
+        <div class="navigationbar  navbar-fixed-top">
+            <div class="container">
+                <a href="#" class="logo">
+                    @Model.Profile.Empresa
+                </a>
+                <i class="fa fa-bars pull-right" id="iconhideshow"></i>
+                <ul class="nav hide nav-pills pull-right">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li role="presentation"><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li role="presentation"><a href="@item.Link">@item.TextMenu</a></li>
+                        }
+                    }
+                </ul>
+            </div> <!-- /.container -->
+        </div> <!-- /.navigation-bar -->
+        <div class="header-description text-center" style="background: url(../../Content/uploads/@Model.ImagensForm[0]) no-repeat;background-attachment: fixed;background-position: center;background-size: cover;height: 100vh;position: relative;display: table;width: 100%; color:#ffffff; text-transform: uppercase;">
+            <div class="header-content wow bounce animated">
+                <h1 class="heading @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                <p class="heading-subtitle @Model.Textos[1].StText">
+                    @Html.Raw(Model.Textos[1].Text)
+                </p>
+            </div> <!-- /.header-content -->
+
+            <div class="wow zoomIn button-down" data-wow-duration="1s" data-wow-offset="100">
+                <div class="wow tada" data-wow-delay="1s" data-wow-duration="1s">
+                    <div class="wow rubberBand" data-wow-delay="2000ms" data-wow-duration="1s">
+                        <div class="wow pulse" data-wow-delay="300ms" data-wow-iteration="infinite" data-wow-duration="2s">
+                            <a href="#service" title="Go down">
+                                <img src="~/Componentes/Professional/CreativeStar/images/button_downr.png" alt="MaterialUp" class="center">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /.header-description -->
+    </section> <!-- /#header -->
+    <!--== 5. Our Service ==-->
+    @if (Model.ItemFeatures.ItemActive)
+    {
+        <section class="service" id="service" style="background: url(../../Content/uploads/@Model.ImagensForm[1]) no-repeat; background-attachment: fixed; background-position: top center; background-size: cover;">
+            <div class="wrapper">
+                <div class="container">
+                    <h2 class="section-title wow bounceInRight animated custom-white @Model.ItemFeatures.ItemStTitle">@Html.Raw(Model.ItemFeatures.ItemTitle)</h2>
+                </div> <!-- /.container -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="service-content">
+                            <div class="container-fluid border-3">
+                                <div class="container border-2">
+                                    <div class="row">
+                                        <div class="col-sm-5 border-1">
+                                            <h4 class="subtitle custom-purple wow bounceInLeft center animated @Model.ItemFeatures.ItemStSubTitle">@Html.Raw(Model.ItemFeatures.ItemSubTitle)</h4>
+                                        </div>
+                                        <div class="col-sm-7"></div>
+                                    </div> <!-- /.row -->
+                                </div> <!-- /.container -->
+                            </div> <!-- /.container-fluid -->
+                            <div class="container border-2">
+                                <div class="row .service-table">
+                                    <div class="col-sm-5 border-1 custom-purple .service-table-cell">
+                                        <p class="service-main-content wow pulse animated @Model.Textos[2].StText">
+                                            @Html.Raw(Model.Textos[2].Text)
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-7 .service-table-cell">
+                                        <div class="row">
+                                            @{i = 100;}
+                                            @foreach (var item in Model.ItemFeatures.ListItens)
+                                            {
+                                                <div class="col-sm-4 text-center">
+                                                    <a>
+                                                        <div class="add wow bounceInRight animated" data-wow-delay="@i@ms">
+                                                            <i class="@item.Icon"></i>
+                                                            <p class="@item.ComponentFeaturesOption.Title">
+                                                                @Html.Raw(item.Title)
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <div class="demo">
+                                                        <div class="demo-4 wow flip animated" data-percent="@item.Count"></div>
+                                                    </div>
+                                                    <p class="custom-red text-center @item.ComponentFeaturesOption.Description">
+                                                        @Html.Raw(item.Description)
+                                                    </p>
+                                                </div> <!-- /.col-sm-4 -->
+                                                i = i + 100;
+                                            }
+                                        </div> <!-- /.row -->
+                                    </div> <!-- /.col-sm-7 -->
+                                </div> <!-- /.row -->
+                            </div> <!-- /.container -->
+                            <div class="container-fluid border-4">
+                                <div class="container border-2">
+                                    <div class="row">
+                                        <div class="col-sm-5 border-1 empty"></div>
+                                        <div class="col-sm-7 empty"></div>
+                                    </div> <!-- /.row -->
+                                </div> <!-- /.container -->
+                            </div> <!-- /.container-fluid -->
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.container-fluid -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#service -->
+    }
+    <!--== 6. About Us ==-->
+
+    <section id="about" class="about">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="about-table">
+                    <div class="col-md-4 col-sm-12 about-table-cell">
+                        <div class="about-content">
+                            <div class="wrapper">
+                                <h2 class="section-title wow bounceInRight animated @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</h2>
+                                <p class="section-paragraph wow pulse animated @Model.Textos[4].StText">
+                                    @Html.Raw(Model.Textos[4].Text)
+                                </p> <!-- /.section-paragraph -->
+                            </div> <!-- /.wrapper -->
+                        </div> <!-- /.about-content -->
+                    </div>
+                    <div class="col-md-8 col-sm-12 about-table-cell" style="background:url(../../Content/uploads/@Model.ImagensForm[2]);background-size:cover;">
+                    </div>
+                </div> <!-- /.about-table -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container-fluid -->
+    </section> <!-- /#about -->
+    <!--== 7. Our Works ==-->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <section id="works" class="works">
+            <div class="wrapper">
+                <div class="container">
+                    <h2 class="section-title wow bounceInRight animated custom-white @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                    <div id="filters" class="button-group">
+                        <button class="filters-button wow bounceInLeft animated _active" data-wow-delay="0.0s" data-filter="*">Todos</button>
+                        @{i = 100;}
+                        @foreach (var item in Model.ItemPortofolio.ListItens.Select(x => x.Category).Distinct())
+                        {
+                            <button class="filters-button wow bounceInLeft animated" data-wow-delay="@i@ms" data-filter=".@item.Replace(" ","")">@item</button>
+                            i = i + 100;
+                        }
+                    </div>
+                </div> <!-- /.container -->
+
+                <div id="works_container">
+                    @foreach (var item in Model.ItemPortofolio.ListItens)
+                    {
+                        <div class="works-single-item @item.Category.Replace(" ", "")">
+                            <img class="works-item" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName">
+                            <div class="works-single-item-hover text-center">
+                                <div class="works-icons">
+                                    <a class="portfolio-item" data-lightbox-gallery="our-works-item-view" href="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName"><i class="custom-icon fa fa-search"></i></a>
+                                </div>
+                                <div class="works-icons-content">
+                                    <h4 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h4>
+                                    <p class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            </div> <!-- /.works-single-item-hover -->
+                        </div> <!-- /.works-single-item -->
+                    }
+                </div> <!-- /#container -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#works -->
+    }
+
+    <!--== 8. Meet With Us ==-->
+    @if (Model.ItemTeam.ItemActive)
+    {
+        <section class="meet" id="meet">
+            <div class="container">
+                <div class="wrapper">
+                    <h2 class="section-title block-title wow animated bounceInRight animated custom-black @Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h2>
+                    <div class="row">
+                        @foreach (var item in Model.ItemTeam.ListItens)
+                        {
+                            <div class="col-sm-4">
+                                <div class="meet-item-bg wow pulse animated text-center">
+                                    <div class="meet-item text-center">
+                                        <div class="meet-single-item wow bounceInDown animated">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="Meet">
+                                            <div class="meet-icons">
+                                                @foreach (var sn in item.ComponentTeamSocialNetwork)
+                                                {
+                                                    <a href="@sn.Link" target="_blank"><i class="custom-icon @sn.Classe2"></i></a>
+                                                }
+                                            </div> <!-- /.meet-icons -->
+                                        </div> <!-- /.meet-single-item -->
+                                        <div class="meet-item-content custom-white wow bounceInUp animated">
+                                            <h6 class="meet-item-name @item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h6>
+                                            <p class="meet-item-sub custom-black @item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</p>
+                                            <p class="meet-item-about @item.ComponentTeamOption.Description">
+                                                @Html.Raw(item.Description)
+                                            </p>
+                                        </div> <!-- /.meet-item-content -->
+                                    </div> <!-- /.meet-item -->
+                                </div> <!-- /.meet-item-bg -->
+                            </div> <!-- /.col-sm-4 -->
+                        }
+                    </div> <!-- /.row -->
+                </div> <!-- /.wrapper -->
+            </div> <!-- /.container -->
+        </section> <!-- /#meet -->
+    }
+
+    <!--== 9. Testimonial ==-->
+    @if (Model.ItemClient.ItemActive)
+    {
+        <section id="testimonial" class="testimonial">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="testimonial-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="owl-demo" class="owl-carousel owl-theme">
+                                    @foreach (var item in Model.ItemClient.ListItens)
+                                    {
+                                        <div class="item wrapper custom-white">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <img style="width:150px;height:170px" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <h3 class="test-name @item.ComponentClientOption.Name">@Html.Raw(item.Name)</h3>
+                                                    <p class="name-title @item.ComponentClientOption.Functio">
+                                                        @Html.Raw(item.Functio)
+                                                    </p>
+                                                    <p class="@item.ComponentClientOption.Comment">
+                                                        @Html.Raw(item.Comment)
+                                                    </p>
+                                                </div>
+                                            </div> <!-- /.row -->
+                                        </div> <!-- /.item -->
+                                    }
+                                </div> <!-- /#owl-demo -->
+                            </div> <!-- /.col-md-6 -->
+                            <div class="col-md-6 clients-logo">
+                                @foreach (var item in Model.ItemThumbnail.ListItens)
+                                {
+                                    <a><img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="@item.Category" class="img-responsive img-logo"></a>
+                                }
+                            </div> <!-- /.col-md-6 -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /.testimonial-content -->
+                </div> <!-- /.container -->
+            </div> <!-- /.wrapper -->
+        </section> <!-- /#testimonial -->
+    }
+
+    <!--== 10. Contact With Us ==-->
+
+    <section class="contact" id="contact" style="background: url(../../Content/uploads/@Model.ImagensForm[3]) no-repeat; background-position: center center; background-size: cover;">
+        <div class="contact-content">
+            <div class="wrapper">
+                <div class="container">
+                    <h2 class="section-title wow bounceInRight animated custom-black @Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</h2>
+                    <div class="row">
+                        <div class="col-sm-6 clearfix">
+                            <p class="address wow pulse animated">
+                                @Model.Profile.Adress <br>
+                                <strong>Tel: </strong>@Model.Profile.Phone <br>
+                                @if (Model.Profile.WhatsApp != "")
+                                {
+                                    <strong>WhatsApp: </strong>@Model.Profile.WhatsApp <br>
+                                }
+                                <strong>E-mail: </strong>@Model.Profile.Email <br>
+                                @if (Model.Profile.Website != "")
+                                {
+                                    <strong>Website: </strong><a href="@Model.Profile.Website" target="_blank">@Model.Profile.Website</a>
+                                }
+                            </p>
+                            @if (Model.ItemSocialNetwork.ItemActive)
+                            {
+                                if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                                {
+                                    <ul class="social-icons text-center">
+                                        @{i = 0; cl = "";}
+                                        @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                        {
+                                            if (i % 2 == 0) { cl = "fadeInLeft"; } else { cl = "fadeInRight"; }
+                                            <li class="wow animated @cl @item.Classe1 animated">
+                                                <a href="@item.Link" target="_blank"><i class="@item.Classe2"></i></a>
+                                            </li>
+                                            i++;
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="social-icons text-center">
+                                        <li class="wow animated fadeInLeft facebook animated">
+                                            <a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        <li class="wow animated fadeInRight twitter animated">
+                                            <a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li class="wow animated fadeInLeft linkedin animated">
+                                            <a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        <li class="wow animated fadeInRight googleplus animated">
+                                            <a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
+
+                        </div>
+                        <div class="col-sm-6">
+                            <form class="_form-inline row" id="contact-form" name="contact" method="post" action="@Url.Action("EmailS","AppServices")">
+                                <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                                <div class="form-group custom-form-group col-sm-6">
+                                    <label class="sr-only" for="name" id="name"><span class="required">*</span>Name</label>
+                                    <input type="text" class="form-control custom-form-control wow bounceInLeft animated" name="name" id="name" placeholder="Seu Nome" required>
+                                </div>
+                                <div class="form-group custom-form-group col-sm-6">
+                                    <label class="sr-only" for="email" id="email"><span class="required">*</span>Email</label>
+                                    <input type="email" class="form-control custom-form-control wow bounceInRight animated" id="email" name="email" placeholder="Seu Email" required>
+                                </div>
+                                <div class="form-group custom-form-group col-sm-12">
+                                    <label class="sr-only" for="subject" id="subject"><span class="required">*</span>Assunto</label>
+                                    <input type="text" class="form-control custom-form-control wow bounceInRight animated" id="subject" name="subject" placeholder="Assunto" required>
+                                </div>
+                                <div class="form-group custom-form-group col-sm-12">
+                                    <label class="sr-only" for="text-massage"><span class="required">*</span>Massage</label>
+                                    <textarea class="form-control custom-form-control wow bounceInUp animated" id="text-massage" name="message" rows="3" placeholder="Mensagem" required></textarea>
+                                </div>
+                                <button type="submit" class="pull-right btn btn-default submit-button custom-white wow bounceInLeft animated" id="submit" name="submit" value="Send">Enviar</button>
+                            </form>
+                        </div>
+                    </div> <!-- /.row -->
+                </div> <!-- /.container -->
+            </div> <!-- /.wrapper -->
+            <footer class="custom-red text-center wow flip animated">
+                &copy;Copyright <a href="#"><strong>Your Website Link</strong></a> 2015. Theme by <a href="http://www.themewagon.com"><strong>ThemeWagon</strong></a>
+            </footer>
+        </div> <!-- /.contact-content -->
+    </section> <!-- /#contact -->
+    <a href="#header" id="back-to-top" class="top"><i class="fa fa-chevron-up"></i></a>
+
+    <script src="~/Componentes/Professional/CreativeStar/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/jquery.circlechart.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/owl.carousel.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/isotope.pkgd.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/wow.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/jquery.validate.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/nivo-lightbox/nivo-lightbox.min.js"></script>
+    <script src="~/Componentes/Professional/CreativeStar/js/script.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+</body>
+</html>

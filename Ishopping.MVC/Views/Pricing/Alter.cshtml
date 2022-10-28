@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Componentes Preços e Planos";
+    Layout = "~/Views/Shared/_LayoutComponent.cshtml";
+}
+
+@Html.Partial("_StylePartial")
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Componente Planos</h1>
+        <p>Componentes são itens dinâmicos. Você pode adicionar, editar ou remover um componente.  Cada template possui a sua lista de componentes, as propriedades dos componentes variam de acordo com cada template, algumas propriedades podem não aparecer em um template e aparecer em outro e vice-versa.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-lg-5">
+        <div class="input-group no-gutter">
+            <input type="text" class="form-control texto" id="txtTexto" placeholder="Nome do Plano" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" id="btnTexto" name="btnTexto">Pesquisar</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br />
+
+<div class="well">
+    <form id="defaultForm" method="post">
+        <div class="checkbox color1">
+            <label><input type="checkbox" id="destacar" value="">Destacar Plano</label>
+        </div>
+        <h4 class="color1">Nome :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="nomePlano" name="nomePlano" placeholder="Nome do plano" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="snomePlano">@ViewBag.Classe.NomePlano</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Moeda :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="moeda" name="moeda" placeholder="R$" maxlength="2" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Estilo: <span id="smoeda">@ViewBag.Classe.Moeda</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Preço R$ :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <input class="form-control texto" type="number" id="priceUnid" name="price" placeholder="39" maxlength="2" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Estilo: <span id="spriceUnid">@ViewBag.Classe.PriceUnid</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Centavos :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="input-group">
+                    <input class="form-control texto" type="number" id="priceCent" name="price" placeholder="99" maxlength="2" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Estilo: <span id="spriceCent">@ViewBag.Classe.PriceCent</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Período :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="periodo" name="periodo" placeholder="Por mês" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="speriodo">@ViewBag.Classe.Periodo</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Descrição :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="description" name="description" placeholder="Item 1; Item 2; [b]Item 3[/b]; Item 4"></textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="sdescription">@ViewBag.Classe.Description</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Comentário :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="comment" name="comment" placeholder="Servidores DELL com 2 processadores Quad-Core"></textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="scomment">@ViewBag.Classe.Comment</span></small>
+            </div>
+        </div>
+
+        <h4 class="color1">Texto do Butão :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="textButton" name="textButton" placeholder="Texto do butão" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Estilo: <span id="stextButton">@ViewBag.Classe.TextButton</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Url :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="form-group">
+                    <input class="form-control texto" type="text" id="urlButton" name="urlButton" placeholder="http://algumsite.com.br" />
+                </div>
+            </div>
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="novo" style="margin:2px">Novo</button>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Component/CommunComponentT2.min.js"></script>
+    <script src="~/Scripts/Ishopping/Component/ComponentPricing.min.js"></script>
+}
+
+
+

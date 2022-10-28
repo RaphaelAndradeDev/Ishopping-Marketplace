@@ -1,0 +1,82 @@
+﻿@model Ishopping.ViewModels.Ishopping.SinglePostViewModel
+@{ var site = "https://www.ishoopping.com.br"; }
+
+<article class="g-mb-60">
+    <header class="g-mb-30">
+        <h3 class="h1 g-mb-15">@Html.Raw(Model.SinglePost.Titulo)</h3>
+
+        <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-0">
+            <li class="list-inline-item">
+                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="@Url.Action("Blog", new { siteNumber = Model.SinglePost.SiteNumber })">@Model.SinglePost.Autor</a>
+            </li>
+            <li class="list-inline-item g-mx-10">/</li>
+            <li class="list-inline-item">
+                @Model.SinglePost._DataCadastro
+            </li>
+            <li class="list-inline-item ml-auto">
+                <i class="icon-eye u-line-icon-pro align-middle mr-1"></i> @Model.SinglePost.Views
+            </li>
+        </ul>
+
+        <hr class="g-brd-gray-light-v4 g-my-15">
+
+        <div class="row">
+            <div class="col-md-2">
+                <a class="fb-share-button ml-2" data-href="@site@Url.Action("SinglePost", new { id = Model.SinglePost.Id })" data-layout="button" data-size="large" data-mobile-iframe="true"></a>
+            </div>
+            <div class="col-md-2">
+                <a class="twitter-share-button" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-show-count="true"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="g-font-size-16 g-line-height-1_8 g-mb-30">
+
+        <figure class="u-shadow-v25 g-mb-30">
+            <img class="img-fluid w-100" src="~/Content/uploads/@Model.SinglePost.UserImageGallery.ElementAt(0).Folder/@Model.SinglePost.UserImageGallery.ElementAt(0).FileName" alt="ishoopping post">
+        </figure>
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo1)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo1)</p>
+
+        <figure class="u-shadow-v25 g-mb-30">
+            <img class="img-fluid w-100" src="~/Content/uploads/@Model.SinglePost.UserImageGallery.ElementAt(1).Folder/@Model.SinglePost.UserImageGallery.ElementAt(1).FileName" alt="ishoopping post 2">
+        </figure>
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo2)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo2)</p>
+
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo3)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo3)</p>
+    </div>
+
+    <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-0">
+        <li class="list-inline-item">
+            Mais sobre: <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="@Url.Action("Blog", new { category = Model.SinglePost.Categoria})"> @Model.SinglePost.Categoria</a>
+        </li>    
+    </ul>
+
+    <hr class="g-brd-gray-light-v4">
+
+    <!-- Social Shares -->
+    <div class="row">
+        <div class="col-md-2">
+            <a class="fb-share-button ml-2" data-href="@site@Url.Action("SinglePost", new { id = Model.SinglePost.Id })" data-layout="button" data-size="large" data-mobile-iframe="true"></a>
+        </div>
+        <div class="col-md-2">
+            <a class="twitter-share-button" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-show-count="true"></a>
+        </div>
+    </div>
+    <!-- End Social Shares -->
+
+    <hr class="g-brd-gray-light-v4 g-mb-40">
+
+</article>
+
+
+
+

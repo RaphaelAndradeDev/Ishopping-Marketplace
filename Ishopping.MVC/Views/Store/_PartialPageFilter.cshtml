@@ -1,0 +1,84 @@
+﻿@model Ishopping.Application.ViewModel.Ishopping.AppStorePartialPageFilterViewModel
+
+<div class="g-pr-15--lg g-pt-60">
+    <!-- Categories -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">Categorias</h3>
+        <ul class="list-unstyled">
+            <li class="my-3" onclick="getAll()">
+                <a class="d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">Todas</a>
+            </li>
+            @foreach (var item in Model.ProductDataFilter.Select(x => x._Category).Distinct().Take(10))
+            {
+                <li class="my-3" onclick="getAllByCategory(@item.Id)">
+                    <a class="d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                        @item.Name
+                        <span class="float-right g-font-size-12">@Model.ProductDataFilter.Where(x => x.CategoryId == item.Id).Count()</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End Categories -->
+    <hr>
+    <!-- SubCategory -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">SubCategorias</h3>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.ProductDataFilter.Select(x => x._SubCategory).Distinct().Take(6))
+            {
+                <li class="my-2">
+                    <label class="form-check-inline u-check d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover g-pl-30">
+                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="checkSubCat" type="checkbox" value="@item.Id">
+                        <span class="d-block u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon="&#xf00c"></i>
+                        </span>
+                        @item.Name <span class="float-right g-font-size-13">@Model.ProductDataFilter.Where(x => x.SubCategoryId == item.Id).Count()</span>
+                    </label>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End SubCategory -->
+    <hr>
+    <!-- Brand -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">Marcas</h3>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.ProductDataFilter.Select(x => x.Brand).Distinct().Take(6))
+            {
+                <li class="my-2">
+                    <label class="form-check-inline u-check d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover g-pl-30">
+                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="checkBrand" type="checkbox" value="@item">
+                        <span class="d-block u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon="&#xf00c"></i>
+                        </span>
+                        @item <span class="float-right g-font-size-13">@Model.ProductDataFilter.Where(x => x.Brand == item).Count()</span>
+                    </label>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End Brand -->
+    <hr>
+    <!-- Pricing -->
+    <h3 class="h5 mb-3">Preços</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group g-mb-20">
+                <input id="priceMin" class="form-control form-control-md rounded-0" type="number" placeholder="min">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group g-mb-20">
+                <input id="priceMax" class="form-control form-control-md rounded-0" type="number" placeholder="max">
+            </div>
+        </div>
+    </div>
+    <!-- End Pricing -->
+    <hr>
+    <button class="btn btn-block u-btn-blue g-font-size-12 text-uppercase g-py-12 g-px-25" id="btnFilter" type="button">Filtrar</button>
+    <button class="btn btn-block u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25" id="btnReset" type="button">Resetar</button>
+    <hr>
+</div>
+

@@ -1,0 +1,17 @@
+﻿@model Ishopping.MVC.ViewModels.User.UserImageGalleryViewModel
+
+<div class="col-sm-4 col-md-3">
+    <div class="thumbnail" style="margin-bottom:20px;padding-bottom:35px">
+        <img src="~/Content/uploads/@Model.Folder/@Model.FileName" alt="" style="width:100%">
+        <div class="caption">
+            <div class="input-group col-xs-7 col-sm-7 col-md-8 col-lg-8">
+                <span class="input-group-addon">Posição</span>
+                <input type="number" class="form-control" value="@Model.Position" style="margin-left:-10px;min-width:60px;max-width:70px">
+            </div>
+            <button type="button" class="btn btn-danger btn-sm pull-right" name="getDelete" value="@Model.Id">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Deletar
+            </button>
+        </div>
+    </div>
+</div>
+

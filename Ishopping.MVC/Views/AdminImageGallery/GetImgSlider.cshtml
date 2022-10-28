@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.Admin.AdminImageGalleryViewModel>
+
+@{
+    ViewBag.Title = "Imagens Logo";
+}
+<br />
+
+<div class="container">
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="btn-group btn-group-justified">
+                <a href="@Url.Action("Index", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Apresentação</a>
+                <a href="@Url.Action("GetImgIcon", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Ícones</a>
+                <a href="@Url.Action("GetImgLogo", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Logo</a>
+                <a href="#" class="btn btn-default active">Slider</a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            @Html.ActionLink("Adicionar Imagens", "AdminUploadFileSlider", "ImgUpload", new { id = ViewBag.ViewDataId }, new { @class = "btn btn-info pull-right no-gutter2" })
+            <input id="alt" type="submit" value="Salvar Posições" class="btn btn-primary pull-right" /><text id="sucess">&nbsp; &nbsp; &nbsp;</text>
+        </div>
+    </div>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        {
+            int j = 0;
+            for (int i = 0; i < Model.Count(); i += 3)
+            {
+                j = i;
+                <div class="row">
+                    @while (j < i + 3 && j < Model.Count())
+                    {
+                        <div class="col-md-3 portfolio-item">
+                            <img class="img-responsive img-portfolio img-hover" src="~/Content/uploads/@Model.ElementAt(j).Folder/@Model.ElementAt(j).FileName" alt="" style="margin-bottom:10px;" />
+                            <div class="input-group col-md-8">
+                                <text>@Model.ElementAt(j).FileName</text>
+                            </div>
+                            <div class="col-xs-1">
+                                <button type="button" class="btn btn-danger" name="getDelete" value="@Model.ElementAt(j).Id">Deletar</button>
+                            </div>
+                            <br /><br /><br /><br />
+                        </div>
+                        j++;
+                    }
+                </div>
+            }
+        }
+    }
+</div>
+
+
+
+
+

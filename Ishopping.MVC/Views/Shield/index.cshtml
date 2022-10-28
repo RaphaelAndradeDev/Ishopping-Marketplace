@@ -1,0 +1,282 @@
+﻿@model Ishopping.ViewModels.TemplateBasic.IndexShieldViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SHIELD - Free Bootstrap 3 Theme">
+    <meta name="author" content="Carlos Alvarez - Alvarez.is - blacktie.co">
+    <link rel="shortcut icon" href="~/Componentes/Basic/Shield/favicon.png">">
+
+    <title>@Model.Profile.Empresa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Componentes/Basic/Shield/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Componentes/Basic/Shield/css/animate-custom.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/main.css" rel="stylesheet">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">     
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <script src="~/Componentes/Basic/Shield/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/modernizr.custom.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+    <div id="navbar-main">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="glyphicon glyphicon-list" style="font-size:30px; color:#fff;"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @foreach (var menu in Model.Menu)
+                        {
+                            <li><a href="@menu.ViewLink" class="smoothScroll">@menu.TextMenu</a></li>
+                            foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                            {
+                                <li> <a href="@item.Link" class="smoothScroll"> @item.TextMenu</a></li>
+                            }
+                        }
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==== HEADERWRAP ==== -->
+    <div id="headerwrap" name="home" style="background: url(../../Content/uploads/@Model.ImagensForm[0]) no-repeat center top; width: 100%; background-size: cover;">
+        <header class="clearfix">
+            <p class="@Model.Textos[0].StText" style="margin-top:10%">@Html.Raw(Model.Textos[0].Text)</p>
+        </header>
+    </div><!-- /headerwrap -->
+    <!-- ==== ABOUT ==== -->
+    <div class="container" id="about" name="about">
+        <div class="row white">
+            <br>
+            <h1 class="centered @Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</h1>
+            <hr>
+            <div class="centered">
+                <p class="@Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</p>
+            </div>
+        </div><!-- row -->
+    </div><!-- container -->
+    <!-- ==== SECTION DIVIDER1 -->
+    <section class="section-divider textdivider divider1" style="background-image: url('../../Content/uploads/@Model.ImagensForm[1]')">
+        <div class="container">
+            <h1 class="@Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</h1>
+            <hr>
+            <p class="@Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</p>
+        </div><!-- container -->
+    </section><!-- section -->
+    <!-- ==== SERVICES ==== -->
+    <div class="container" id="services" name="services">
+        <br>
+        <br>
+        <div class="row">
+            <h2 class="centered @Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</h2>
+            <hr>
+            <br>
+            <div class="centered">
+                <p class="@Model.Textos[6].StText">@Html.Raw(Model.Textos[6].Text)</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <br>
+            <div class="col-lg-offset-2 col-lg-8">
+                <img class="img-responsive" src="~/Content/uploads/@Model.ImagensForm[2]" alt="">
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+    <!-- ==== SECTION DIVIDER2 -->
+    <section class="section-divider textdivider divider2" style="background-image: url('../../Content/uploads/@Model.ImagensForm[3]')">
+        <div class="container">
+            <h1 class="@Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</h1>
+            <hr>
+            <p class="@Model.Textos[8].StText">@Html.Raw(Model.Textos[8].Text)</p>
+        </div><!-- container -->
+    </section><!-- section -->
+    <!-- ==== GREYWRAP ==== -->
+    <div id="greywrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 centered">
+                    <img class="img-responsive" src="~/Content/uploads/@Model.ImagensForm[4]" alt="">
+                </div>
+                <div class="col-lg-4">
+                    <h2 class="@Model.Textos[9].StText">@Html.Raw(Model.Textos[9].Text)</h2>
+                    <p class="@Model.Textos[10].StText">@Html.Raw(Model.Textos[10].Text)</p>
+                    @if (Model.Buttons[0].TextButton != "")
+                    {
+                        <p><a href="@Model.Buttons[0].UrlButton" class="btn btn-success @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a></p>
+                    }
+                </div>
+            </div><!-- row -->
+        </div>
+        <br>
+        <br>
+    </div><!-- greywrap -->
+    <!-- ==== SECTION DIVIDER3 -->
+    <section class="section-divider textdivider divider3" style="background-image: url('../../Content/uploads/@Model.ImagensForm[5]')">
+        <div class="container">
+            <h1 class="@Model.Textos[11].StText">@Html.Raw(Model.Textos[11].Text)</h1>
+            <hr>
+            <p class="@Model.Textos[12].StText">@Html.Raw(Model.Textos[12].Text)</p>
+        </div><!-- container -->
+    </section><!-- section -->
+    <!-- ==== PORTFOLIO ==== -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <div class="container" id="portfolio" name="portfolio">
+            <br>
+            <div class="row">
+                <br>
+                <h1 class="centered @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h1>
+                <hr>
+                <br>
+                <br>
+            </div><!-- /row -->
+            <div class="container">
+                <div class="row">
+                    @{i = 0;}
+                    @foreach (var item in Model.ItemPortofolio.ListItens)
+                    {
+                        <div class="col-md-4 ">
+                            <div class="grid mask">
+                                <figure>
+                                    <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                    <figcaption>
+                                        <h5 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h5>
+                                        <a data-toggle="modal" href="#myModal_@i" class="btn btn-primary btn-lg">Visualizar</a>
+                                    </figcaption><!-- /figcaption -->
+                                </figure><!-- /figure -->
+                            </div><!-- /grid-mask -->
+                        </div><!-- /col -->
+                        <div class="modal fade" id="myModal_@i" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">@Html.Raw(item.Title)</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt=""></p>
+                                        <p>@Html.Raw(item.Description)</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        i = i++;
+                    }
+                </div><!-- /row -->
+                <br>
+                <br>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    }
+
+    <!-- ==== SECTION DIVIDER6 ==== -->
+    <section class="section-divider textdivider divider6" style="background-image: url('../../Content/uploads/@Model.ImagensForm[6]')">
+        <div class="container">
+            <h1 class="@Model.Textos[13].StText">@Html.Raw(Model.Textos[13].Text)</h1>
+            <hr>
+            <p class="@Model.Textos[14].StText">@Html.Raw(Model.Textos[14].Text)</p>
+        </div><!-- container -->
+    </section>
+
+    <div class="container" id="contact" name="contact">
+        <div class="row">
+            <br>
+            <h1 class="centered @Model.Textos[15].StText">@Html.Raw(Model.Textos[15].Text)</h1>
+            <hr>
+            <br>
+            <br>
+            <div class="col-sm-5">
+                <h3>Contato</h3>
+                <p>
+                    <span class="fa fa-map-marker"></span> @Model.Profile.Adress<br />
+                    <span class="fa fa-phone"></span> @Model.Profile.Phone <br />
+                    @if (Model.Profile.WhatsApp != "")
+                    {
+                        <span class="fa fa-whatsapp"></span> @Model.Profile.WhatsApp <br />
+                    }
+                    <span class="fa fa-envelope-o"></span> @Model.Profile.Email <br />
+                    @if (Model.Profile.Website != "")
+                    {
+                        <span class="fa fa-globe"></span><a href="@Model.Profile.Website" target="_blank"> @Model.Profile.Website</a><br />
+                    }
+                </p>
+            </div><!-- col -->
+
+            <div class="col-sm-7">
+                <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                    <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Seu Nome" required="required">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Seu Email" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="Assunto" required="required">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Sua Mensagem" required="required"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="pull-right btn btn-default btn-submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- row -->
+    </div><!-- container -->
+    <br />
+    <br />
+    <div id="footerwrap">
+        <div class="container">
+            <h4>Created by <a href="http://blacktie.co">BlackTie.co</a> - Copyright 2014</h4>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/retina.js"></script>
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Componentes/Basic/Shield/js/jquery-func.js"></script>
+</body>
+</html>

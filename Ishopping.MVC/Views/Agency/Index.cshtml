@@ -1,0 +1,391 @@
+﻿@model Ishopping.ViewModels.TemplateBasic.IndexAgencyViewModelDeserialize
+
+@{
+    Layout = null;
+    var j = 0; var cl = "";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Componentes/Basic/Agency/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/agency.css" rel="stylesheet">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">@Model.Profile.Empresa</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li><a class="page-scroll" href="@menu.ViewLink">@menu.TextMenu</a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li><a class="page-scroll" href="@item.Link">@item.TextMenu</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header style="background-image: url(../../Content/uploads/@Model.ImagensForm[0])">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</div>
+                <div class="intro-heading @Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</div>
+                @if (Model.Buttons[0].TextButton != "")
+                {
+                    <a href="@Model.Buttons[0].UrlButton" class="page-scroll btn btn-xl @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                }
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    @if (Model.ItemActivity.ItemActive)
+    {
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading @Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h2>
+                        <h3 class="section-subheading text-muted @Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</h3>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    @foreach (var item in Model.ItemActivity.ListItens)
+                    {
+                        <div class="col-md-4">
+                            <span class="fa fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="@item.VectorIcon fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="service-heading @item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h4>
+                            <p class="text-muted @item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- Portfolio Grid Section -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <section id="portfolio" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                        <h3 class="section-subheading text-muted @Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    @{j = 0;}
+                    @foreach (var item in Model.ItemPortofolio.ListItens)
+                    {
+                        <div class="col-md-4 col-sm-6 portfolio-item">
+                            <a href="#modal_@j" class="portfolio-link" data-toggle="modal">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fa fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="">
+                            </a>
+                            <div class="portfolio-caption">
+                                <h4 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h4>
+                                <p class="text-muted @item.ComponentPortofolioOption.Category">@Html.Raw(item.Category)</p>
+                            </div>
+                        </div>
+                        j++;
+                    }
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- About Section -->
+    @if (Model.ItemService.ItemActive)
+    {
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading @Model.ItemService.ItemStTitle">@Html.Raw(Model.ItemService.ItemTitle)</h2>
+                        <h3 class="section-subheading text-muted @Model.ItemService.ItemStSubTitle">@Html.Raw(Model.ItemService.ItemSubTitle)</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="timeline">
+                            @for (int i = 0; i < @Model.ItemService.ListItens.Count(); i++)
+                            {
+                                if (i % 2 == 0) { cl = ""; } else { cl = "timeline-inverted"; }
+                                <li class="@cl">
+                                    <div class="timeline-image">
+                                        <img class="img-circle img-responsive" src="~/Content/uploads/@Model.ItemService.ListItens.ElementAt(i).UserImageGallery.Folder/@Model.ItemService.ListItens.ElementAt(i).UserImageGallery.FileName" alt="">
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="subheading @Model.ItemService.ListItens.ElementAt(i).ComponentServiceOption.Title">@Html.Raw(Model.ItemService.ListItens.ElementAt(i).Title)</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p class="text-muted @Model.ItemService.ListItens.ElementAt(i).ComponentServiceOption.Description">@Html.Raw(Model.ItemService.ListItens.ElementAt(i).Description)</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- Team Section -->
+    @if (@Model.ItemTeam.ItemActive)
+    {
+        <section id="team" class="bg-light-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading @Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h2>
+                        <h3 class="section-subheading text-muted @Model.ItemTeam.ItemStSubTitle">@Html.Raw(Model.ItemTeam.ItemSubTitle)</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.ItemTeam.ListItens)
+                    {
+                        <div class="col-sm-4">
+                            <div class="team-member">
+                                <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive img-circle" alt="">
+                                <h4 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h4>
+                                <p class="text-muted @item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</p>
+                                <ul class="list-inline social-buttons">
+                                    @foreach (var sn in item.ComponentTeamSocialNetwork)
+                                    {
+                                        <li><a href="@sn.Link" target="_blank"><i class="@sn.Classe1"></i></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- Clients Aside -->
+    @if (@Model.ItemThumbnail.ItemActive)
+    {
+        <aside class="clients">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model.ItemThumbnail.ListItens)
+                    {
+                        <div class="col-md-3 col-sm-6">
+                            <a href="#">
+                                <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive img-centered" alt="">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </aside>
+    }
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-image: url(../../Content/uploads/@Model.ImagensForm[1])">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading @Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h2>
+                    <h3 class="section-subheading text-muted @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <input type="hidden" id="mailTo" value="@Model.Profile.SiteNumber" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Seu Nome *" id="name" required data-validation-required-message="Por favor digite o seu nome.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Seu Email *" id="email" required data-validation-required-message="Por favor digite o seu email.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Assunto *" id="subject" required data-validation-required-message="Por favor digite o assunto.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Mensagem *" id="message" required data-validation-required-message="Por favor digite a mensagem a ser enviada."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Enviar e-mail</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row text-center">
+                <div class="col-lg-12" style="color:#fff">
+                    <p>@Model.Profile.Adress</p>
+                    <p>Tel: @Model.Profile.Phone</p>
+                    @if (Model.Profile.WhatsApp != "")
+                    {
+                        <p>WhatsApp: @Model.Profile.WhatsApp</p>
+                    }
+                    <p>Email: @Model.Profile.Email</p>
+                    @if (Model.Profile.Website != "")
+                    {
+                        <p>Website: <a href="@Model.Profile.Website" target="_blank"> @Model.Profile.Website</a></p>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">@Model.Profile.Empresa &copy; @Model.Profile.Website</span>
+                </div>
+                @if (Model.ItemSocialNetwork.ItemActive)
+                {
+                    <div class="col-md-4">
+                        <ul class="list-inline social-buttons">
+                            @if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                            {
+                                foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                {
+                                    <li><a href="@item.Link" target="_blank"><i class="@item.Classe1"></i></a></li>
+                                }
+                            }
+                            else
+                            {
+                                <li><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google"></i></a></li>
+                                <li><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="popup" href="http://www.tumblr.com/share/link?url="><i class="fa fa-tumblr"></i></a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Use the modals below to showcase details about your portfolio projects! -->
+    <!-- Portfolio Modal -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        j = 0;
+        foreach (var item in Model.ItemPortofolio.ListItens)
+        {
+            <div class="portfolio-modal modal fade" id="modal_@j" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="modal-body">
+                                    <h2 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h2>
+                                    <p class="item-intro text-muted @item.ComponentPortofolioOption.Category">@Html.Raw(item.Category)</p>
+                                    <img class="img-responsive img-centered" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                    <p class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</p>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i>Sair</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            j++;
+        }
+    }
+
+
+    <!-- jQuery -->
+    <script src="~/Componentes/Basic/Agency/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Componentes/Basic/Agency/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="~/Componentes/Basic/Agency/js/classie.js"></script>
+    <script src="~/Componentes/Basic/Agency/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="~/Componentes/Basic/Agency/js/jqBootstrapValidation.js"></script>
+    <script src="~/Componentes/Basic/Agency/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Componentes/Basic/Agency/js/agency.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+</body>
+
+</html>
+

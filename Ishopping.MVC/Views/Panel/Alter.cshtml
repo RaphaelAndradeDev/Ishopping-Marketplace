@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Componente Painel";
+    Layout = "~/Views/Shared/_LayoutComponent.cshtml";
+}
+
+@Html.Partial("_StylePartial")
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Componente Painel</h1>
+        <p>Componentes são itens dinâmicos. Você pode adicionar, editar ou remover um componente.  Cada template possui a sua lista de componentes, as propriedades dos componentes variam de acordo com cada template, algumas propriedades podem não aparecer em um template e aparecer em outro e vice-versa.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-lg-3">
+        <div class="input-group no-gutter">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success btnpesq" id="btnPosition" name="btnPosition">Pesquisar</button>
+            </span>
+            <input type="number" class="form-control pesq" id="txtPosition" name="txtPosition" placeholder="Posição" min="1" max="6">
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-5">
+        <div class="input-group no-gutter">
+            <input type="text" class="form-control pesq" id="txtTexto" name="txtTexto" placeholder="Título" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success btnpesq" id="btnTexto" name="btnTexto">Pesquisar</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br />
+
+<div class="well">
+    <form id="defaultForm" method="post">
+        <h4 class="color1">Título :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="title" name="title" placeholder="Título" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="stitle">@ViewBag.Classe.Title</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Icone :</h4>
+        <div class="form-group">
+            <input class="form-control texto" type="text" id="icon" name="icon" placeholder="fa fa-briefcase" />
+            <small class="text-muted"><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome Icons</a></small>
+        </div>
+        <h4 class="color1">Text :</h4>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="text" name="text"></textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="stext">@ViewBag.Classe.Text</span></small>
+            </div>
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="novo" style="margin:2px">Novo</button>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Component/CommunComponentT1.min.js"></script>
+    <script src="~/Scripts/Ishopping/Component/ComponentPanel.min.js"></script>
+}
+
+
+

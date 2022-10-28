@@ -1,0 +1,17 @@
+﻿@model Ishopping.Mvc.Serialization.Content.ContentSliderSerialization
+
+<div class="@Model.ClassTarget @Model.Incoming @Model.Outgoing"
+     data-start="@Model.DataStart"
+     data-end="@Model.DataEnd"
+     data-x="@Model.DataX"
+     data-y="@Model.DataY"
+     data-hoffset="@Model.DataHoffset"
+     data-voffset="@Model.DataVoffset"
+     data-speed="@Model.DataSpeed"
+     data-endspeed="@Model.DataEndSpeed"
+     data-easing="@Model.DataEasing"
+     data-endeasing="@Model.DataEndEasing"
+     style="z-index: 15; white-space: nowrap;">
+    <button type="button" onclick="window.open('@Model.Url', '_blank');" class="@Model.StyleClass">@Html.Raw(Model.Text)</button>
+</div>
+

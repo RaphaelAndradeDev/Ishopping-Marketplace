@@ -1,0 +1,29 @@
+﻿@model dynamic
+
+<br />
+<div class="row">
+    <h4 class="color1 col-md-8">Título do componente :</h4>
+    <div class="col-md-8">
+        <div class="input-group">
+            <input class="form-control texto" type="text" id="titleView" name="titleView" placeholder="Título do componente" value="@Model.BasicUserViewItem._TextView" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-leaf bntStyle"></span>
+            </span>
+        </div>
+        <small class="text-muted">Estilo: <span id="stitleView">@Model.BasicUserViewItem.StTextView</span></small>
+    </div>
+</div>
+<br />
+<div class="row">
+    <h4 class="color1 col-md-8">SubTítulo do componente :</h4>
+    <div class="col-md-8">
+        <div class="input-group">
+            <textarea class="form-control texto" rows="3" id="subtitleView" name="sutitleView" placeholder="Subtítulo do componente">@Model.BasicUserViewItem._SubTitle</textarea>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-leaf bntStyle"></span>
+            </span>
+        </div>
+        <small class="text-muted">Estilo: <span id="ssubtitleView">@Model.BasicUserViewItem.StSubTitle</span></small>
+    </div>
+</div>
+<br />

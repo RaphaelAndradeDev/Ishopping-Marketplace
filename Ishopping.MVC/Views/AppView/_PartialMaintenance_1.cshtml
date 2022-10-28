@@ -1,0 +1,32 @@
+﻿@model Ishopping.ViewModels.Ishopping.MaintenanceViewModel<!DOCTYPE html><html lang="en" >  <head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1">    <title>Website Under Construction</title>	<!--Core CSS -->	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">      <link rel="stylesheet" href="~/Componentes/Ishopping/css/animate.css">    <link href="~/Componentes/Ishopping/css/bootstrap.min.css" rel="stylesheet">	 <!-- Custom styles for this template -->      <link href="~/Componentes/Ishopping/style.css" rel="stylesheet">    <link href="~/Componentes/Ishopping/css/style-responsive.css" rel="stylesheet">  </head>  <body >  <!-- Header Section Start -->	<header id="header_part">		<div class="header_part" id="head">			<div class="overlay">				<div class="start_part">							<div class="container">                            <div class="row" style="margin-top:70px">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="row">
+                                        <!-- Site Title start-->
+                                        <div class="site_title">
+                                            <h1>@Model.Title</h1>
+                                            <p>@Model.Message</p>
+                                        </div>
+                                        <!-- Site Title end-->
+                                        <!-- Countdown start -->
+                                        <div class="countdown wow bounceInUp">
+                                            <div class="defaultCountdown"></div>
+                                        </div>
+                                        <!-- Countdown end-->
+                                    </div>
+                                </div>
+                            </div>                            <div class="row" style="margin-top:50px">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="text-center">
+                                        <a href="@Url.Action("Index","Home")">
+                                            <p class="btn btn-primary btn-lg" id="singlebutton"> Voltar para o IShopping</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>						</div>				</div>				</div>		</div>		</header> 	   <!--Core js-->    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    <script src="~/Componentes/Ishopping/js/bootstrap.min.js"></script>    <script src="~/Componentes/Ishopping/js/jquery.smooth-scroll.js"></script>    <script src="~/Componentes/Ishopping/js/wow.min.js"></script>    <script src="~/Componentes/Ishopping/js/jquery.nicescroll.min.js"></script>    <script src="~/Componentes/Ishopping/js/jquery.countdown.min.js"></script>	<!--common script init for all pages-->    <script src="~/Componentes/Ishopping/js/script.js"></script>	<script>        $(document).ready(function () {
+            var y = '@Model.DateReturn.Year';
+            var m = '@Model.DateReturn.Month';
+            var d = '@Model.DateReturn.Day';
+            var newYear = new Date();
+            newYear = new Date(y, m -1, d);
+            $('.defaultCountdown').countdown({ until: newYear, format: 'DHMS' });
+        });	</script>  </body></html>

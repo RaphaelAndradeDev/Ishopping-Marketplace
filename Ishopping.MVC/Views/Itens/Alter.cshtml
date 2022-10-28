@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Ishopping.Domain.ApplicationClass.GroupViewUser>
+@using Ishopping.Domain.ApplicationClass;
+@{
+    ViewBag.Title = "Adicionar ou Remover Itens";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+@Html.Partial("_SetVarPartial") 
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Configurações da View</h1>
+        <p>Essa configuração permite que você escolha outras views que pertencem ao mesmo template, alguns templates possui somente uma view. Aqui também é possível alterar o texto do menu, ativar ou desativar uma view. Uma view do tipo Home não pode ser desativada.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<div class="well">
+        <br />
+        <h4 class="color1">Adicionar ou remover views:</h4>
+        <br />
+        @foreach (var item in Model)
+        {
+            <h4 class="color1">@item.Tipo</h4>
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="text" class="form-control textMenu" id="t_@item.Id" placeholder="Texto do menu" value="@item.Text">
+                </div>
+                <div class="form-group col-md-1">
+                    <h4 class="color1">Modelo</h4>
+                </div>
+                <!-- Split button -->
+                <div class="btn-group col-md-3">
+                    <button type="button" class="btn btn-primary views" id="n_@item.Id" value="@item.ViewCod" style="width:220px">@item.Name</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        @foreach (var i in (ViewBag.Templates as System.Collections.Generic.IEnumerable<ListedViewUser>).Where(x => x.StringKey == item.Tipo))
+                        {
+                            <li><a id="@i.ViewCod" href="#">@i.Text</a></li>
+                        }
+                    </ul>
+                </div>
+                @if (item.Tipo != "Home")
+                {
+                    <div class="checkbox col-md-1 color1">
+                        @Html.CheckBox("a_" + item.Id, item.Active)<text>Ativar</text>
+                    </div>
+                }
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary Salvar" id="@item.Id" style="margin:2px">Salvar</button>
+                </div>
+            </div>
+        }
+        <text id="Status"></text>   
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/CommunEntity.min.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserView.min.js"></script>
+}
+
+
+
+

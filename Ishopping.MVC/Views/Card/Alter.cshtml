@@ -1,0 +1,70 @@
+﻿@model Ishopping.MVC.ViewModels.Config.ConfigUserDisplayViewModel
+@{
+    ViewBag.Title = "Cartão de Visita";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+<input type="hidden" name="_existItem" value="true">
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <div class="col-md-4">
+        <h1>Cartão de Visita</h1>
+        <p>Cartão de visita será exibido somente na página inicial do IShopping, use uma imagem de acordo com o seu tipo de negócio. É importante que a imagem tenha o tamanho de 340 x 194 pixels, caso tenha um tamanho diferente ela poderá sair cortada ou distorcida na página inicial.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-responsive img-rounded" src="~/Content/uploads/@Model.UserImageGallery.Folder/@Model.UserImageGallery.FileName" />
+            </div>
+            <div class="col-md-5">
+                <span hidden id="id">@Model.Id</span>
+                <h4 class="color1">Título :</h4>
+                <div class="form-group">
+                    <input class="form-control texto" type="text" id="title" name="title" placeholder="Título do cartão" value="@Model.Title" />
+                </div>
+                <h4 class="color1">Código da Imagem :</h4>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input class="form-control texto" type="text" id="img" name="img" placeholder="Código da imagem" value="@Model.UserImageGallery.FileName" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.ActionLink("Ir para Galeria", "GetImgCard", "ImageGallery", null, new { @class = "btn btn-primary", target = "_blank" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Mensagem :</h4>
+        <div class="form-group">
+            <input class="form-control texto" type="text" id="description" name="description" placeholder="Descreva o seu negócio em poucas palavras" value="@Model.Message">
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="margin:2px">Salvar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/CommunEntity.min.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserDisplay.min.js"></script>
+}
+
+
+
+

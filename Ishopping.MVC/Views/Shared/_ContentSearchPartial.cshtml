@@ -1,0 +1,36 @@
+﻿
+<!-- Split button -->
+<div class="row">
+    <div class="btn-group col-md-3">
+        <button type="button" class="btn btn-primary views" style="width:225px">Selecione uma view</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dp">
+            @foreach (var item in ViewBag.views)
+            {
+                <li><a id="@item.ViewCod" name="@item.IntKey">@item.Text</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-3">
+        <div class="input-group no-gutter">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" id="btnPosition" name="btnPosition">Pesquisar</button>
+            </span>
+            <input type="number" class="form-control" id="txtPosition" placeholder="Posição" min="1" />
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-5">
+        <div class="input-group no-gutter">
+            <input type="text" class="form-control " id="txtTexto" placeholder="Texto" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" id="btnTexto" name="btnTexto">Pesquisar</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br />

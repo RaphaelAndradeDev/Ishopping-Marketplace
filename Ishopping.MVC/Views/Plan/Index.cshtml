@@ -1,0 +1,314 @@
+﻿@model Ishopping.MVC.ViewModels.User.UserFinancialViewModel
+@{
+    ViewBag.Title = "Planos e Pagamentos";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+<!-- Modal info plan -->
+<div class="modal fade" id="myModalInfoPlan" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Alterando Plano ou Template !</h4>
+            </div>
+            <div class="modal-body">
+                <p>Para trocar de template escolha um novo plano se necessário, depois selecione o novo template e em seguida escolha a página inicial.</p>
+                <p>A troca do template fará com que uma nova mudança seja necessária e para isso é preciso deletar vários itens do template atual. Todo o conteúdo, configurações de aparência, view, itens da view, imagens da view, ícones e logo serão apagados.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<!-- Modal info payment -->
+<div class="modal fade" id="myModalInfoPayment" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Efetuando um pagamento !</h4>
+            </div>
+            <div class="modal-body">
+                <p>Por segurança o IShopping não trabalha diretamente com transações financeiras com o cliente. Até o momento transações financeiras são feitas somente pelo Uol Pague Seguro.</p>
+                <p>Assim que a transação for aprovada o PagSeguro enviará uma notificação para o site do IShopping confirmando o pagamento.</p>
+                <p>É muito importante que você saiba que o IShopping não pede dados de cartão de credito ao cliente, seja por email ou pelo próprio site, assim como também não envia nenhum boleto de pagamento.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModalNewTemplate" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Atenção! Suas configurações antigas serão excluídas</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Ao trocar de template, todas as suas configurações de conteúdo, componentes, imagens entre outros tipos de
+                    configurações serão excluídas permanentemente. Você terá que configurar novamente todos os dados para o novo template
+                    e adicionar novas imagens. O seu profile entrará em Estado de Manutenção para que você possa personalizar e fazer as
+                    configurações necessárias.
+                </p>
+                <p>Você tem certeza que deseja alterar esse template ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="Salvar()" data-dismiss="modal">Sim, estou ciente disto!</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModalNewView" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Atenção! Você esta alterando a sua página inicial</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Ao trocar de página inicial, novas configurações devem ser feitas na mesma, e talvez você precisará adicionar novas imagens.
+                    Suas configurações antigas não serão excluídas, e você poderá retorna a página antiga quando quiser. O seu profile entrará em Estado
+                    de Manutenção para que você possa personalizar e fazer as configurações necessárias.
+                </p>
+                <p>Você tem certeza que deseja alterar a página inicial ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-warning" onclick="Salvar()" data-dismiss="modal">Sim, estou ciente disto!</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModalHistoric" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Histórico de transações</h4>
+            </div>
+            <div class="modal-body">      
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="width:250px">Descrição do plano</th>
+                                    <th style="width:100px">Período</th>
+                                    <th style="width:150px">Financeira</th>
+                                    <th style="width:350px">Status</th>
+                                    <th style="width:180px">Data da ocorrência</th>
+                                    <th style="width:120px">Valor do Plano</th>
+                                    <th style="width:90px">Saldo</th>
+                                    <th style="width:90px">Desconto</th>
+                                    <th style="width:90px">Bônus</th>
+                                    <th style="width:120px">Valor à Pagar</th>
+                                    <th style="width:100px">Valor Pago</th>
+                                    <th style="width:130px">Vencimento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.UserFinancialHistory.Where(g => g.Group != 0).OrderBy(x => x.LastChange))
+                                {
+                                    <tr class="@item.Group">
+                                        <td style="width:250px">@item.AdminFinancialPlan.Name</td>
+                                        <td style="width:100px">@item._Month</td>
+                                        <td style="width:150px">@item._Company</td>
+                                        <td style="width:350px">@item._Status</td>
+                                        <td style="width:180px">@item._Date</td>
+                                        <td style="width:120px">@item._PlanValue</td>
+                                        <td style="width:90px">@item._Balance</td>
+                                        <td style="width:90px">@item._Discount</td>
+                                        <td style="width:90px">@item._Bonus</td>
+                                        <td style="width:120px">@item._Payment</td>
+                                        <td style="width:100px">@item._PaymentConfirmed</td>
+                                        <td style="width:130px">@item._DueDate</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>        
+            </div>           
+            <div class="modal-footer">
+                <label class="checkbox-inline pull-left"><input type="checkbox" id="filter">Mostrar todos</label>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Modal -->
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Planos e Pagamentos</h1>
+        <p>Pague com segurança utilizando o PagSeguro da Uol. Aqui também é possível alterar o seu plano, template ou página inicial, mas lembre-se que suas configurações antigas serão perdidas. Para saber mais leia o tutorial.</p>
+        <a href="@Url.Action("About","Home")#Template" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+
+<form id="defaultForm" method="post">
+    <!-- Split button -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Altere aqui o plano, template ou página inicial</h3>
+                </div>
+                <div class="panel-body">
+                    <br />
+                    <div class="row">
+                        <div class="btn-group col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                            <p class="text-muted text-center">Selecione o tipo do plano</p>
+                            <button type="button" class="btn btn-default dropdown-toggle group" data-toggle="dropdown" style="width:100%">
+                                Selecione um Grupo
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach (var item in ViewBag.Level)
+                                {
+                                    <li><a name="Group" id="@item.Key">@item.Value</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="btn-group col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                            <p class="text-muted text-center">Selecione o template</p>
+                            <button type="button" class="btn btn-default dropdown-toggle template" id="templateHeader" data-toggle="dropdown" style="width:100%">
+                                Selecione um Template
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ddmTemplate"></ul>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="btn-group col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-12">
+                            <p class="text-muted text-center">Selecione uma página inicial </p>
+                            <button type="button" class="btn btn-default dropdown-toggle view" id="viewHeader" data-toggle="dropdown" style="width:100%">
+                                Selecione uma página inicial
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ddmView"></ul>
+                        </div>
+                    </div>
+                    <br />                    
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width:250px">Descrição do plano</th>
+                                        <th style="width:80px">Período</th>
+                                        <th style="width:90px">Valor</th>
+                                        <th style="width:90px">Saldo</th>
+                                        <th style="width:90px">Bônus</th>
+                                        <th style="width:110px">Vencimento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="tabItens" style="width:250px"></td>
+                                        <td id="tabMonth" style="width:80px"></td>
+                                        <td id="tabValue" style="width:90px"></td>
+                                        <td id="tabBalance" style="width:90px"></td>
+                                        <td id="tabBonus" style="width:90px"></td>
+                                        <td id="tabDueDate" style="width:110px"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <p>Total a pagar: <span id="payment">R$ 0,00</span></p>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" id="infoPlan">Saiba mais</button>
+                        <button type="button" class="btn btn-primary" id="salvar" data-toggle="popover" data-placement="top">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pague com o PagSeguro da Uol</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12">
+                            <h4 class="color1">Nome :</h4>
+                            <input class="form-control txt" id="name" type="text" name="name" placeholder="Nome do titular do cartão" value="@Model.Name" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12">
+                            <h4 class="color1">E-mail :</h4>
+                            <input class="form-control txt" id="email" type="text" name="email" value="@Model.Email" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-4">
+                            <h4 class="color1">DDD :</h4>
+                            <input class="form-control txt" id="areaCod" type="number" name="areaCod" placeholder="Apenas números" value="@Model.AreaCod" />
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            <h4 class="color1">Telefone :</h4>
+                            <input class="form-control txt" id="phone" type="text" name="phone" placeholder="Apenas números" value="@Model.Phone" />
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            <h4 class="color1">CPF :</h4>
+                            <input class="form-control txt" id="cpf" type="text" name="cpf" placeholder="Apenas números" value="@Model.Cpf" />
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-md-4 col-sm-4">
+                            <button type="button" class="btn btn-primary" id="historic">Histórico</button>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-primary" id="infoPayment">Saiba mais</button>
+                            <button type="submit" class="btn btn-primary no-gutter4 @Model.PaymentDisable" id="pay"
+                                    data-toggle="popover" data-placement="top" data-content="Você será redirecionado para o site da Uol PagSeguro">
+                                Efetuar Pagamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <text id="Status"></text>
+</form>
+
+@section scripts{   
+    <script src="~/Scripts/Ishopping/User/UserFinancial.min.js"></script>
+}
+

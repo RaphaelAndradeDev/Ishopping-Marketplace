@@ -1,0 +1,799 @@
+﻿@model Ishopping.ViewModels.TemplateBasicPro.IndexCyprassViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0; var cl = ""; var op = "";
+}
+
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/bootstrap.min.css" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <!-- Animation -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/animate.css" />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/owl.theme.css" />
+    <!-- Pretty Photo -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/prettyPhoto.css" />
+    <!-- Main color style -->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/red.css" />
+    <!-- Template styles-->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/custom.css" />
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/responsive.css" />
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Cyprass/css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&callback=initMap" async defer></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <header id="section_header" class="navbar-fixed-top main-nav" role="banner">
+        <div class="container">
+            <!-- <div class="row"> -->
+            <div class="navbar-header ">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="~/Content/uploads/@Model.ImagensLogo[0]" alt="">
+                </a>
+            </div><!--Navbar header End-->
+            <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
+                <ul class="nav navbar-nav navbar-right ">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li class="@menu.Active"> <a href="@menu.ViewLink" class="page-scroll">@menu.TextMenu </a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li><a href="@item.Link" class="page-scroll">@item.TextMenu</a> </li>
+                        }
+                    }
+                </ul>
+            </nav>
+        </div><!-- /.container-fluid -->
+    </header>
+    <!-- Slider start -->
+    <section id="slider_part">
+        <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators text-center">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="overlay-slide">
+                        <img src="~/Content/uploads/@Model.ImagensForm[0]" alt="" class="img-responsive">
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <h3 class="animated2 @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h3>
+                            <div class="line"></div>
+                            <p class="animated3 @Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="overlay-slide">
+                        <img src="~/Content/uploads/@Model.ImagensForm[1]" alt="" class="img-responsive">
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <h3 class="animated3 @Model.Textos[2].StText"> @Html.Raw(Model.Textos[2].Text)</h3>
+                            <div class="line"></div>
+                            <p class="animated2 @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="overlay-slide">
+                        <img src="~/Content/uploads/@Model.ImagensForm[2]" alt="" class="img-responsive">
+                    </div>
+                    <div class="carousel-caption">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <h3 class="animated3 @Model.Textos[4].StText"> @Html.Raw(Model.Textos[4].Text)</h3>
+                            <div class="line"></div>
+                            <p class="animated2 @Model.Textos[5].StText"> @Html.Raw(Model.Textos[5].Text)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 	 <!-- End Carousel Inner -->
+            <!-- Controls -->
+            <div class="slides-control ">
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span><i class="fa fa-angle-left"></i></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span><i class="fa fa-angle-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--/ Slider end -->
+    <!-- Service Area start -->
+    @if (Model.ItemActivity.ItemActive)
+    {
+        <section id="service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+                <div class="row">
+                    <div class="main_feature text-center">
+                        @foreach (var item in Model.ItemActivity.ListItens)
+                        {
+                            <div class="col-md-3 col-xs-12 col-sm-6">
+                                <div class="feature_content">
+                                    <i class="@item.VectorIcon"></i>
+                                    <h5 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h5>
+                                    <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>  <!-- Row End -->
+            </div>  <!-- Container End -->
+        </section>
+    }
+    <!-- Service Area End -->
+    <!-- About details start -->
+    @if (Model.ItemSkill.ItemActive)
+    {
+        <section id="about-details" style="background: url(../../Content/uploads/@Model.ImagensForm[3]) fixed 50% 50%; background-size: cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemSkill.ItemStTitle">@Html.Raw(Model.ItemSkill.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemSkill.ItemStSubTitle">@Html.Raw(Model.ItemSkill.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+                <div class="about-desc">
+                    <div class="row">
+                        <!-- Left about end -->
+                        @foreach (var item in Model.ItemSkill.ListItens)
+                        {
+                            <div class="col-md-6">
+                                <div class="single-progress">
+                                    <label class="@item.ComponentSkillOption.Category"> @item.Category <span class="@item.ComponentSkillOption.Level">@item.Level%</span></label>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@item.Level" aria-valuemin="0" aria-valuemax="100" style="width: @item.Level%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div> <!-- 2nd row end -->
+                </div> <!-- about desc end -->
+            </div>
+        </section>
+    }
+    <!-- About details end -->
+    <!-- Portfolio works Start -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <section id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+            </div>
+            <div id="isotope-filter" class="skew3 text-center">
+                <a data-filter="*" href="#" class="active ">Todos</a>
+                @foreach (var item in Model.ItemPortofolio.ListItens.Select(x => x.Category).Distinct())
+                {
+                    <a data-filter=".@item.Replace(" ", "")" href="#" class="">@item</a>
+                }
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="text-center ">
+                    <ul class="portfolio-wrap" id="portfolio_items">
+                        @foreach (var item in Model.ItemPortofolio.ListItens)
+                        {
+                            <li class="col-xs-12 col-sm-6 col-md-3 single-portfolio @item.Category.Replace(" ", "")">
+                                <figure>
+                                    <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="" />
+                                    <figcaption>
+                                        <h5 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h5>
+                                        <p class="links">
+                                            <a href="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" data-rel="prettyPhoto" class="img-responsive">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </p>
+                                        <p class="description @item.ComponentPortofolioOption.Description">
+                                            @Html.Raw(item.Description)
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        }
+                    </ul>
+                </div> <!-- Container Full End -->
+            </div>
+        </section> <!-- Portfolio Section End -->
+    }
+    <div class="clearfix"></div>
+
+    <!-- About us start -->
+    @if (Model.ItemPresentation.ItemActive)
+    {
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemPresentation.ItemStTitle">@Html.Raw(Model.ItemPresentation.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemPresentation.ItemStSubTitle">@Html.Raw(Model.ItemPresentation.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="feature-tab">
+                        <div class="col-md-2 col-sm-3 col-xs-12">
+                            <br /><br />
+                            <ul class="nav nav-tabs main-tab-list text-center" role="tablist">
+                                @{i = 0; cl = "active";}
+                                @foreach (var item in Model.ItemPresentation.ListItens)
+                                {
+                                    <li role="presentation" class="@cl">
+                                        <a href="#@i" role="tab" data-toggle="tab">
+                                            <div class="single-tab">
+                                                <div class="f-icon">
+                                                    <i class="@item.VectorIcon"></i>
+                                                </div>
+                                            </div>
+                                            <h4 class="@item.ComponentPresentationOption.Category">@Html.Raw(item.Category)</h4>
+                                        </a>
+                                    </li>
+                                    i++; cl = "";
+                                }
+                            </ul>
+                        </div>  <!-- col-md-12 end -->
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                            <div class="tab-content main-tab-content">
+                                @{i = 0; cl = "active";}
+                                @foreach (var item in Model.ItemPresentation.ListItens)
+                                {
+                                    <div role="tabpanel" class="tab-pane @cl" id="@i">
+                                        <div class="col-md-8 col-sm-8">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="" class="img-responsive">
+                                        </div>
+                                        <div class="col-md-8 col-sm-8">
+                                            <div class="c-tab">
+                                                <h4 class="@item.ComponentPresentationOption.Title">@Html.Raw(item.Title)</h4>
+                                                <p class="@item.ComponentPresentationOption.Description">@Html.Raw(item.Description)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    i++; cl = "";
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    <!-- About us End -->
+    <!-- Counter Strat -->
+    @if (Model.ItemFeatures.ItemActive)
+    {
+        <section id="counter_area" style="background: url('../../Componentes/BasicPro/Cyprass/images/bg/5.jpg') no-repeat fixed 50% 0 / cover transparent;">
+            <div class="facts">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model.ItemFeatures.ListItens)
+                        {
+                            <div class="col-md-3 col-xs-12 col-sm-6 columns">
+                                <div class="facts-wrap">
+                                    <div class="graph">
+                                        <div class="graph-left-side">
+                                            <div class="graph-left-container">
+                                                <div class="graph-left-half"> </div>
+                                            </div>
+                                        </div>
+                                        <div class="graph-right-side">
+                                            <div class="graph-right-container">
+                                                <div class="graph-right-half"></div>
+                                            </div>
+                                        </div>
+                                        <i class="@item.Icon fa-3x fw"></i>
+                                        <div class="facts-wrap-num">
+                                            <span class="counter @item.ComponentFeaturesOption.Count">@Html.Raw(item.Count)</span>
+                                        </div>
+                                    </div>
+                                    <h6 class="@item.ComponentFeaturesOption.Title">@Html.Raw(item.Title)</h6>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div> <!-- Conatainer End -->
+            </div>	<!-- Fact div ENd -->
+        </section>
+    }
+    <!-- Counter End -->
+    <div class="clearfix"></div>
+    <section id="video-fact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="landing-video">
+                        <div class="video-embed wow fadeIn" data-wow-duration="1s">
+                            <!-- Change the url -->
+                            <iframe src="@Model.Videos[0]" width="350" height="281" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="video-text">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            @if (Model.ItemPanel.ItemActive)
+                            {
+                                { i = 0; cl = "active"; op = "in"; }
+                                foreach (var item in Model.ItemPanel.ListItens)
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading @cl" role="tab" id="heading_@i">
+                                            <h4 class="panel-title">
+                                                <a class="accordion-toggle @item.ComponentPanelOption.Title" data-toggle="collapse" data-parent="#accordion" href="#collapse_@i" aria-expanded="true" aria-controls="collapse_@i">
+                                                    @Html.Raw(item.Title)
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse_@i" class="panel-collapse collapse @op" role="tabpanel" aria-labelledby="heading_@i">
+                                            <div class="panel-body p1">
+                                                @Html.Raw(item.Text)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    i++; cl = ""; op = "";
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div><!-- row End -->
+        </div>
+    </section>
+    <!-- Team MEmber Start -->
+    @if (Model.ItemTeam.ItemActive)
+    {
+        <section id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemTeam.ItemStSubTitle">@Html.Raw(Model.ItemTeam.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+
+                    <div id="owl-demo" class="owl-carousel owl-theme team-items">
+                        @foreach (var item in Model.ItemTeam.ListItens)
+                        {
+                            <div class="item text-center">
+                                <div class="single-member">
+                                    <div class="overlay-hover">
+                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="" class="img-responsive">
+                                        <div class="overlay-effect">
+                                            <ul class="social list-inline">
+                                                @foreach (var sn in item.ComponentTeamSocialNetwork)
+                                                {
+                                                    <li><a href="@sn.Link" target="_blank"><i class="@sn.Classe1"></i></a></li>
+                                                }
+                                            </ul>
+                                            <p class="@item.ComponentTeamOption.Description">@Html.Raw(item.Description)</p>
+                                        </div>
+                                    </div>
+                                    <h3 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h3>
+                                    <h5 class="@item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</h5>
+                                </div>
+                            </div> <!-- item wrapper end -->
+                        }
+                    </div>
+                </div>
+            </div> <!-- Conatiner Team end -->
+            <!-- </div> -->
+        </section>
+    }<!-- Section TEam End -->
+    <!-- Our Team Members End -->
+    <div class="clearfix"></div>
+
+
+    <div class="clearfix"></div>
+
+    <!-- Pricing Table Start -->
+    @if (Model.ItemPricing.ItemActive)
+    {
+        <section id="pricing_table" class="pricing_overlay" style="background-image:url(../../Content/uploads/@Model.ImagensForm[4])">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemPricing.ItemStTitle">@Html.Raw(Model.ItemPricing.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemPricing.ItemStSubTitle">@Html.Raw(Model.ItemPricing.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+
+                    <div class="text-center pricing">
+                        @{cl = "";}
+                        @foreach (var item in Model.ItemPricing.ListItens)
+                        {
+                            if (item.Destacar)
+                            {
+                                cl = "single_table grey_bg";
+                            }
+                            else
+                            {
+                                cl = "single_table dark_bg";
+                            }
+                            <div class="col-md-4 col-xs-12 col-sm-12">
+                                <div class="@cl">
+                                    <div class="plan_wraper"></div>
+                                    <ul>
+                                        <li class="plan @item.ComponentPricingOption.NomePlano">
+                                            @Html.Raw(item.NomePlano)  <br>
+                                            <span class="@item.ComponentPricingOption.Periodo">@Html.Raw(item.Periodo)</span>
+                                        </li>
+                                        <li class="price @item.ComponentPricingOption.Price">
+                                            @item.Price <span class="@item.ComponentPricingOption.Moeda">@item.Moeda</span>
+                                        </li>
+                                        <li>
+                                            @Html.Raw(item.Description)
+                                        </li>
+                                        <li class="price_button">
+                                            <button class="btn btn-main @item.ComponentPricingOption.TextButton">@Html.Raw(item.TextButton)</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> <!-- Single col-md-4 End -->
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    }<!-- Pricing Section End -->
+    <!-- Pricing Table End -->
+    <!-- bLOG Start -->
+    @if (Model.ItemPost.ItemActive)
+    {
+        <section id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemPost.ItemStTitle">@Html.Raw(Model.ItemPost.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemPost.ItemStSubTitle">@Html.Raw(Model.ItemPost.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+                <div class="row">
+                    <div class="blog-timeline">
+                        <div id="owl-blog" class="owl-carousel owl-theme">
+                            @foreach (var item in Model.ItemPost.ListItens)
+                            {
+                                <div class="item ">
+                                    <div class="single_blog">
+                                        <div class="post_img text-center">
+                                            <a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })">
+                                                <img src="~/Content/uploads/@item.UserImageGallery.ElementAt(0).Folder/@item.UserImageGallery.ElementAt(0).FileName" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })"><h4 class="@item.ComponentPostOption.Titulo">@Html.Raw(item.Titulo)</h4></a>
+                                        <ul class="list-inline">
+                                            <li class="@item.ComponentPostOption.Autor"> <i class="fa fa-pencil"></i> @Html.Raw(item.Autor)</li>
+                                            <li> <i class="fa fa-calendar"></i> @item.DataCadastro</li>
+                                        </ul>
+                                        <p class="@item.ComponentPostOption.Paragrafo">@Html.Raw(item.Paragrafo1)</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div> <!-- blog Timeline End -->
+                </div>
+            </div>
+        </section>
+    }
+    <!-- bLOG End -->
+    <!-- Testimonial Start -->
+    @if (Model.ItemClient.ItemActive)
+    {
+        <section id="testimonial" class="wow fadeInUp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="feature_header text-center">
+                            <h3 class="feature_title @Model.ItemClient.ItemStTitle">@Html.Raw(Model.ItemClient.ItemTitle)</h3>
+                            <h4 class="feature_sub @Model.ItemClient.ItemStSubTitle">@Html.Raw(Model.ItemClient.ItemSubTitle)</h4>
+                            <div class="divider"></div>
+                        </div>
+                    </div>  <!-- Col-md-12 End -->
+                </div>
+                <div class="row">
+                    <div id="testimonial-carousel" class="owl-carousel owl-theme text-center testimonial-slide">
+                        @foreach (var item in Model.ItemClient.ListItens)
+                        {
+                            <div class="item">
+                                <div class="testimonial-thumb">
+                                    <img class="img-circle" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="testimonial">
+                                </div>
+                                <div class="testimonial-content">
+                                    <h3 class="name @item.ComponentClientOption.Name">
+                                        @Html.Raw(item.Name)
+                                        <span><a href="@item.SiteOficial" target="_blank">@item.SiteOficial</a></span>
+                                    </h3>
+                                    <p class="testimonial-text @item.ComponentClientOption.Comment">
+                                        @Html.Raw(item.Comment)
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- Navigation start -->
+                    <div class="customNavigation cyprass-carousel-controller">
+                        <a class="prev left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a class="next right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                    <!-- Navigation ENd -->
+                </div>
+            </div> <!-- Row End -->
+        </section>
+    }<!-- Section Testimonial End -->
+    <!-- Testimonial Area End -->
+    <!-- Client Carousel Start -->
+    @if (Model.ItemThumbnail.ItemActive)
+    {
+        <section id="client">
+            <div class="container">
+                <!-- <h2 class="text-center wow slideInLeft"> Our Respectable client</h2> -->
+                <div class="row wow fadeInLeft">
+                    <div id="client-carousel" class="col-sm-12 owl-carousel owl-theme text-center client-carousel">
+                        @foreach (var item in Model.ItemThumbnail.ListItens)
+                        {
+                            <div class="item client_logo" style="cursor:pointer">
+                                <a href="@item.WebSite" target="_blank">
+                                    <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                        }
+                    </div><!-- Owl carousel end -->
+                </div><!-- Main row end -->
+            </div>
+        </section>
+    }
+    <!-- Client Carousel End -->
+    <!-- Conatct Area Start-->
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="feature_header text-center">
+                        <h3 class="feature_title @Model.Textos[6].StText">@Model.Textos[6].Text</h3>
+                        <h4 class="feature_sub @Model.Textos[7].StText">@Model.Textos[7].Text</h4>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+            </div>
+            <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                <div class="row">
+                    <div class="contact_full">
+                        <div class="col-md-6 left">
+                            <div class="left_contact">
+
+                                <div class="form-level">
+                                    <input name="name" placeholder="Seu Nome" id="name" value="" type="text" class="input-block" required="required">
+                                    <span class="form-icon fa fa-user"></span>
+                                </div>
+                                <div class="form-level">
+                                    <input name="email" placeholder="Seu Email" id="email" class="input-block" value="" type="email" required="required">
+                                    <span class="form-icon fa fa-envelope-o"></span>
+                                </div>
+                                <div class="form-level">
+                                    <input name="subject" placeholder="Assunto" id="subject" class="input-block" value="" type="text" required="required">
+                                    <span class="form-icon fa fa-check"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 right">
+                            <div class="form-level">
+                                <textarea name="message" id="messege" rows="6" class="textarea-block" placeholder="Mensagem" required="required"></textarea>
+                                <span class="form-icon fa fa-pencil"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-main featured">Enviar e-mail</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div id="g-map" class="no-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="map" id="map" data-latitude="@Model.Profile._Latitude" data-longitude="@Model.Profile._Longitude"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Area Start -->
+
+    <section id="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <h3 class="menu_head">Menu Principal</h3>
+                        <div class="footer_menu">
+                            <ul>
+                                @foreach (var menu in Model.Menu)
+                                {
+                                    <li><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                                    foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                    {
+                                        <li><a href="@item.Link">@item.TextMenu</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <h3 class="menu_head @Model.Textos[8].StText">@Model.Textos[8].Text</h3>
+                        <div class="footer_menu_contact">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <span> @Model.Profile.Adress </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <span> @Model.Profile.Phone</span>
+                                </li>
+                                @if (Model.Profile.WhatsApp != "")
+                                {
+                                    <li>
+                                        <i class="fa fa-whatsapp"></i>
+                                        <span> @Model.Profile.WhatsApp</span>
+                                    </li>
+                                }
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span> @Model.Profile.Email</span>
+                                </li>
+                                @if (Model.Profile.Website != "")
+                                {
+                                    <li>
+                                        <i class="fa fa-globe"></i>
+                                        <span><a href="@Model.Profile.Website" target="_blank">@Model.Profile.Website</a></span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_bottom">
+                            <p class="text-block"> &copy; Copyright reserved to <span>Cyprass </span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_mid pull-right">
+                            @if (Model.ItemSocialNetwork.ItemActive)
+                            {
+                                if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                                {
+                                    <ul class="social-contact list-inline">
+                                        @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                        {
+                                            <li> <a href="@item.Link" target="_blank"><i class="@item.Classe1"></i></a></li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="social-contact list-inline">
+                                        <li><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a></li>
+                                        <li><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a></li>
+                                        <li><a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i> </a></li>
+                                        <li><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="> <i class="fa fa-linkedin"></i></a></li>
+                                        <li><a class="popup" href="http://www.tumblr.com/share/link?url="> <i class="fa fa-tumblr"></i></a></li>
+                                    </ul>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Area End -->
+    <!-- Back To Top Button -->
+    <div id="back-top">
+        <a href="#slider_part" class="scroll" data-scroll>
+            <button class="btn btn-primary" title="Back to Top"><i class="fa fa-angle-up"></i></button>
+        </a>
+    </div>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.js"></script>
+    <script src="~/Componentes/BasicPro/Cyprass/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/BasicPro/Cyprass/js/owl.carousel.min.js"></script>
+    <script src="~/Componentes/BasicPro/Cyprass/js/jquery.isotope.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/smooth-scroll.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.counterup.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="~/Componentes/BasicPro/Cyprass/js/jquery.easing.1.3.js"></script>
+    <script src="~/Componentes/BasicPro/Cyprass/js/jquery.singlePageNav.js"></script>
+    <script type="js/javascript" src="~/Componentes/BasicPro/Cyprass/js/wow.min.js"></script>
+    <script src="~/Componentes/BasicPro/Cyprass/js/custom.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+</body>
+
+</html>
+
+
+

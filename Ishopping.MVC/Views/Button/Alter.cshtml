@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Alterar Botões";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+@Html.Partial("_StylePartial")
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Conteúdo Botões</h1>
+        <p>Conteúdos são itens fixos que já estão presentes na página e possuem uma quantidade determinada de elementos. Você pode editar um conteúdo ou deixa-lo em branco (nulo), mas não pode adicionar ou remove-lo. Use a posição ou texto para pesquisar algum conteúdo. Esse item pode variar de acordo com cada template.</p>
+        <a href="@Url.Action("About","Home")#Content" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+@Html.Partial("_ContentSearchPartial")
+<div class="well">
+    <form id="defaultForm" method="post">
+        <h4 class="color1">Posição :</h4>
+        <div class="form-group">
+            <input class="form-control" id="position" type="text" name="position" min="1" />
+        </div>
+        <h4 class="color1">Texto do Botão :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="Text" id="textBtn" name="textBtn" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="stextBtn">@ViewBag.Classe.TextBtn</span></small>
+            </div>
+        </div>
+        <h4 class="color1">URL :</h4>
+        <div class="form-group">
+            <input class="form-control texto" id="textUrl" name="textUrl" placeholder="http://" />
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary sub" id="anterior" style="margin:2px"><< Anterior</button>
+                <button type="button" class="btn btn-primary sub" id="proximo" style="margin:2px">Próximo >></button>
+                <button type="submit" class="btn btn-primary sub" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger sub" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Content/ContentButton.min.js"></script>
+}
+
+

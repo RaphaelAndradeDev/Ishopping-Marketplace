@@ -1,0 +1,186 @@
+﻿@model Ishopping.ViewModels.TemplateBasic.IndexAppPlusViewModelDeserialize
+
+@{
+    Layout = null;
+    var cl = "";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/Componentes/Basic/AppPlus/favicon.ico">
+    <title>@Model.Profile.Empresa</title>
+    <meta name="description" content="A free responsive HTML 5 template with a clean style.">
+    <meta name="keywords" content="free template, html 5, responsive, clean, scss">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/style.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+</head>
+<body class="no-js">
+    <div class="main">
+        <header style="padding: 104px 0; background: url(../../Content/uploads/@Model.ImagensForm[0]) no-repeat 50% 50%; background-size: cover; box-sizing: border-box;">
+            <div class="wrap">
+                <div class="header-wrapper">
+                    <h1 class="@Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                    <p class="@Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</p>
+                    <div class="buttons-wrapper">
+                        @if (Model.Buttons[0].TextButton != "")
+                        {
+                            <a href="@Model.Buttons[0].UrlButton" class="button @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                        }
+                        @if (Model.Buttons[1].TextButton != "")
+                        {
+                            <a href="@Model.Buttons[1].UrlButton" class="button button-stripe @Model.Buttons[1].StButton">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                        }                                             
+                    </div>
+                </div>
+                <!-- /.header-wrapper -->
+            </div>
+            <!-- /.wrap -->
+        </header>
+        
+        <div class="spanning">
+            @if (Model.ItemService.ItemActive)
+            {
+                <div class="promo clearfix">
+                    <div class="wrap">
+                        <div class="promo-wrapper clearfix">
+                            @foreach (var item in Model.ItemService.ListItens)
+                            {
+                                <div class="promo-column">
+                                    <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" height="32" width="32" alt="">
+                                    <h5 class="@item.ComponentServiceOption.Title">@Html.Raw(item.Title)</h5>
+                                    <p class="@item.ComponentServiceOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- /.wrap -->
+                </div>
+            }
+            <!-- /.promo clearfix -->
+            <div class="discover clearfix">
+                <div class="wrap">
+                    <div class="discover-content clearfix">
+                        <h2 class="@Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h2>
+                        <p class="@Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</p>
+                    </div>
+                    <div class="screen-couple-left wow fadeInLeftBig">
+                        <div class="fog fog-top wow"></div>
+                        <div class="fog fog-bottom wow"></div>
+                        <img class="screen above" src="~/Content/uploads/@Model.ImagensForm[1]" alt="" height="484" width="250" /> <img class="screen beyond wow fadeInLeft" data-wow-delay="0.5s" src="~/Content/uploads/@Model.ImagensForm[2]" alt="" height="407" width="210" />
+                    </div>
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.discover clearfix -->
+            <div class="video clearfix">
+                <div class="wrap">
+                    <div class="video-title @Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</div>
+                    <div class="video-subtitle @Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</div>
+                    @if (Model.Videos[0] != "")
+                    {
+                        <div class="video-block">
+                            <iframe src="@Model.Videos[0]" width="814" height="458" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    }                    
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.videos clearfix -->
+            @if(Model.ItemExtraLink.ItemActive)
+                {
+                <div class="comments clearfix">
+                    <div class="wrap">
+                        <div class="tab">
+                            @{cl = "visible";}
+                            @foreach (var item in Model.ItemExtraLink.ListItens)
+                            {
+                                <div class="box @cl">
+                                    <h4><a class="@item.ComponentExtraLinkOption.TextLink" href="@item.Link" target="_blank">@Html.Raw(item.TextLink)</a></h4>
+                                    <p class="@item.ComponentExtraLinkOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                                cl = "";
+                            }
+                            <ul class="tabs">
+                                @{cl = "active";}
+                                @foreach (var item in Model.ItemExtraLink.ListItens)
+                                {
+                                    <li class="@cl"></li>
+                                    cl = "";
+                                }
+                            </ul>                  
+                        </div>
+                    </div>
+                    <!-- /.wrap -->
+                </div>
+                }
+            <!-- /.comments clearfix -->
+            @if(Model.ItemThumbnail.ItemActive)
+            {
+                <div class="simple clearfix">
+                    <div class="wrap">
+                        <div class="simple-content">
+                            <h3 class="@Model.ItemThumbnail.ItemStTitle">@Html.Raw(Model.ItemThumbnail.ItemTitle)</h3>
+                            <ul>
+                                @foreach (var item in Model.ItemThumbnail.ListItens)
+                                {
+                                    <li class="clearfix"><img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" height="32" width="32" alt=""><span>@Html.Raw(item.Category)</span></li>
+                                }                                               
+                            </ul>
+                        </div>
+                        <div class="simple-img">
+                            <img src="~/Content/uploads/@Model.ImagensForm[3]" height="508" width="587" alt="">
+                        </div>
+                    </div>
+                    <!-- /.wrap -->
+                </div>
+                }              
+        </div>
+        <!-- /.spanning-columns -->
+    </div>
+    <!-- /.main -->
+    <!-- DOWNLOAD BEGIN -->
+    <section id="download" class="bg-color-main" style="background-image: url(../../Content/uploads/@Model.ImagensForm[4]);">
+    
+            <div class="goto">          
+                <h2 class="download @Model.Textos[6].StText"> @Html.Raw(Model.Textos[6].Text)</h2>                            
+        </div>
+
+        <div class="block-bg"></div>
+    </section>
+
+    <!-- DOWNLOAD END -->
+    <footer>
+        <div class="wrap">
+            <h2>@Model.Profile.Adress</h2>
+            <h2>Tel: @Model.Profile.Phone</h2>
+            @if (Model.Profile.WhatsApp != "")
+            {
+                <h2>WhatsApp: @Model.Profile.WhatsApp</h2>
+            }
+            <h2>E-mail: @Model.Profile.Email</h2>
+            @if (Model.Profile.Website != "")
+            {
+                <h2>Website: <a href="@Model.Profile.Website" target="_blank">@Model.Profile.Website</a></h2>
+            }     
+            <br />
+            <br />
+            <p>&copy; 2014 <strong>APP Plus</strong>, All Rights Reserved</p>
+            <p class="text-center"> Theme by <a href="https://themewagon.com/"> Themewagon </a> </p>
+        </div>
+        <!-- /.wrap -->
+    </footer>
+    <script src="~/Componentes/Basic/AppPlus/js/jquery.js"></script>
+    <script src="~/Componentes/Basic/AppPlus/js/library.js"></script>
+    <script src="~/Componentes/Basic/AppPlus/js/script.js"></script>
+    <script src="~/Componentes/Basic/AppPlus/js/retina.js"></script>
+</body>
+</html>

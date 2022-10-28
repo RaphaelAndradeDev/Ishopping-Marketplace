@@ -1,0 +1,14 @@
+﻿
+@{ 
+    var site = "https://www.ishoopping.com.br/";
+    var img = "https://www.ishoopping.com.br/Content/uploads/";
+}
+
+<meta name="description" content="@Model.Profile.Message">
+<meta property="og:type" content="website">
+<meta property="og:url" content="@site@Model.Profile.Url">
+<meta property="og:title" content="@Model.Profile.Empresa" />
+<meta property="og:description" content="@Model.Profile.Message" />
+<meta property="og:image" content="@img@Model.ImagensForm[0]" />
+<meta name="robots" content="index, follow">
+<title>@Model.Profile.Empresa</title>

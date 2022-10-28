@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04BB3549-5197-4106-992A-BBF275A138C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ishopping.Application</RootNamespace>
+    <AssemblyName>Ishopping.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManagerAppService.cs" />
+    <Compile Include="AdminImageGalleryAppService.cs" />
+    <Compile Include="AdminFinancialPlanAppService.cs" />
+    <Compile Include="AdminSliderConfigAppService.cs" />
+    <Compile Include="AdminSliderAppService.cs" />
+    <Compile Include="AdminSocialNetWorkAppService.cs" />
+    <Compile Include="AdminTemplateAppService.cs" />
+    <Compile Include="AdminViewDataAppService.cs" />
+    <Compile Include="AdminViewItemAppService.cs" />
+    <Compile Include="AppAddProfile.cs" />
+    <Compile Include="AppAddProfileExtension.cs" />
+    <Compile Include="AppService\Ishopping\AppPortfolioAppService.cs" />
+    <Compile Include="AppServiceBase.cs" />
+    <Compile Include="AppService\AdminPagSeguro.cs" />
+    <Compile Include="AppService\Ishopping\AppStoreAppService.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Common\ImageGalleryResponse.cs" />
+    <Compile Include="Common\JsonResponse.cs" />
+    <Compile Include="Constants\ConstantSlider.cs" />
+    <Compile Include="Constants\Level.cs" />
+    <Compile Include="Constants\Price.cs" />
+    <Compile Include="ContentTextOptionAppService.cs" />
+    <Compile Include="ContentListOptionAppService.cs" />
+    <Compile Include="ContentButtonOptionAppService.cs" />
+    <Compile Include="ComponentTeamOptionAppService.cs" />
+    <Compile Include="ComponentSummaryOptionAppService.cs" />
+    <Compile Include="ComponentSkillOptionAppService.cs" />
+    <Compile Include="ComponentSimpleProductOptionAppService.cs" />
+    <Compile Include="ComponentServiceOptionAppService.cs" />
+    <Compile Include="ComponentScopeOptionAppService.cs" />
+    <Compile Include="ComponentProjectOptionAppService.cs" />
+    <Compile Include="ComponentPricingOptionAppService.cs" />
+    <Compile Include="ComponentPresentationOptionAppService.cs" />
+    <Compile Include="ComponentPostOptionAppService.cs" />
+    <Compile Include="ComponentPortfolioOptionAppService.cs" />
+    <Compile Include="ComponentPanelOptionAppService.cs" />
+    <Compile Include="ComponentMenuOptionAppService.cs" />
+    <Compile Include="ComponentFeaturesOptionAppService.cs" />
+    <Compile Include="ComponentFaqOptionAppService.cs" />
+    <Compile Include="ComponentExtraLinkOptionAppService.cs" />
+    <Compile Include="ComponentClientOptionAppService.cs" />
+    <Compile Include="ComponentBrandOptionAppService.cs" />
+    <Compile Include="ComponentActivityOptionAppService.cs" />
+    <Compile Include="ComponentPanelAppService.cs" />
+    <Compile Include="ComponentPresentationAppService.cs" />
+    <Compile Include="ComponentScopeAppService.cs" />
+    <Compile Include="ComponentSimpleProductAppService.cs" />
+    <Compile Include="ComponentSummaryAppService.cs" />
+    <Compile Include="ComponentThumbnailAppService.cs" />
+    <Compile Include="ConfigUserStyleColorAppService.cs" />
+    <Compile Include="ContentSliderAppService.cs" />
+    <Compile Include="Interface\IAccountManagerAppService.cs" />
+    <Compile Include="Interface\IAdminFinancialPlanAppService.cs" />
+    <Compile Include="Interface\IAdminSliderConfigAppService.cs" />
+    <Compile Include="Interface\IAppPortfolioAppService.cs" />
+    <Compile Include="Interface\IAppStoreAppService.cs" />
+    <Compile Include="Interface\IComponentAppServiceBaseT1Async.cs" />
+    <Compile Include="Interface\IComponentAppServiceBaseT2Async.cs" />
+    <Compile Include="Interface\IContentAppServiceBaseT1Async.cs" />
+    <Compile Include="Interface\IContentTextOptionAppService.cs" />
+    <Compile Include="Interface\IContentListOptionAppService.cs" />
+    <Compile Include="Interface\IContentButtonOptionAppService.cs" />
+    <Compile Include="Interface\IComponentTeamOptionAppService.cs" />
+    <Compile Include="Interface\IComponentSummaryOptionAppService.cs" />
+    <Compile Include="Interface\IComponentSkillOptionAppService.cs" />
+    <Compile Include="Interface\IComponentSimpleProductOptionAppService.cs" />
+    <Compile Include="Interface\IComponentServiceOptionAppService.cs" />
+    <Compile Include="Interface\IComponentScopeOptionAppService.cs" />
+    <Compile Include="Interface\IComponentProjectOptionAppService.cs" />
+    <Compile Include="Interface\IComponentPricingOptionAppService.cs" />
+    <Compile Include="Interface\IComponentPresentationOptionAppService.cs" />
+    <Compile Include="Interface\IComponentPostOptionAppService.cs" />
+    <Compile Include="Interface\IComponentPortfolioOptionAppService.cs" />
+    <Compile Include="Interface\IComponentPanelOptionAppService.cs" />
+    <Compile Include="Interface\IComponentMenuOptionAppService.cs" />
+    <Compile Include="Interface\IComponentFeaturesOptionAppService.cs" />
+    <Compile Include="Interface\IComponentFaqOptionAppService.cs" />
+    <Compile Include="Interface\IComponentExtraLinkOptionAppService.cs" />
+    <Compile Include="Interface\IComponentClientOptionAppService.cs" />
+    <Compile Include="Interface\IComponentBrandOptionAppService.cs" />
+    <Compile Include="Interface\IComponentActivityOptionAppService.cs" />
+    <Compile Include="Interface\IOptionAppServiceBaseT1Async.cs" />
+    <Compile Include="Interface\IOptionAppServiceBaseT1.cs" />
+    <Compile Include="Interface\IComponentPanelAppService.cs" />
+    <Compile Include="Interface\IComponentPresentationAppService.cs" />
+    <Compile Include="Interface\IComponentScopeAppService.cs" />
+    <Compile Include="Interface\IComponentSimpleProductAppService.cs" />
+    <Compile Include="Interface\IComponentSummaryAppService.cs" />
+    <Compile Include="Interface\IComponentThumbnailAppService.cs" />
+    <Compile Include="Interface\IConfigUserStyleColorAppService.cs" />
+    <Compile Include="Interface\IContentSliderAppService.cs" />
+    <Compile Include="Interface\IUserSerializeViewDataAppService.cs" />
+    <Compile Include="SectionModels\BasicModels\BasicActivitySectionModels.cs" />
+    <Compile Include="SectionModels\BasicModels\BasicPostSectionModels.cs" />
+    <Compile Include="SectionModels\Content\ContentButtonSectionModel.cs" />
+    <Compile Include="SectionModels\Content\ContentTextSectionModel.cs" />
+    <Compile Include="SectionModels\Content\ContentVideoSectionModel.cs" />
+    <Compile Include="SectionModels\User\UserImageGallerySectionModel.cs" />
+    <Compile Include="SupportTransactionStatusAppService.cs" />
+    <Compile Include="ComponentActivityAppService.cs" />
+    <Compile Include="ComponentBrandAppService.cs" />
+    <Compile Include="ComponentClientAppService.cs" />
+    <Compile Include="ComponentExtraLinkAppService.cs" />
+    <Compile Include="ComponentFaqAppService.cs" />
+    <Compile Include="ComponentFeaturesAppService.cs" />
+    <Compile Include="ComponentPortofolioAppService.cs" />
+    <Compile Include="ComponentPostAppService.cs" />
+    <Compile Include="ComponentPricingAppService.cs" />
+    <Compile Include="ComponentProjectAppService.cs" />
+    <Compile Include="ComponentServiceAppService.cs" />
+    <Compile Include="ComponentSkillAppService.cs" />
+    <Compile Include="ComponentSocialNetworkAppService.cs" />
+    <Compile Include="ComponentTeamAppService.cs" />
+    <Compile Include="ComponentTeamSocialNetworkAppService.cs" />
+    <Compile Include="ConfigUserAppearanceAppService.cs" />
+    <Compile Include="ComponentMenuAppService.cs" />
+    <Compile Include="ConfigUserDisplayAppService.cs" />
+    <Compile Include="ConfigUserMaintenanceAppService.cs" />
+    <Compile Include="ConfigUserStyleClassAppService.cs" />
+    <Compile Include="ConfigUserViewAppService.cs" />
+    <Compile Include="ConfigUserViewItemAppService.cs" />
+    <Compile Include="ContentButtonAppService.cs" />
+    <Compile Include="ContentIconAppService.cs" />
+    <Compile Include="ContentListAppService.cs" />
+    <Compile Include="ContentTextAppService.cs" />
+    <Compile Include="ContentVideoAppService.cs" />
+    <Compile Include="ECommerceProductAppService.cs" />
+    <Compile Include="ECommerceProductCategoryAppService.cs" />
+    <Compile Include="ECommerceProductGroupAppService.cs" />
+    <Compile Include="ECommerceProductSoldAppService.cs" />
+    <Compile Include="ECommerceShoppingListAppService.cs" />
+    <Compile Include="Interface\IAdminImageGalleryAppService.cs" />
+    <Compile Include="Interface\IAdminSliderAppService.cs" />
+    <Compile Include="Interface\IAdminSocialNetWorkAppService.cs" />
+    <Compile Include="Interface\IAdminTemplateAppService.cs" />
+    <Compile Include="Interface\IAdminViewDataAppService.cs" />
+    <Compile Include="Interface\IAdminViewItemAppService.cs" />
+    <Compile Include="Interface\IAppServiceBase.cs" />
+    <Compile Include="Interface\IAppServiceIdentified.cs" />
+    <Compile Include="Interface\IAppServiceIdentifiedGetAll.cs" />
+    <Compile Include="Interface\ISupportTransactionStatusAppService.cs" />
+    <Compile Include="Interface\IComponentActivityAppService.cs" />
+    <Compile Include="Interface\IComponentAppServiceBaseT1.cs" />
+    <Compile Include="Interface\IComponentAppServiceBaseT2.cs" />
+    <Compile Include="Interface\IComponentBrandAppService.cs" />
+    <Compile Include="Interface\IComponentClientAppService.cs" />
+    <Compile Include="Interface\IComponentExtraLinkAppService.cs" />
+    <Compile Include="Interface\IComponentFaqAppService.cs" />
+    <Compile Include="Interface\IComponentFeaturesAppService.cs" />
+    <Compile Include="Interface\IComponentPortofolioAppService.cs" />
+    <Compile Include="Interface\IComponentPostAppService.cs" />
+    <Compile Include="Interface\IComponentPricingAppService.cs" />
+    <Compile Include="Interface\IComponentProjectAppService.cs" />
+    <Compile Include="Interface\IComponentServiceAppService.cs" />
+    <Compile Include="Interface\IComponentSkillAppService.cs" />
+    <Compile Include="Interface\IComponentSocialNetworkAppService.cs" />
+    <Compile Include="Interface\IComponentTeamAppService.cs" />
+    <Compile Include="Interface\IComponentTeamSocialNetworkAppService.cs" />
+    <Compile Include="Interface\IConfigUserAppearanceAppService.cs" />
+    <Compile Include="Interface\IComponentMenuAppService.cs" />
+    <Compile Include="Interface\IConfigUserDisplayAppService.cs" />
+    <Compile Include="Interface\IConfigUserMaintenanceAppService.cs" />
+    <Compile Include="Interface\IConfigUserStyleClassAppService.cs" />
+    <Compile Include="Interface\IConfigUserViewAppService.cs" />
+    <Compile Include="Interface\IConfigUserViewItemAppService.cs" />
+    <Compile Include="Interface\IContentAppServiceBaseT1.cs" />
+    <Compile Include="Interface\IContentButtonAppService.cs" />
+    <Compile Include="Interface\IContentIconAppService.cs" />
+    <Compile Include="Interface\IContentListAppService.cs" />
+    <Compile Include="Interface\IContentTextAppService.cs" />
+    <Compile Include="Interface\IContentVideoAppService.cs" />
+    <Compile Include="Interface\IECommerceProductAppService.cs" />
+    <Compile Include="Interface\IECommerceProductCategoryAppService.cs" />
+    <Compile Include="Interface\IECommerceProductGroupAppService.cs" />
+    <Compile Include="Interface\IECommerceProductSoldAppService.cs" />
+    <Compile Include="Interface\IECommerceShoppingListAppService.cs" />
+    <Compile Include="Interface\ISupportTransactionAppService.cs" />
+    <Compile Include="Interface\IAppViewAppService.cs" />
+    <Compile Include="Interface\ISupportErrorAppService.cs" />
+    <Compile Include="Interface\ISupportInfoAppService.cs" />
+    <Compile Include="Interface\ISupportNotificationAppService.cs" />
+    <Compile Include="Interface\IUserFinancialAppService.cs" />
+    <Compile Include="Interface\IUserFinancialHistoryAppService.cs" />
+    <Compile Include="Interface\IUserImageGalleryAppService.cs" />
+    <Compile Include="Interface\IUserMenuAppService.cs" />
+    <Compile Include="Interface\IUserMenuViewAppService.cs" />
+    <Compile Include="Interface\IUserMenuViewItemAppService.cs" />
+    <Compile Include="Interface\IUserRegisterProfileAppService.cs" />
+    <Compile Include="Interface\IUserRegisterStandardAppService.cs" />
+    <Compile Include="SupportTransactionAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AppViewAppService.cs" />
+    <Compile Include="SupportErrorAppService.cs" />
+    <Compile Include="SupportInfoAppService.cs" />
+    <Compile Include="SupportNotificationAppService.cs" />
+    <Compile Include="UserFinancialAppService.cs" />
+    <Compile Include="UserFinancialHistoryAppService.cs" />
+    <Compile Include="UserImageGalleryAppService.cs" />
+    <Compile Include="UserMenuAppService.cs" />
+    <Compile Include="UserMenuViewAppService.cs" />
+    <Compile Include="UserMenuViewItemAppService.cs" />
+    <Compile Include="UserRegisterProfileAppService.cs" />
+    <Compile Include="UserRegisterStandardAppService.cs" />
+    <Compile Include="UserSerializeViewDataAppService.cs" />
+    <Compile Include="ViewModel\Ishopping\AppPortfolioViewModel.cs" />
+    <Compile Include="ViewModel\Ishopping\AppStoreViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ishopping.Common\Ishopping.Common.csproj">
+      <Project>{c9d41b84-17d1-419b-a0aa-00b3920648ef}</Project>
+      <Name>Ishopping.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ishopping.Domain\Ishopping.Domain.csproj">
+      <Project>{984cb356-b992-441e-bf81-a36d1b30add0}</Project>
+      <Name>Ishopping.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Uol.PagSeguro\Uol.PagSeguro.csproj">
+      <Project>{babc5658-6afd-4f8e-81f1-434553663d99}</Project>
+      <Name>Uol.PagSeguro</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SectionModels\FullModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

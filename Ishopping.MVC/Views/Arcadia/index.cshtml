@@ -1,0 +1,403 @@
+﻿@model Ishopping.ViewModels.TemplateProfessional.IndexArcadiaViewModelDeserialize
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/Componentes/Professional/Arcadia/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Componentes/Professional/Arcadia/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Componentes/Professional/Arcadia/css/animate.css">
+
+    <!-- Slider
+    ================================================== -->
+    <link href="~/Componentes/Professional/Arcadia/css/owl.carousel.css" rel="stylesheet" media="screen">
+    <link href="~/Componentes/Professional/Arcadia/css/owl.theme.css" rel="stylesheet" media="screen">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/uploads/@Model.Profile.SiteNumber/style.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css">
+    <link rel="stylesheet" type="text/css" href="~/Componentes/Professional/Arcadia/css/responsive.css">
+    
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/modernizr.custom.js"></script>
+</head>
+<body>
+
+    <!-- Off Canvas Navigation
+    ================================================== -->
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+        <!--- Off Canvas Side Menu -->
+        <div class="close" data-toggle="offcanvas" data-target=".navmenu">
+            <span class="fa fa-close"></span>
+        </div>
+        <div class="add-margin"></div>
+        <ul class="nav navmenu-nav">
+            <!--- Menu -->
+            @foreach (var menu in Model.Menu)
+            {
+                <li><a class="page-scroll" href="@menu.ViewLink">@menu.TextMenu</a></li>
+                foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                {
+                    <li><a class="page-scroll" href="@item.Link">@item.TextMenu</a></li>
+                }
+            }
+        </ul><!--- End Menu -->
+    </div> <!--- End Off Canvas Side Menu -->
+    <!-- Home Section -->
+    <div id="home" style="background: url(../../Content/uploads/@Model.ImagensForm[0]); background-size: cover;background-position: center;background-repeat: no-repeat;background-attachment: fixed;height: auto;min-height: 710px;padding-top: 60px;">
+        <div class="container text-center">
+            <!-- Navigation -->
+            <nav id="menu" data-toggle="offcanvas" data-target=".navmenu">
+                <span class="fa fa-bars"></span>
+            </nav>
+
+            <div class="content">
+                <h4 class="@Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h4>
+                <hr>
+                <div class="header-text btn">
+                    <h1><span class="@Model.Textos[1].StText" id="head-title"></span></h1>
+                </div>
+            </div>
+
+            <a href="#meet-us" class="down-btn page-scroll">
+                <span class="fa fa-angle-down"></span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Meet Us Section -->
+    <div id="meet-us">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h2 class="@Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h2>
+                        <hr>
+                    </div>
+                    <p class="@Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</p>
+                    <a href="#services" class="down-btn page-scroll">
+                        <span class="fa fa-angle-down"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview Video Section -->
+    <div id="overview-video" style="background: url(../../Content/uploads/@Model.ImagensForm[1]);background-size: cover;background-position: center;background-repeat: no-repeat;background-attachment: scroll;text-align: center;">
+        <div class="overlay">
+            <div class="container">
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    @if (Model.ItemActivity.ItemActive)
+    {
+        <div id="services">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="section-title">
+                            <h2 class="@Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h2>
+                            <hr>
+                        </div>
+                        <p class="@Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</p>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <div class="row">
+                    @foreach (var item in Model.ItemActivity.ListItens)
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <div class="service">
+                                <span class="@item.VectorIcon fa-3x"></span>
+                                <h4 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h4>
+                                <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a href="#works" class="down-btn page-scroll">
+                    <span class="fa fa-angle-down"></span>
+                </a>
+            </div>
+        </div>
+    }
+
+    <!-- Call-to-Action Section -->
+    <div id="cta">
+        <div class="container text-center">
+            @if (Model.Buttons[0].TextButton != "")
+            {
+                <a href="@Model.Buttons[0].UrlButton" class="btn go-to-btn @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+            }
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <div id="works">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="section-title">
+                            <h2 class="@Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                            <hr>
+                        </div>
+                        <p class="@Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</p>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (var item in Model.ItemPortofolio.ListItens)
+                    {
+                        <div class="col-sm-4 col-md-4 col-lg-3 nopadding">
+                            <div class="portfolio-item">
+                                <div class="hover-bg">
+                                    <a>
+                                        <div class="hover-text">
+                                            <h5 class="@item.ComponentPortofolioOption.Category">@Html.Raw(item.Category)</h5>
+                                            <p class="lead @item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</p>
+                                            <div class="hline"></div>
+                                        </div>
+                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="space"></div>
+            <div class="text-center">
+                @if (Model.Buttons[1].TextButton != "")
+                {
+                    <a href="@Model.Buttons[1].UrlButton" class="btn read-more-btn @Model.Buttons[1].StButton">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                }
+                <br>
+                <a href="#about-us" class="down-btn page-scroll"><span class="fa fa-angle-down"></span></a>
+            </div>
+        </div>
+    }
+
+    <!-- Clients Section -->
+    @if (Model.ItemThumbnail.ItemActive)
+    {
+        <div id="clients" style="background: url(../../Content/uploads/@Model.ImagensForm[2]);background-size: cover;background-position: center;background-repeat: no-repeat;background-attachment: fixed;text-align: center;">
+            <div class="overlay">
+                <div class="container text-center">
+                    <div class="section-title">
+                        <h2 class="@Model.ItemThumbnail.ItemStTitle">@Html.Raw(Model.ItemThumbnail.ItemTitle)</h2>
+                        <hr>
+                    </div>
+                    <ul class="clients">
+                        @foreach (var item in Model.ItemThumbnail.ListItens)
+                        {
+                            <li><a href="@item.WebSite" target="_blank"><img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt=""></a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- About Us Section -->
+    @if (Model.ItemTeam.ItemActive)
+    {
+        <div id="about-us">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="section-title">
+                            <h2 class="@Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h2>
+                            <hr>
+                        </div>
+                        <p class="@Model.ItemTeam.ItemStSubTitle">@Html.Raw(Model.ItemTeam.ItemSubTitle)</p>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <div class="row text-center">
+                    <div class="col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+                        <div class="row">
+                            @foreach (var item in Model.ItemTeam.ListItens)
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="team">
+                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive img-circle" alt="...">
+                                        <br>
+                                        <h4 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h4>
+                                        <p class="small @item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</p>
+                                        <hr>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- Testimonial Section -->
+    @if (Model.ItemClient.ItemActive)
+    {
+        <div id="testimonials" style="background: url(../../Content/uploads/@Model.ImagensForm[3]);background-size: cover;background-position: center;background-repeat: no-repeat;background-attachment: fixed;text-align: center;">
+            <div class="overlay">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 class="@Model.ItemClient.ItemStTitle">@Html.Raw(Model.ItemClient.ItemTitle)</h2>
+                        <hr>
+                    </div>
+                    <div id="testimonial" class="owl-carousel owl-theme">
+                        @foreach (var item in Model.ItemClient.ListItens)
+                        {
+                            <div class="item">
+                                <h3 class="@item.ComponentClientOption.Comment">@Html.Raw(item.Comment)</h3>
+                                <br>
+                                <h6 class="@item.ComponentClientOption.Name">@Html.Raw(item.Name)</h6>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Contato</h2>
+                <hr>
+            </div>
+            <div class="space"></div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <address>
+                        <strong>Endereço</strong><br>
+                        <br>
+                        @Model.Profile.Adress<br>
+                        <span>Tel: </span>@Model.Profile.Phone <br />
+
+                        @if (Model.Profile.WhatsApp != null)
+                        {
+                            <span>WhatsApp: </span> @Model.Profile.WhatsApp <br />
+                        }
+
+                        @if (Model.Profile.Website != null)
+                        {
+                            <span>Website:<a href="@Model.Profile.Website" target="_blank" style="color:#fff"> @Model.Profile.Website </a></span> <br />
+                        }
+                        @if (Model.ItemSocialNetwork.ItemActive)
+                        {
+                            if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                            {
+                                <ul class="social">
+                                    @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                    {
+                                        <li><a href="@item.Link" target="_blank"><span class="@item.Classe1"></span></a></li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul class="social">
+                                    <li><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><span class="fa fa-facebook"></span></a></li>
+                                    <li><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><span class="fa fa-twitter"></span></a></li>
+                                    <li><a class="popup" href="https://plus.google.com/share?url="><span class="fa fa-google-plus"></span></a></li>
+                                    <li><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><span class="fa fa-linkedin"></span></a></li>
+                                    <li><a class="popup" href="http://www.tumblr.com/share/link?url="><span class="fa fa-tumblr"></span></a></li>
+                                </ul>
+                            }
+                        }
+                        <ul class="social">
+                            @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                            {
+                                <li><a href="@item.Link" target="_blank"><span class="@item.Classe1"></span></a></li>
+                            }
+                        </ul>
+                    </address>
+                </div>
+
+                <div class="col-md-9">
+                    <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailC","AppServices")">
+                        <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" placeholder="Seu Nome" required="required">
+                                <input type="text" class="form-control" name="phone" placeholder="Seu Telefone">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="email" placeholder="Seu Email" required="required">
+                                <input type="text" class="form-control" name="subject" placeholder="Assunto" required="required">
+                            </div>
+                        </div>
+                        <textarea class="form-control" rows="4" name="message" placeholder="Mensagem"></textarea>
+                        <div class="text-right">
+                            <button type="submit" class="btn send-btn">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left">
+                <p>2014 © Arcadia. All Rights Reserved. Coded by <a href="https://dribbble.com/jennpereira">Jenn</a> & Designed by <a href="https://dribbble.com/alanpodemski">Alan</a></p>
+            </div>
+            <div class="pull-right">
+                <a href="#home" class="page-scroll">Back to Top <span class="fa fa-angle-up"></span></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/jquery.1.11.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/SmoothScroll.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/jasny-bootstrap.min.js"></script>
+
+    <script src="~/Componentes/Professional/Arcadia/js/owl.carousel.js"></script>
+    <script src="~/Componentes/Professional/Arcadia/js/typed.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+    <script>
+    $(function () {
+        $("#head-title").typed({
+            strings: ["@Model.Textos[1].Text", "@Model.Textos[2].Text", "@Model.Textos[3].Text"],
+            typeSpeed: 100,
+            loop: true,
+            startDelay: 100
+          });
+      });
+    </script>
+
+    <!-- Javascripts
+    ================================================== -->
+    <script type="text/javascript" src="~/Componentes/Professional/Arcadia/js/main.js"></script>
+
+</body>
+</html>

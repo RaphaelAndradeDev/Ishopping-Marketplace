@@ -1,0 +1,24 @@
+﻿
+
+@font-face {
+  font-family: myfont;
+  src: url(../fonts/ufonts.com_tw-cen-mt.ttf);
+}
+
+
+/*============== Mixins style start ================*/
+.overlay-effect {
+  background: url("../images/overlay-pattern.png") #000000;
+}
+
+#hero-area:before {
+  background: url("../images/overlay-pattern.png") #000000;
+}
+
+#blog:before {
+  background: url("../images/overlay-pattern.png") #000000;
+}
+
+#subscribe:before {
+  background: url("../images/overlay-pattern.png") #000000;
+}

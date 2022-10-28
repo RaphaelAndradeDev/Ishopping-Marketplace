@@ -1,0 +1,34 @@
+﻿@model List<Ishopping.MVC.ViewModels.Config.ConfigUserDisplayViewModel>
+
+<section class="g-py-10">
+    <div class="container">
+        <header class="g-mb-50">
+            <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
+                <h3 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Nossos Clientes</h3>
+            </div>
+            <p class="g-font-size-16">Para que ir longe? Abaixo listamos as lojas ou serviços mais perto de você. Use nossas buscas acima para encontrar algo mais específico. Ex: informática, Centro São Paulo SP</p>
+        </header>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 g-mb-30 g-mb-0--lg">
+                    <article class="u-block-hover u-shadow-v21 rounded">
+                        <a class="g-color-white title" data-lat="@item._Latitude" data-lon="@item._Longitude" data-title="@item.Title" href="@Url.Action("Index", (string)item.Controller, new { id = item.SiteNumber })">
+                            <figure class="u-bg-overlay g-bg-black-opacity-0_2--after">
+                                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="Ishoopping Clientes">
+                            </figure>
+                        </a>
+                        <header class="opacity-0 g-opacity-1--hover g-pos-abs g-top-30 g-right-30 g-left-30 g-color-white">
+                            <h3 class="h4">
+                                <a class="g-color-white title" data-lat="@item._Latitude" data-lon="@item._Longitude" data-title="@item.Title" href="@Url.Action("Index", (string)item.Controller, new { id = item.SiteNumber })">@item.Title</a>
+                            </h3>
+                            <p>@item.Message</p>
+                        </header>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,44 @@
+﻿
+<!-- Modal -->
+<div class="modal fade" id="styleModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Classe de Estilos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group">
+                        <h5 class="color1 col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-7  col-md-7 col-lg-7">Adicionar classe para o item:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <select class="selectpicker col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-7  col-md-7 col-lg-7" id="sitem" multiple data-max-options="4" data-size="5">
+                            <option>SemEstilo</option>
+                            <option data-divider="true"></option>
+                            @foreach (var item in ViewBag.ClassName)
+                            {
+                                <option>@item</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" onclick="GoToOption()" data-dismiss="modal">Propriedades</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="StyleSave()" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+
+
+
+
+
+

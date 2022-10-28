@@ -1,0 +1,26 @@
+﻿@model List<Ishopping.MVC.ViewModels.User.UserImageGalleryViewModel>
+@{
+    ViewBag.Title = "Imagens Post";
+    Layout = "~/Views/Shared/_LayoutImage.cshtml";
+}
+
+<input type="hidden" id="data" data-imgtype="Post" data-imgsearch="PostSearchShare" data-imgcontroller="GetImgPost" />
+
+@Html.Partial("_ImageGalleryPartial", new ViewDataDictionary(this.ViewData) { { "fileType", "10" } })
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_PortfolioPartialT2I3", item)
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/ImageGallery/ImageGalleryT2.min.js"></script>
+}
+
+
+
+
+
+

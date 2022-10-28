@@ -1,0 +1,368 @@
+﻿@model Ishopping.MVC.ViewModels.IndexRestaurantViewModelDeserialize
+@{
+    Layout = null;
+    var i = 0; var j = 0; var ms = "ms"; var ic = ""; var bi = "";
+}
+
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+    <!-- CSS
+    ================================================ -->
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Restaurant/css/owl.carousel.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Restaurant/css/bootstrap.min.css">
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+    <!-- Font-awesome.min css -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Restaurant/css/animate.min.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/main.css">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Restaurant/css/preserv.css">
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Restaurant/css/responsive.css">
+
+</head>
+<body>
+    <!--
+    header-img start
+    ============================== -->
+    <section id="hero-area">
+        <img class="img-responsive" src="~/Content/uploads/@Model.ImagensForm[0]" alt="">
+    </section>
+    <!--
+    Header start
+    ============================== -->
+    <nav id="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">
+                                        <img src="~/Content/uploads/@Model.ImagensLogo[0]" alt="Logo">
+                                    </a>
+
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                        @foreach (var menu in Model.Menu)
+                                        {
+                                            <li><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                                            foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                            {
+                                                <li><a href="@item.Link" class="@item.TextMenu">@item.TextMenu</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </nav><!-- header close -->
+    <!--
+    Slider start
+    ============================== -->
+    @if (Model.ItemThumbnail.ItemActive)
+    {
+        <section id="slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div class="title">
+                                <h3 class="@Model.ItemThumbnail.ItemStTitle">@Html.Raw(Model.ItemThumbnail.ItemTitle)</h3>
+                            </div>
+                            <div id="owl-example" class="owl-carousel">
+                                @foreach (var item in Model.ItemThumbnail.ListItens)
+                                {
+                                    <div>
+                                        <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .container close -->
+        </section>
+    }<!-- slider close -->
+    <!--
+    about-us start
+    ============================== -->
+    <section id="about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms" src="~/Content/uploads/@Model.ImagensIcon[0]" alt="cooker-img">
+                        <h1 class="heading wow fadeInUp @Model.Textos[0].StText" data-wow-duration="400ms" data-wow-delay="500ms">@Html.Raw(Model.Textos[0].Text)</h1>
+                        <p class="wow fadeInUp @Model.Textos[1].StText" data-wow-duration="300ms" data-wow-delay="600ms">@Html.Raw(Model.Textos[1].Text)</p>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #call-to-action close -->
+    <!--
+    blog start
+    ============================ -->
+    @if (Model.ItemService.ItemActive)
+    {
+        <section id="blog" style="background-image: url('../../Content/uploads/@Model.ImagensForm[1]')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h1 class="heading @Model.ItemService.ItemStTitle">@Html.Raw(Model.ItemService.ItemTitle)</h1>
+                            <ul>
+                                @{i = 300; j = 1;}
+                                @foreach (var item in Model.ItemService.ListItens)
+                                {
+                                    if (j <= 2)
+                                    {
+                                        ic = "content-right";
+                                        bi = "blog-img";
+                                    }
+                                    else if (j >= 3)
+                                    {
+                                        ic = "content-left";
+                                        bi = "blog-img-2";
+                                    }
+                                    if (j >= 4) { j = 0; }
+                                    j = j + 1;
+                                    <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="@i@ms">
+                                        <div class="@bi">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="blog-img">
+                                        </div>
+                                        <div class="@ic">
+                                            <h3 class="@item.ComponentServiceOption.Title">@Html.Raw(item.Title)</h3>
+                                            <p class="@item.ComponentServiceOption.Description">@Html.Raw(item.Description)</p>
+                                        </div>
+                                    </li>
+                                    i = i + 100;
+                                }
+                            </ul>
+                            @if (Model.Buttons[0].TextButton != "")
+                            {
+                                <a class="btn btn-default btn-more-info wow bounceIn @Model.Buttons[0].StButton" data-wow-duration="500ms" data-wow-delay="1200ms" href="@Model.Buttons[0].UrlButton" role="button">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                            }
+
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .containe close -->
+        </section>
+    }<!-- #blog close -->
+    <!--
+    price start
+    ============================ -->
+    @if (Model.ItemPricing.ItemActive)
+    {
+        <section id="price">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h1 class="heading wow fadeInUp @Model.Textos[2].StText" data-wow-duration="300ms" data-wow-delay="300ms">@Html.Raw(Model.Textos[2].Text)</h1>
+                            <p class="wow fadeInUp @Model.Textos[3].StText" data-wow-duration="300ms" data-wow-delay="400ms">@Html.Raw(Model.Textos[3].Text)</p>
+                            <div class="pricing-list">
+                                <div class="title">
+                                    <h3 class="@Model.ItemPricing.ItemStTitle">@Html.Raw(Model.ItemPricing.ItemTitle)</h3>
+                                </div>
+                                <ul>
+                                    @{i = 300;}
+                                    @foreach (var item in Model.ItemPricing.ListItens)
+                                    {
+                                        <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="@i@ms">
+                                            <div class="item">
+                                                <div class="item-title">
+                                                    <h2 class="@item.ComponentPricingOption.NomePlano">@Html.Raw(item.NomePlano)</h2>
+                                                    <div class="border-bottom"></div>
+                                                    <span class="@item.ComponentPricingOption.Price">@item.PriceFull</span>
+                                                </div>
+                                                <p class="@item.ComponentPricingOption.Description">@Html.Raw(item.Description)</p>
+                                            </div>
+                                        </li>
+                                        i = i + 100;
+                                    }
+                                </ul>
+                                @if (Model.Buttons[1].TextButton != "")
+                                {
+                                    <a class="btn btn-default pull-right wow bounceIn @Model.Buttons[1].StButton" data-wow-duration="500ms" data-wow-delay="1200ms" href="@Model.Buttons[1].UrlButton" role="button">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                                }
+                            </div>
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .containe close -->
+        </section>
+    }<!-- #price close -->
+    <!--
+    subscribe start
+    ============================ -->
+    <section id="subscribe" style="background-image: url('../../Content/uploads/@Model.ImagensForm[2]')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="heading wow fadeinup @Model.Textos[4].StText" data-wow-duration="300ms" data-wow-delay="300ms">@Html.Raw(Model.Textos[4].Text)</h1>
+                        <p class="wow fadeInUp @Model.Textos[5].StText" data-wow-duration="300ms" data-wow-delay="400ms">@Html.Raw(Model.Textos[5].Text)</p>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #subscribe close -->
+    <!--
+    CONTACT US  start
+    ============================= -->
+    <section id="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="heading wow fadeInUp @Model.Textos[6].StText" data-wow-duration="500ms" data-wow-delay="300ms">@Html.Raw(Model.Textos[6].Text)</h1>
+                        <h3 class="title wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">Enviar e-mail</h3>
+                        <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                            <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="800ms">
+                                <input type="text" class="form-control" name="name" placeholder="Seu Nome" required="required">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Seu Email" required="required">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="800ms">
+                                <input type="text" class="form-control" name="subject" placeholder="Assunto" required="required">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1000ms">
+                                <textarea class="form-control" rows="3" name="message" placeholder="Mensagem" required="required"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1300ms">enviar e-mail</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+    </section><!-- #contact-us close -->
+    <!--
+    footer  start
+    ============================= -->
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    <div class="block wow fadeInLeft" data-wow-delay="200ms">
+                        <h3 class="@Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</h3>
+                        <div class="info">
+                            <ul>
+                                <li>
+                                    <h4><i class="fa fa-map-marker"></i>Endereço: <span> @Model.Profile.Adress</span></h4>
+                                </li>
+                                <li>
+                                    <h4><i class="fa fa-phone"></i>Telefone: <span> @Model.Profile.Phone</span></h4>
+                                </li>
+                                @if (Model.Profile.WhatsApp != "")
+                                {
+                                    <li>
+                                        <h4><i class="fa fa-whatsapp"></i>WhatsApp: <span> @Model.Profile.WhatsApp</span></h4>
+                                    </li>
+                                }
+                                <li>
+                                    <h4><i class="fa fa-envelope"></i>E-mail: <span> @Model.Profile.Email</span></h4>
+                                </li>
+                                @if (Model.Profile.Website != "")
+                                {
+                                    <li>
+                                        <h4><i class="fa fa-globe"></i>Website: <span>@Model.Profile.Website</span></h4>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+                <div class="pull-right">
+                    <div class="block wow fadeInLeft" data-wow-delay="1100ms">
+                        <div class="social-media-link">
+                            @if (Model.ItemSocialNetwork.ItemActive)
+                            {
+                                <h3 class="@Model.ItemSocialNetwork.ItemStTitle">@Model.ItemSocialNetwork.ItemTitle</h3>
+                                if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                                {
+                                    <ul>
+                                        @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                        {
+                                            <li><a href="@item.Link"><i class="@item.Classe1"></i></a></li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul>
+                                        <li><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a></li>
+                                        <li><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a></li>
+                                        <li><a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a class="popup" href="http://www.tumblr.com/share/link?url="><i class="fa fa-tumblr"></i></a></li>
+                                    </ul>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- .col-md-4 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #footer close -->
+    <!--
+    footer-bottom  start
+    ============================= -->
+    <footer id="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="block">
+                        <p>Copyright &copy; 2014 - All Rights Reserved.Design and Developed By <a href="http://www.themefisher.com">Themefisher</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Js -->
+    <script src="~/Componentes/BasicPro/Restaurant/js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="../../Componentes/BasicPro/Restaurant/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/jquery.nav.js"></script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/jquery.sticky.js"></script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/plugins.js"></script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/wow.min.js"></script>
+    <script src="~/Componentes/BasicPro/Restaurant/js/main.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+</body>
+</html>

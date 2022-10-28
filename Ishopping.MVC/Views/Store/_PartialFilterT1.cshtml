@@ -1,0 +1,78 @@
+﻿@model Ishopping.Application.ViewModel.Ishopping.AppStorePartialPageFilterViewModel
+
+<div class="g-pr-15--lg g-pt-60">
+    <!-- Categories -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">Categorias</h3>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.ProductDataFilter.Select(x => x._Category).Distinct().Take(10))
+            {
+                <li class="my-3" onclick="getAllByCategory(@item.Id)">
+                    <a class="d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                        @item.Name
+                        <span class="float-right g-font-size-12">@Model.ProductDataFilter.Where(x => x.CategoryId == item.Id).Count()</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End Categories -->
+    <hr>
+    <!-- SubCategory -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">SubCategorias</h3>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.ProductDataFilter.Select(x => x._SubCategory).Distinct().Take(6))
+            {
+                <li class="my-2">
+                    <label class="form-check-inline u-check d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover g-pl-30">
+                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                        <span class="d-block u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon="&#xf00c"></i>
+                        </span>
+                        @item.Name <span class="float-right g-font-size-13">@Model.ProductDataFilter.Where(x => x.SubCategoryId == item.Id).Count()</span>
+                    </label>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End SubCategory -->
+    <hr>
+    <!-- Brand -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">Marcas</h3>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.ProductDataFilter.Select(x => x.Brand).Distinct().Take(6))
+            {
+                <li class="my-2">
+                    <label class="form-check-inline u-check d-block u-link-v5 g-color-gray-dark-v4 g-color-primary--hover g-pl-30">
+                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                        <span class="d-block u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                            <i class="fa" data-check-icon="&#xf00c"></i>
+                        </span>
+                        @item <span class="float-right g-font-size-13">@Model.ProductDataFilter.Where(x => x.Brand == item).Count()</span>
+                    </label>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- End Brand -->
+    <hr>
+    <!-- Pricing -->
+    <div class="g-mb-30">
+        <h3 class="h5 mb-3">Preços</h3>
+        <div class="text-center">
+            <span class="d-block g-color-primary mb-4">R$(<span id="rangeSliderAmount3">0</span>)</span>
+            <div id="rangeSlider1" class="u-slider-v1-3"
+                 data-result-container="rangeSliderAmount3"
+                 data-range="true"
+                 data-default="20, 2000"
+                 data-min="0"
+                 data-max="3000"></div>
+        </div>
+    </div>
+    <!-- End Pricing -->
+    <hr>
+    <button class="btn btn-block u-btn-black g-font-size-12 text-uppercase g-py-12 g-px-25" type="button">Reset</button>
+    <hr>
+</div>

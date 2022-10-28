@@ -1,0 +1,201 @@
+﻿@model Ishopping.ViewModels.TemplateBasic.IndexGrayscaleViewModelDeserialize
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@Model.Profile.Empresa</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Componentes/Basic/Grayscale/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/grayscale.css" rel="stylesheet">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />  
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <span class="light">@Model.Profile.Empresa</span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li><a class="page-scroll" href="@menu.ViewLink">@menu.TextMenu</a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li><a class="page-scroll" href="@item.Link">@item.TextMenu</a></li>
+                        }
+                    }                
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro" style="background: url(../../Content/uploads/@Model.ImagensForm[0]) no-repeat bottom center scroll; background-size: cover;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading @Model.Textos[0].StText">@Model.Textos[0].Text</h1>
+                        <p class="intro-text @Model.Textos[1].StText">@Model.Textos[1].Text</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 class="@Model.Textos[2].StText">@Model.Textos[2].Text</h2>
+                <p class="@Model.Textos[3].StText">@Model.Textos[3].Text</p>
+                               
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section" style="background: url(../../Content/uploads/@Model.ImagensForm[1]) no-repeat center center scroll; background-size: cover;">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2 class="@Model.Textos[4].StText">@Model.Textos[4].Text</h2>
+                    <p class="@Model.Textos[5].StText">@Model.Textos[5].Text</p>
+                    @if (Model.Buttons[0].TextButton != "")
+                    {
+                        <a href="@Model.Buttons[0].UrlButton" class="btn btn-default btn-lg @Model.Buttons[0].StButton">@Model.Buttons[0].TextButton</a>
+                    }                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 class="@Model.Textos[6].StText">@Model.Textos[6].Text</h2>
+                <p class="@Model.Textos[7].StText">@Model.Textos[7].Text</p>
+                @if (Model.Buttons[1].TextButton != "")
+                {
+                    <p><a href="@Model.Buttons[1].UrlButton" class="@Model.Buttons[1].StButton">@Model.Buttons[1].TextButton</a></p>
+                }                      
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map" data-latitude="@Model.Profile._Latitude" data-longitude="@Model.Profile._Longitude"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <p class="@Model.Textos[8].StText">@Html.Raw(Model.Textos[8].Text)</p>
+                        <br />
+                        <ul class="address">
+                            <li><i class="fa fa-map-marker"></i> <span></span>@Model.Profile.Adress</li>
+                            <li><i class="fa fa-phone"></i> <span> Tel: </span>@Model.Profile.Phone</li>
+                            @if (Model.Profile.WhatsApp != "")
+                            {
+                                <li><i class="fa fa-whatsapp"></i> <span> WhatsApp: </span>@Model.Profile.WhatsApp</li>
+                            }
+                            <li><i class="fa fa-envelope"></i> <span> Email: </span>@Model.Profile.Email</li>
+                            @if (Model.Profile.Website != "")
+                            {
+                                <li><i class="fa fa-globe"></i> <span> Website: </span> <a href="@Model.Profile.Website" target="_blank">@Model.Profile.Website</a></li>
+                            }                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                        <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                        <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome" required="required">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Seu Email" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Assunto" required="required">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Sua Mensagem" required="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="pull-right btn btn-default btn-submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>          
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="~/Componentes/Basic/Grayscale/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Componentes/Basic/Grayscale/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/Componentes/Basic/Grayscale/js/jquery.easing.min.js"></script>
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Componentes/Basic/Grayscale/js/grayscale.js"></script>
+
+</body>
+
+</html>
+

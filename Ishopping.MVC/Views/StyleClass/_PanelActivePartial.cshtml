@@ -1,0 +1,371 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span><input type="checkbox" id="userActive" value=""></span>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Ao clicar sobre o objeto</a>
+        </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">           
+            <div class="panel-group" id="accordion3">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="atext" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse34">Alterar texto</a>
+                        </h6>
+                    </div>
+                    <div id="collapse34" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group input-group col-md-3">
+                                        <h4 class="color1">Font-size:</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="fontSize" id="afsv" aria-label="..." value="0">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="afsl">px <span class="caret"></span></button>
+                                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                    <li><a>px</a></li>
+                                                    <li><a>%</a></li>
+                                                    <li><a>em</a></li>
+                                                    <li><a>rem</a></li>
+                                                </ul>
+                                            </div><!-- /btn-group -->
+                                        </div><!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group input-group col-md-3">
+                                        <h4 class="color1">Font-family:</h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-label="..." name="fontFamily" id="aff" value="">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Selecione <span class="caret"></span></button>
+                                                <ul class="dropdown-menu scrollable-menu dropdownFont" style="max-height: 180px;" role="menu"></ul>
+                                            </div><!-- /btn-group -->
+                                        </div><!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="afst">Font-style</label>
+                                        <div class="btn-group input-group ">
+                                            <button type="button" class="btn btn-default txt" name="fontStyle" id="afst" value="padrão" style="width:160px">padrão</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a>padrão</a></li>
+                                                <li><a>normal</a></li>
+                                                <li><a>italic</a></li>
+                                                <li><a>oblique</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="afw">Font-weight</label>
+                                        <div class="btn-group input-group ">
+                                            <button type="button" class="btn btn-default txt" name="fontWeight" id="afw" value="padrão" style="width:160px">padrão</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a>padrão</a></li>
+                                                <li><a>normal</a></li>
+                                                <li><a>bold</a></li>
+                                                <li><a>bolder</a></li>
+                                                <li><a>lighter</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <p id="aespcp">Espaçamento entre letras: <span class="emOrange">0px</span></p>
+                                        <input type='range' min="-20" max="80" value="0" id="aespc" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <p id="aesplp">Espaçamento entre linhas: <span class="emOrange">0%</span></p>
+                                        <input type='range' min="0" max="400" value="0" id="aespl" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="ac">Cor do texto</label>
+                                        <div class="input-group" name="colorPicker" id="inac">
+                                            <input type="text" class="form-control txt" name="dcolor" id="ac" />
+                                            <span class="input-group-addon">
+                                                <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="abc">Cor de fundo</label>
+                                        <div class="input-group" name="colorPicker" id="inabc">
+                                            <input type="text" class="form-control txt" name="dcolor" id="abc" />
+                                            <span class="input-group-addon">
+                                                <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="asize" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse30">Alterar preenchimento</a>
+                        </h6>
+                    </div>
+                    <div id="collapse30" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Padding:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="apvp">Tam. vertical: <span class="emOrange">16px</span></p>
+                                            <input type='range' min="0" max="40" value="16" id="apv" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="aphp">Tam. horizontal: <span class="emOrange">32px</span></p>
+                                            <input type='range' min="0" max="80" value="32" id="aph" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="aborder" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse31">Alterar borda</a>
+                        </h6>
+                    </div>
+                    <div id="collapse31" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Border:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="abrp">Borda: <span class="emOrange">0px</span></p>
+                                            <input type='range' min="0" max="40" value="0" id="abr" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="abvlp">Tamanho: <span class="emOrange">0px</span></p>
+                                            <input type='range' min="0" max="12" value="0" id="abvl" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="inabcl">
+                                                <input type="text" class="form-control abs" id="abcl" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da borda</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="atextshadow" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse32">Adicionar sombra ao texto</a>
+                        </h6>
+                    </div>
+                    <div id="collapse32" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Text-shadow:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="atextShadowp1">Pos. vertical: <span class="emOrange">0px</span></p>
+                                            <input class="ats" type='range' min="-60" max="60" value="0" id="atextShadowPx1" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="atextShadowp2">Pos. horizontal: <span class="emOrange">0px</span></p>
+                                            <input class="ats" type='range' min="-60" max="60" value="0" id="atextShadowPx2" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="atextShadowp3">Ofuscar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="ats" type='range' min="0" max="60" value="0" id="atextShadowPx3" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="inatextShadowColor">
+                                                <input type="text" class="form-control ats" id="atextShadowColor" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da sombra</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="aboxshadow" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse33">Adicionar sombra a caixa</a>
+                        </h6>
+                    </div>
+                    <div id="collapse33" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Box-shadow:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="aboxShadowp1">Pos. vertical: <span class="emOrange">0px</span></p>
+                                            <input class="abs" type='range' min="-60" max="60" value="0" id="aboxShadowPx1" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="aboxShadowp2">Pos. horizontal: <span class="emOrange">0px</span></p>
+                                            <input class="abs" type='range' min="-60" max="60" value="0" id="aboxShadowPx2" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="aboxShadowp3">Ofuscar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="abs" type='range' min="0" max="60" value="0" id="aboxShadowPx3" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="aboxShadowp4">Espalhar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="abs" type='range' min="-60" max="60" value="0" id="aboxShadowPx4" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="inaboxShadowColor">
+                                                <input type="text" class="form-control abs" id="aboxShadowColor" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da sombra</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="atransform" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse36">Adicionar transformação</a>
+                        </h6>
+                    </div>
+                    <div id="collapse36" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Transform:</h4>
+                                        </div>
+                                        <br />
+                                        <div class="col-md-8">
+                                            <p id="atransformr">Rotacionar: <span class="emOrange">0 grau(s)</span></p>
+                                            <input type='range' min="-360" max="360" value="0" id="atransformrv" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-8">
+                                            <p id="atransformsk">Inclinar: <span class="emOrange">0 grau(s)</span></p>
+                                            <input type='range' min="-180" max="180" value="0" id="atransformskv" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="atransformtv">Mover verticalmente: <span class="emOrange">0 px</span></p>
+                                            <input type='range' min="-200" max="200" value="0" id="atransformtvpx" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="atransformth">Mover horizontalmente: <span class="emOrange">0 px</span></p>
+                                            <input type='range' min="-200" max="200" value="0" id="atransformthpx" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="atransformsv">Escala vertical: <span class="emOrange">10/10</span></p>
+                                            <input type='range' min="1" max="15" value="10" id="atransformsvpx" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="atransformsh">Escala horizontal: <span class="emOrange">10/10</span></p>
+                                            <input type='range' min="1" max="15" value="10" id="atransformshpx" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

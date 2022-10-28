@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/bundles/default-css")    
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Styles/razortools")
+</head>
+<body>
+    @Html.Partial("_LayoutPartial")
+    <div class="container body-content">
+        @Html.AntiForgeryToken()
+        @Html.Partial("_MenuPartial")
+        @Html.Partial("_SetVarPartial")
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - IShoopping | Você está no ambiente de desenvolvimento</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/default-js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

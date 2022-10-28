@@ -1,0 +1,733 @@
+﻿@model Ishopping.ViewModels.TemplateProfessional.IndexKrefolioViewModelDeserialize
+
+@{
+    Layout = null;
+    var i = 0; var cl = ""; var ms = "ms"; var b = ""; var k = ""; var p = "";
+}
+
+<!doctype html>
+<html class="no-js" lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+
+    <!-- =========================
+       favicon and app touch icon
+    ============================== -->  
+    <link rel="apple-touch-icon" href="~/Componentes/Professional/Krefolio/apple-touch-icon.png">
+    
+    <!-- =========================
+       Bootstrap and animation
+    ============================== -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/animate.min.css">
+
+    <!-- =========================
+       Fonts, typography and icons
+    ============================== -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/typography.css">
+
+    <!-- =========================
+       Carousel, lightbox and circle generator
+    ============================== -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/nivo-lightbox-default.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/jquery.circliful.css">
+
+    <!-- ***** Custom Stylesheet ***** -->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/main.css">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/preserv.css">
+
+    <!-- ***** Responsive fixes ***** -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Krefolio/css/responsive.css">
+
+    <!-- Header scripts -->
+    <script src="~/Componentes/Professional/Krefolio/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/queryloader2.min.js"></script>
+
+    <!-- =========================
+       Preloader
+    ============================== -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            "use strict";
+            new QueryLoader2(document.querySelector("body"), {
+                barColor: "#e74c3c",
+                backgroundColor: "#111",
+                percentage: true,
+                barHeight: 1,
+                minimumTime: 200,
+                fadeOutTime: 1000
+            });
+        });
+        var alert_color_success_background = '#e74c3c';
+        var alert_color_error_background = '#CF000F';
+
+    </script>
+</head>
+<body>
+    <!-- =========================
+       Fullscreen menu
+    ============================== -->
+    <div class="mobilenav">
+        <ul>
+            @foreach (var menu in Model.Menu)
+            {
+                <li><span class="nav-label"><a style="color:#fff" href="@menu.ViewLink">@menu.TextMenu</a></span></li>
+                foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                {
+                    <li><span class="nav-label"><a style="color:#fff" href="@item.Link">@item.TextMenu</a></span></li>
+                }
+            }
+        </ul>
+    </div>  <!-- *** end Full Screen Menu *** -->
+    <!-- *****  hamburger icon ***** -->
+    <a href="javascript:void(0)" class="menu-trigger">
+        <div class="hamburger">
+            <div class="menui top-menu"></div>
+            <div class="menui mid-menu"></div>
+            <div class="menui bottom-menu"></div>
+        </div>
+    </a>
+
+
+    <!-- =========================
+       Header
+    ============================== -->
+    <header id="header">
+        <div id="myCarousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for Slides -->
+            <div class="carousel-inner">
+
+                <!-- *****  Logo ***** -->
+                <div class="logo-container">
+                    <a href="#">
+                        <img src="~/Content/uploads/@Model.ImagensLogo[0]" height="37" width="197" alt="">
+                    </a>
+                </div>
+
+                <!-- =========================
+                   Header item 1
+                ============================== -->
+                <div class="item active">
+
+                    <!-- Set the first background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('../../Content/uploads/@Model.ImagensForm[0]');">
+                    </div>
+                    <div class="carousel-caption">
+                        <h1 class="light margin-bottom-medium mat-none @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                        <p class="light margin-bottom-medium @Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</p>
+                        <div class="call-button">
+                            <div class="row">
+                                @if (Model.Buttons[0].TextButton != "" && Model.Buttons[1].TextButton != "")
+                                {
+                                    <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
+                                        <a href="@Model.Buttons[0].UrlButton" class="button pull-right internal-link light hvr-grow @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <a href="@Model.Buttons[1].UrlButton" class="button pull-left internal-link main-bg hvr-grow @Model.Buttons[1].StButton">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                                    </div>
+                                }
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+
+                <!-- =========================
+                   Header item 2
+                ============================== -->
+                <div class="item">
+
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('../../Content/uploads/@Model.ImagensForm[1]');"></div>
+                    <div class="carousel-caption">
+                        <h1 class="light margin-bottom-medium mat-none @Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h1>
+                        <p class="light margin-bottom-medium @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</p>
+                        <div class="call-button">
+                            <div class="row">
+                                @if (Model.Buttons[2].TextButton != "" && Model.Buttons[3].TextButton != "")
+                                {
+                                    <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
+                                        <a href="@Model.Buttons[2].UrlButton" class="button pull-right internal-link light hvr-grow @Model.Buttons[2].StButton">@Html.Raw(Model.Buttons[2].TextButton)</a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <a href="@Model.Buttons[3].UrlButton" class="button pull-left internal-link main-bg hvr-grow @Model.Buttons[3].StButton">@Html.Raw(Model.Buttons[3].TextButton)</a>
+                                    </div>
+                                }
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+
+                <!-- =========================
+                   Header item 3
+                ============================== -->
+                <div class="item">
+
+                    <!-- Set the third background image using inline CSS below. -->
+                    <div class="fill" style="background-image:url('../../Content/uploads/@Model.ImagensForm[2]');"></div>
+                    <div class="carousel-caption">
+                        <h1 class="light margin-bottom-medium mat-none @Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h1>
+                        <p class="light margin-bottom-medium @Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</p>
+                        <div class="call-button">
+                            <div class="row">
+                                @if (Model.Buttons[4].TextButton != "" && Model.Buttons[5].TextButton != "")
+                                {
+                                    <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 col-xs-12">
+                                        <a href="@Model.Buttons[4].UrlButton" class="button pull-right internal-link light hvr-grow @Model.Buttons[4].StButton">@Html.Raw(Model.Buttons[4].TextButton)</a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <a href="@Model.Buttons[5].UrlButton" class="button pull-left internal-link main-bg hvr-grow @Model.Buttons[5].StButton">@Html.Raw(Model.Buttons[5].TextButton)</a>
+                                    </div>
+                                }
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+            </div> <!-- *** end wrapper *** -->
+            <!-- Carousel Controls -->
+            <a class="left carousel-control hidden-xs" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev icon-arrow-left"></span>
+            </a>
+            <a class="right carousel-control hidden-xs" href="#myCarousel" data-slide="next">
+                <span class="icon-next icon-arrow-right"></span>
+            </a>
+        </div>
+    </header> <!-- *** end Header *** -->
+    <!-- =========================
+       Call to action
+    ============================== -->
+    <section id="call-to-action" class="call-to-action main-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 wow slideInLeft animated">
+                    <p class="light-text @Model.Textos[6].StText">@Html.Raw(Model.Textos[6].Text)</p>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 button-container wow slideInRight animated">
+                    @if (Model.Buttons[6].TextButton != "")
+                    {
+                        <a href="@Model.Buttons[6].UrlButton" class="button light internal-link pull-left hvr-grow @Model.Buttons[6].StButton">@Html.Raw(Model.Buttons[6].TextButton)</a>
+                    }
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </section> <!-- *** end call-to-action *** -->
+    <!-- =========================
+       About Us
+    ============================== -->
+    @if (Model.ItemPanel.ItemActive)
+    {
+        <section id="about-us" class="about-us" style="background-image:url(../../Content/uploads/@Model.ImagensForm[3])">
+            <div class="overlay">
+                <div class="container padding-top-large">
+                    <h2 class="@Model.ItemPanel.ItemStTitle">@Html.Raw(Model.ItemPanel.ItemTitle)</h2>
+                    <div class="line main-bg"></div>
+                    <p class="margin-bottom-medium wow slideInUp @Model.ItemPanel.ItemStSubTitle">
+                        @Html.Raw(Model.ItemPanel.ItemSubTitle)
+                    </p>
+                    <div class="row margin-top-large">
+                        <div class="col-md-8">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                @{ i = 0; cl = "in"; b = "true"; k = ""; p = "-"; }
+                                @foreach (var item in Model.ItemPanel.ListItens)
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="heading_@i">
+                                            <div class="panel-title">
+                                                <a href="#collapse_@i" class="@k" data-toggle="collapse" data-parent="#accordion" aria-expanded="@b" aria-controls="collapse_@i">
+                                                    <span class="state"><strong>@p</strong></span>
+                                                    <strong class="@item.ComponentPanelOption.Title">@Html.Raw(item.Title)</strong>
+                                                </a>
+                                            </div>
+                                        </div> <!-- *** end panel-heading *** -->
+                                        <div id="collapse_@i" class="panel-collapse collapse @cl" role="tabpanel" aria-labelledby="heading_@i">
+                                            <div class="panel-body @item.ComponentPanelOption.Text">
+                                                @Html.Raw(item.Text)
+                                            </div>
+                                        </div> <!-- *** end collapsed item *** -->
+                                    </div>
+                                    i++; cl = ""; b = "false"; k = "collapsed"; p = "+";
+                                }<!-- *** end panel *** -->
+                            </div> <!-- *** end panel-group *** -->
+                        </div> <!-- *** end col-md-8 *** -->
+                        <div class="col-md-4">
+                            <img src="~/Content/uploads/@Model.ImagensForm[4]" class="center-block img-responsive" alt="Case Study"><!-- *** case-studdy-people *** -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- *** end About Us *** -->
+    }
+    <!-- =========================
+       Case Study
+    ============================== -->
+    @if (Model.ItemService.ItemActive)
+    {
+        <section id="case-study" class="case-study">
+            <div class="row mar-none mat-none">
+
+                <!-- *****  Case Study Left ***** -->
+                @{i = 0;}
+                @foreach (var item in Model.ItemService.ListItens)
+                {
+                    if (i % 2 == 0) { cl = "case-study-left slideInLeft"; k = "text-right"; } else { cl = "case-study-right slideInRight"; k = ""; }
+                    <div class="col-md-6 wow @cl" style="background-image:url(../../Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName)">
+                        <div class="overlay padding-large @k">
+                            <div class="description">
+                                <h3 class="margin-bottom-small light-text @item.ComponentServiceOption.Title">@Html.Raw(item.Title)</h3>
+                                <p class="@item.ComponentServiceOption.Description">@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+            </div>
+        </section> <!-- *** end Case Study *** -->
+    }
+    <!-- =========================
+       Why Coose Us
+    ============================== -->
+    @if (Model.ItemActivity.ItemActive)
+    {
+        <section id="why-choose-us" class="why-choose-us">
+            <div class="container margin-top-large">
+                <h2 class="@Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h2>
+                <div class="line main-bg margin-bottom-large"></div>
+                <div class="row text-center">
+                    @{i = 0;}
+                    @foreach (var item in Model.ItemActivity.ListItens)
+                    {
+                        <!-- *****  Service Single ***** -->
+                        <div class="col-md-4">
+                            <div class="service wow @Model.ItemActivity.Class[i]">
+                                <div class="icon"><i class="icon-idea"></i></div>
+                                <h4 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h4>
+                                <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                        i = i + 1;
+                    }
+                    <div class="clearfix"></div>
+                </div> <!-- *** end row *** -->
+            </div> <!-- *** end container *** -->
+        </section>
+    }<!-- *** end Why Choose Us *** -->
+    <!-- =========================
+       Our Skills
+    ============================== -->
+    @if (Model.ItemSkill.ItemActive)
+    {
+        <section id="our-skills" class="our-skills">
+            <div class="container padding-top-large">
+                <h2 class="@Model.ItemSkill.ItemStTitle">@Html.Raw(Model.ItemSkill.ItemTitle)</h2>
+                <div class="line main-bg margin-bottom-medium"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <ul class="skill-bar">
+                            @foreach (var item in Model.ItemSkill.ListItens.Where(x => x.Position == 1))
+                            {
+                                <li>
+                                    <p class="@item.ComponentSkillOption.Category">@Html.Raw(item.Category)</p>
+                                    <div class="wrapper"><span class="@item.ComponentSkillOption.Level" data-width="@item.Level"></span></div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="~/Content/uploads/@Model.ImagensForm[5]" class="center-block img-responsive" alt="Our Skills are excellent">
+                    </div>
+                    <div class="clearfix"></div>
+                </div> <!-- *** end row *** -->
+            </div> <!-- *** end container *** -->
+        </section>
+    }<!-- *** end Our Skills *** -->
+    <!-- =========================
+       Processes
+    ============================== -->
+    @if (Model.ItemScope.ItemActive)
+    {
+        <section id="processes" class="processes" style="background-image:url(../../Content/uploads/@Model.ImagensForm[6])">
+            <div class="overlay">
+                <div class="container padding-large">
+                    <div class="row">
+
+                        @{i = 200;}
+                        @foreach (var item in Model.ItemScope.ListItens)
+                        {
+                            <div class="feature wow fadeInUp" data-wow-delay="@i@ms">
+                                <div class="icon-container pull-left">
+                                    <span class="@item.VectorIcon"></span>
+                                </div>
+                                <div class="description text-left pull-right">
+                                    <h4 class="@item.ComponentScopeOption.Title">@Html.Raw(item.Title)</h4>
+                                    <p class="@item.ComponentScopeOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            i = i + 200;
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </section> <!-- *** end Processes *** -->
+    }
+    <!-- =========================
+       Our Team
+    ============================== -->
+    @if (Model.ItemTeam.ItemActive)
+    {
+        <section id="our-team" class="our-team">
+            <div class="container padding-top-large">
+                <h2 class="wow fadeInRight @Model.ItemTeam.ItemStTitle" data-wow-duration="1.5s" data-wow-delay=".5s">
+                    @Html.Raw(Model.ItemTeam.ItemTitle)
+                </h2>
+                <div class="line main-bg margin-bottom-medium"></div>
+
+                <p class="margin-bottom-medium wow fadeInUp @Model.ItemTeam.ItemStSubTitle" data-wow-duration="1.5s" data-wow-delay=".5s">
+                    @Html.Raw(Model.ItemTeam.ItemSubTitle)
+                </p>
+                <div class="row">
+                    <!-- ***** Team member 1 section ***** -->
+                    @{i = 0;}
+                    @foreach (var item in Model.ItemTeam.ListItens)
+                    {
+                        <div class="col-md-3 col-sm-6 col-xs-12 margin-bottom-large">
+                            <!-- ***** Team member-1 ***** -->
+                            <div class="team-member center-block wow @Model.ItemTeam.Class[i]" data-wow-duration="1.5s" data-wow-delay="1s">
+                                <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="">
+                                <div class="team-overlay text-center">
+                                    <div class="info">
+                                        <h3 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h3>
+                                        <p class="@item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</p>
+                                    </div>
+                                    <div class="learn-more" data-toggle="modal" data-target="#team-member-@i">
+                                        <strong>Leia Mais</strong>
+                                    </div>
+                                </div>
+                            </div> <!-- *** end Team member-1 *** -->
+                            <!-- Team Member-1 Modal -->
+                            <div class="modal fade contact-form" id="team-member-@i" tabindex="-1" role="dialog" aria-labelledby="team-member-@i" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="modal-body member-info">
+                                            <div class="row">
+                                                <div class="col-md-5 col-sm-5">
+                                                    <figure>
+                                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                                    </figure>
+                                                </div>
+                                                <div class="col-md-7 col-sm-7">
+                                                    <div class="description">
+                                                        <h3 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h3>
+                                                        <div class="light-text @item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</div>
+                                                        <div class="about margin-top-medium">
+                                                            <p class="@item.ComponentTeamOption.Description">@Html.Raw(item.Description)</p>
+                                                        </div>
+                                                        <br />
+                                                        @foreach (var sn in item.ComponentTeamSocialNetwork)
+                                                        {
+                                                            <a class="@sn.Classe2 fa-2x" style="margin-right:15px" href="@sn.Link" target="_blank"></a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        i++;
+                    }
+                </div>
+            </div>
+        </section>
+    }<!-- *** end Our Team *** -->
+    <!-- =========================
+       Testimonial
+    ============================== -->
+    @if (Model.ItemClient.ItemActive)
+    {
+        <section id="testimonial" class="testimonial padding-large white-color text-center" style="background-image:url(../../Content/uploads/@Model.ImagensForm[7])">
+            <div class="container">
+                <div class="row">
+                    <h2 class="margin-bottom-medium">@Model.ItemClient.ItemTitle</h2>
+                    <div class="col-md-10 col-md-offset-1">
+
+                        <!-- *****  Carousel start ***** -->
+                        <div id="testimonial-carousel" class="owl-carousel owl-theme testimonial-carousel">
+                            <!-- =========================
+                               Single Testimonial item
+                            ============================== -->
+                            @foreach (var item in Model.ItemClient.ListItens)
+                            {
+                                <div class="item margin-bottom-small">
+                                    <!-- ITEM START -->
+                                    <p class="@item.ComponentClientOption.Comment">@Html.Raw(item.Comment)</p>
+                                    <div class="client margin-top-medium clearfix">
+                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" height="50" width="50" alt="Client Image">
+                                        <ul class="client-info main-color">
+                                            <li class="@item.ComponentClientOption.Name">@Html.Raw(item.Name)</li>
+                                            <li class="@item.ComponentClientOption.Functio">@Html.Raw(item.Functio)</li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- ITEM END -->
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }<!-- *** end Testimonial *** -->
+    <!-- =========================
+       Promote
+    ============================== -->
+    <section id="promote" class="promote main-bg white-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-4 text-center">
+                    <p class="light-text @Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</p>
+                </div>
+                <div class="col-lg-6 col-lg-offset-1 col-md-7 col-sm-8 button-container">
+                    @if (Model.Buttons[7].TextButton != "" & Model.Buttons[8].TextButton != "")
+                    {
+                        <a href="@Model.Buttons[7].UrlButton" class="button deep hvr-grow @Model.Buttons[7].StButton">@Html.Raw(Model.Buttons[7].TextButton)</a>
+                        <span class="margin-right-small margin-left-small">ou</span>
+                        <a href="@Model.Buttons[8].UrlButton" class="button light hvr-grow @Model.Buttons[8].StButton">@Html.Raw(Model.Buttons[8].TextButton)</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section> <!-- *** end promote *** -->
+    <!-- =========================
+       Portfolio
+    ============================== -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <section id="portfolio" class="portfolio padding-large text-center">
+            <div class="container margin-bottom-medium">
+                <div class="row margin-bottom-medium wow fadeInUp">
+                    <h2 class="@Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                    <div class="line main-bg"></div>
+
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="subtitle @Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</div>
+                    </div>
+                </div> <!-- *** end row *** -->
+                <!-- *****  Portfolio Filters ***** -->
+                <div class="filters">
+                    <ul class="wow lightSpeedIn">
+                        <li><a href="#" data-filter="*" class="active"><i class="icon-grid"></i></a></li>
+                        @foreach (var item in Model.ItemPortofolio.ListItens.Select(x => x.Category))
+                        {
+                            <li><a href="#" data-filter=".@item.Replace(" ","")">@item</a></li>
+                        }
+                    </ul>
+                </div> <!-- *** end filters *** -->
+            </div> <!-- *** end container *** -->
+            <!-- *****  Portfolio  wrapper ***** -->
+            <div class="portfolio-wrapper margin-bottom-medium">
+
+                <!-- =========================
+                   Portfolio item
+                ============================== -->
+                @foreach (var item in Model.ItemPortofolio.ListItens)
+                {
+                    <div class="portfolio-item @item.Category.Replace(" ", "")">
+                        <div class="portfolio">
+                            <a href="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" data-lightbox-gallery="portfolio">
+                                <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="Portfolio 1" /><!-- END PORTFOLIO IMAGE -->
+                                <div class="portfolio-overlay hvr-rectangle-out">
+                                    <h2 class="margin-bottom-small @item.ComponentPortofolioOption.Title">
+                                        @Html.Raw(item.Title)
+                                    </h2>
+                                    <div class="button">@Model.Textos[8].Text</div>
+                                </div><!-- END PORTFOLIO OVERLAY -->
+                            </a>
+                        </div>
+                    </div> <!-- *** end portfolio-item *** -->
+                }
+            </div> <!-- *** end  portfolio-wrapper *** -->
+        </section>
+    }<!-- *** end Portfolio *** -->
+    <!-- =========================
+       Twitter
+    ============================== -->
+    <section id="twitter" class="twitter" style="background-image:url(../../Content/uploads/@Model.ImagensForm[8])">
+        <div class="overlay">
+            <div class="container padding-large text-center">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="text-center">
+                            <h1 class="@Model.Textos[9].StText">@Html.Raw(Model.Textos[9].Text)</h1>
+                            <br />
+                            <p class="@Model.Textos[10].StText">@Html.Raw(Model.Textos[10].Text)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- *** end Twitter *** -->
+    <!-- =========================
+       Map
+    ============================== -->
+    <section id="map" class="map">
+        <div id="map-container" data-latitude="@Model.Profile._Latitude" data-longitude="@Model.Profile._Longitude"></div>
+    </section> <!-- *** end Map Container *** -->
+    <!-- =========================
+       Send Message
+    ============================== -->
+    <section id="send-message" class="send-message main-bg white-color text-center">
+        <div class="send-icon" data-toggle="modal" data-target="#contact-form">
+            <i class="fa fa-paper-plane"></i>
+        </div>
+        <p class="light-text @Model.Textos[11].StText">@Html.Raw(Model.Textos[11].Text)</p>
+
+        <!-- Contact Form Modal -->
+        <div class="modal fade contact-form" id="contact-form" tabindex="-1" role="dialog" aria-labelledby="contact-form" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <div class="modal-body">
+
+                        <!-- *****  Contact form ***** -->
+                        <form class="form" id="contact-form">
+                            <input type="hidden" id="mailTo" value="@Model.Profile.SiteNumber" />
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="first-name" placeholder="Seu Nome" required="required">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="last-name" placeholder="Seu Telefone">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" id="email" placeholder="Seu Email" required="required">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="project-name" placeholder="Assunto" required="required">
+                                </div>
+                                <div class="form-group col-md-12 mab-none">
+                                    <textarea rows="6" class="form-control" id="description" placeholder="Mensagem" required="required"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button class="button main-bg"><i class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div> <!-- *** end modal-body *** -->
+                </div> <!-- *** end modal-content *** -->
+            </div> <!-- *** end modal-dialog *** -->
+        </div> <!-- *** end Contact Form modal *** -->
+    </section> <!-- *** end Send Message *** -->
+    <!-- =========================
+       Footer
+    ============================== -->
+    <footer id="footer" class="footer">
+        <div class="container padding-large text-center">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <figure class="margin-bottom-medium">
+                        <img src="~/Content/uploads/@Model.ImagensLogo[1]" class="footer-logo" alt="Krefolio">
+                    </figure>
+                    <p class="margin-bottom-medium @Model.Textos[12].StText">@Html.Raw(Model.Textos[12].Text)</p>
+
+                    <p class="margin-bottom-medium">
+                        @Model.Profile.Adress <br />
+                        <span><strong>Tel: </strong> @Model.Profile.Phone</span><br />
+                        @if (Model.Profile.WhatsApp != "")
+                        {
+                            <span><strong>WhatsApp: </strong> @Model.Profile.WhatsApp</span><br />
+                        }
+                        <span><strong>Email: </strong> @Model.Profile.Email</span><br />
+                        @if (Model.Profile.Website != "")
+                        {
+                            <span><strong>Website :</strong><a href="@Model.Profile.Website" target="_blank"> @Model.Profile.Website</a></span>
+                        }
+                    </p>
+
+                    <!-- =========================
+                       Social icons
+                    ============================== -->
+                    <ul class="social margin-bottom-medium">
+                        @if (Model.ItemSocialNetwork.ItemActive)
+                        {
+                            if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                            {
+                                foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                {
+                                    <li class="@item.Classe1 hvr-pulse"><a href="@item.Link" target="_blank"><i class="@item.Classe2"></i></a></li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="facebook hvr-pulse"><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter hvr-pulse"><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a></li>
+                                <li class="g-plus hvr-pulse"><a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a></li>
+                                <li class="linkedin hvr-pulse"><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin"></i></a></li>
+                            }
+                        }
+                    </ul>
+                    <p class="copyright">
+                        &copy; Copyright 2015 KreFolio - All Rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer> <!-- *** end Footer *** -->
+    <!-- =========================
+       Back to top button
+    ============================== -->
+    <div class="back-to-top" data-rel="header">
+        <i class="icon-up"></i>
+    </div>
+
+    <!-- =========================
+     JavaScripts
+    ============================== -->
+    <script src="~/Componentes/Professional/Krefolio/js/vendor/jquery-1.11.1.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/vendor/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&callback=initMap" async defer></script>
+    <script src="~/Componentes/Professional/Krefolio/js/vendor/bootstrap.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/wow.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/jquery.easing.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/appear.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/jquery.circliful.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/owl.carousel.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/nivo-lightbox.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/isotope.pkgd.min.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/notie.js"></script>
+    <script src="~/Componentes/Professional/Krefolio/js/main.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+</body>
+</html>
+

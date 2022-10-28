@@ -1,0 +1,59 @@
+﻿@model Ishopping.MVC.ViewModels.Admin.AdminSliderConfigViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdminSliderConfigViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartialView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartialView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTarget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTarget)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.AdminViewDataId })
+</p>

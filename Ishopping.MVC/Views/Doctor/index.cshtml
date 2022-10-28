@@ -1,0 +1,319 @@
+﻿@model Ishopping.ViewModels.TemplateBasicPro.IndexDoctorViewModelDeserialize
+@{
+    Layout = null;
+    var i = 0;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Partial("_PartialMetaTags")
+
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Doctor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/style.css">
+    <link href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+    <script src="~/Componentes/BasicPro/Doctor/js/modernizr.js"></script>
+
+</head>
+<body>
+
+    <!-- ====================================================
+    header section -->
+    <header class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-5 header-logo">
+                    <br>
+                    <a href="index.html"><img src="~/Componentes/BasicPro/Doctor/img/logo.png" alt="" class="img-responsive logo"></a>
+                </div>
+                <div class="col-md-7">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid nav-bar">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    @foreach (var menu in Model.Menu)
+                                    {
+                                        <li><a class="menu @menu.Active" href="@menu.ViewLink">@menu.TextMenu</a></li>
+                                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                        {
+                                            <li><a class="menu" href="@item.Link">@item.TextMenu</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div><!-- /navbar-collapse -->
+                        </div><!-- / .container-fluid -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header> <!-- end of header area -->
+
+    <section class="slider" id="home">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="header-backup"></div>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="~/Content/uploads/@Model.ImagensForm[0]" alt="">
+                            <div class="carousel-caption">
+                                <h1 class="@Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                                <p class="@Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</p>
+                                @if (Model.Buttons[0].TextButton != "")
+                                {
+                                    <button class="@Model.Buttons[0].StButton" onclick="location.href = '@Model.Buttons[0].UrlButton'">@Html.Raw(Model.Buttons[0].TextButton)</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/uploads/@Model.ImagensForm[1]" alt="">
+                            <div class="carousel-caption">
+                                <h1 class="@Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h1>
+                                <p class="@Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</p>
+                                @if (Model.Buttons[1].TextButton != "")
+                                {
+                                    <button class="@Model.Buttons[1].StButton" onclick="location.href = '@Model.Buttons[1].UrlButton'">@Html.Raw(Model.Buttons[1].TextButton)</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/uploads/@Model.ImagensForm[2]" alt="">
+                            <div class="carousel-caption">
+                                <h1 class="@Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h1>
+                                <p class="@Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</p>
+                                @if (Model.Buttons[2].TextButton != "")
+                                {
+                                    <button class="@Model.Buttons[2].StButton" onclick="location.href = '@Model.Buttons[2].UrlButton'">@Html.Raw(Model.Buttons[2].TextButton)</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/uploads/@Model.ImagensForm[3]" alt="">
+                            <div class="carousel-caption">
+                                <h1 class="@Model.Textos[6].StText">@Html.Raw(Model.Textos[6].Text)</h1>
+                                <p class="@Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</p>
+                                @if (Model.Buttons[3].TextButton != "")
+                                {
+                                    <button class="@Model.Buttons[3].StButton" onclick="location.href = '@Model.Buttons[3].UrlButton'">@Html.Raw(Model.Buttons[3].TextButton)</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section><!-- end of slider section -->
+    <!-- about section -->
+    @if (Model.ItemPortofolio.ItemActive)
+    {
+        <section class="about text-center" id="about">
+            <div class="container">
+                <div class="row">
+                    <h2 class="@Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                    <h4 class="@Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</h4>
+                    @foreach (var item in Model.ItemPortofolio.ListItens)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-about-detail clearfix">
+                                <div class="about-img">
+                                    <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                </div>
+                                <div class="about-details">
+                                    <h1></h1>
+                                    <h3 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h3>
+                                    <p class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }<!-- end of about section -->
+    <!-- service section starts here -->
+    @if (Model.ItemService.ItemActive)
+    {
+        <section class="service text-center" style="background: url(../../Content/uploads/@Model.ImagensForm[4]" id="service">
+            <div class="container">
+                <div class="row">
+                    <h2 class="@Model.ItemService.ItemStTitle">@Html.Raw(Model.ItemService.ItemTitle)</h2>
+                    <h4 class="@Model.ItemService.ItemStSubTitle">@Html.Raw(Model.ItemService.ItemSubTitle)</h4>
+                    @foreach (var item in Model.ItemService.ListItens)
+                    {
+                        <div class="col-md-3 col-sm-6">
+                            <div class="single-service">
+                                <div class="single-service-img">
+                                    <div class="service-img">
+                                        <img class="heart img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                    </div>
+                                </div>
+                                <h3 class="@item.ComponentServiceOption.Title">@Html.Raw(item.Title)</h3>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }<!-- end of service section -->
+    <!-- team section -->
+    @if (Model.ItemTeam.ItemActive)
+    {
+        <section class="team" id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="team-heading text-center">
+                        <h2 class="@Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h2>
+                        <h4 class="@Model.ItemTeam.ItemStSubTitle">@Html.Raw(Model.ItemTeam.ItemSubTitle)</h4>
+                    </div>
+                    @{i = 0;}
+                    @foreach (var item in Model.ItemTeam.ListItens)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            <div class="col-md-2 single-member col-sm-4">
+                                <div class="person">
+                                    <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                </div>
+                                <div class="person-detail">
+                                    <div class="arrow-bottom"></div>
+                                    <h3 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h3>
+                                    <p class="@item.ComponentTeamOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-2 single-member col-sm-4">
+                                <div class="person-detail">
+                                    <div class="arrow-top"></div>
+                                    <h3 class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</h3>
+                                    <p class="@item.ComponentTeamOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                                <div class="person">
+                                    <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                </div>
+                            </div>
+                        }
+                        i = i + 1;
+                    }
+                </div>
+            </div>
+        </section>
+    }<!-- end of team section -->
+    <!-- map section -->
+    <div class="api-map" id="contact">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 map" data-latitude="@Model.Profile._Latitude" data-longitude="@Model.Profile._Longitude" id="map"></div>
+            </div>
+        </div>
+    </div><!-- end of map section -->
+    <!-- contact section starts here -->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <button style="margin-top:15px; font-size:18px" type="button" id="hideForm">Mostrar mapa</button>
+                </div>
+                <div class="contact-caption clearfix">
+                    <div class="contact-heading text-center">
+                        <h2 class="@Model.Textos[8].StText">@Model.Textos[8].Text</h2>
+                    </div>
+                    <div class="col-md-5 contact-info text-left">
+                        <h3 class="@Model.Textos[9].StText">@Model.Textos[9].Text</h3>
+                        <div class="info-detail">
+                            <ul><li><i class="fa fa-map-marker"></i><span>Endereço: </span>@Model.Profile.Adress</li></ul>
+                            <ul><li><i class="fa fa-phone"></i><span>Telefone: </span>@Model.Profile.Phone</li></ul>
+                            @if (Model.Profile.WhatsApp != "")
+                            {
+                                <ul><li><i class="fa fa-whatsapp"></i><span>Whatsapp: </span>@Model.Profile.WhatsApp</li></ul>
+                            }
+                            <ul><li><i class="fa fa-envelope"></i><span>Email: </span>@Model.Profile.Email</li></ul>
+                            @if (Model.Profile.Website != "")
+                            {
+                                <ul><li><i class="fa fa-globe"></i><span>Website: </span><a href="@Model.Profile.Website" target="_blank" style="color:#fff">@Model.Profile.Website</a></li></ul>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 contact-form">
+                        <h3>Enviar e-mail</h3>
+                        <form id="main-contact-form" name="contact-form" method="post" action="@Url.Action("EmailS","AppServices")">
+                            <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                            <input class="name" name="name" type="text" placeholder="Seu Nome" required="required">
+                            <input class="email" name="email" type="email" placeholder="Seu Email" required="required">
+                            <input class="phone" name="subject" type="text" placeholder="Assunto" required="required">
+                            <textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Mensagem" required="required"></textarea>
+                            <input class="submit-btn" type="submit" value="Enviar Email">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- end of contact section -->
+    <!-- footer starts here -->
+    <footer class="footer clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 footer-para">
+                    <p>&copy;Mostafizur All right reserved</p>
+                </div>
+                <div class="col-xs-6 text-right">
+                    @if (Model.ItemSocialNetwork.ItemActive)
+                    {
+                        if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                        {
+                            foreach (var item in Model.ItemSocialNetwork.ListItens)
+                            {
+                                <a href="@item.Link" target="_blank"><i class="@item.Classe1"></i></a>
+                            }
+                        }
+                        else
+                        {
+                            <a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook"></i></a>
+                            <a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter"></i></a>
+                            <a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google-plus"></i></a>
+                            <a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin"></i></a>
+                            <a class="popup" href="http://www.tumblr.com/share/link?url="><i class="fa fa-tumblr"></i></a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&callback=initMap" async defer></script>
+    <script src="~/Componentes/BasicPro/Doctor/js/smoothscroll.js"></script>
+    <script src="~/Componentes/BasicPro/Doctor/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/BasicPro/Doctor/js/custom.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+﻿
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <span><input type="checkbox" id="userSpan" value=""></span>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Entre a tag span</a>
+        </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">           
+            <div class="panel-group" id="accordion4">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="stext" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse44">Alterar texto</a>
+                        </h6>
+                    </div>
+                    <div id="collapse44" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group input-group col-md-3">
+                                        <h4 class="color1">Font-size:</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="fontSize" id="sfsv" aria-label="..." value="0">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sfsl">px <span class="caret"></span></button>
+                                                <ul class="dropdown-menu dropdown-menu-right" id="dropdownFont" role="menu">
+                                                    <li><a>px</a></li>
+                                                    <li><a>%</a></li>
+                                                    <li><a>em</a></li>
+                                                    <li><a>rem</a></li>
+                                                </ul>
+                                            </div><!-- /btn-group -->
+                                        </div><!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group input-group col-md-3">
+                                        <h4 class="color1">Font-family:</h4>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-label="..." name="fontFamily" id="sff" value="">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Selecione <span class="caret"></span></button>
+                                                <ul class="dropdown-menu scrollable-menu dropdownFont" style="max-height: 180px;" role="menu"></ul>
+                                            </div><!-- /btn-group -->
+                                        </div><!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="sfst">Font-style</label>
+                                        <div class="btn-group input-group ">
+                                            <button type="button" class="btn btn-default txt" name="fontStyle" id="sfst" value="padrão" style="width:160px">padrão</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a>padrão</a></li>
+                                                <li><a>normal</a></li>
+                                                <li><a>italic</a></li>
+                                                <li><a>oblique</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="sfw">Font-weight</label>
+                                        <div class="btn-group input-group ">
+                                            <button type="button" class="btn btn-default txt" name="fontWeight" id="sfw" value="padrão" style="width:160px">padrão</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a>padrão</a></li>
+                                                <li><a>normal</a></li>
+                                                <li><a>bold</a></li>
+                                                <li><a>bolder</a></li>
+                                                <li><a>lighter</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <p id="sespcp">Espaçamento entre letras: <span class="emOrange">0px</span></p>
+                                        <input type='range' min="-20" max="80" value="0" id="sespc" />
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <p id="sesplp">Espaçamento entre linhas: <span class="emOrange">0%</span></p>
+                                        <input type='range' min="0" max="400" value="0" id="sespl" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="sc">Cor do texto</label>
+                                        <div class="input-group" name="colorPicker" id="insc">
+                                            <input type="text" class="form-control txt" name="dcolor" id="sc" />
+                                            <span class="input-group-addon">
+                                                <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label class="color2" for="sbc">Cor de fundo</label>
+                                        <div class="input-group" name="colorPicker" id="insbc">
+                                            <input type="text" class="form-control txt" name="dcolor" id="sbc" />
+                                            <span class="input-group-addon">
+                                                <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="ssize" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse40">Alterar preenchimento</a>
+                        </h6>
+                    </div>
+                    <div id="collapse40" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Padding:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="spvp">Tam. vertical: <span class="emOrange">16px</span></p>
+                                            <input type='range' min="0" max="40" value="16" id="spv" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sphp">Tam. horizontal: <span class="emOrange">32px</span></p>
+                                            <input type='range' min="0" max="80" value="32" id="sph" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="sborder" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse41">Alterar borda</a>
+                        </h6>
+                    </div>
+                    <div id="collapse41" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Border:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sbrp">Borda: <span class="emOrange">0px</span></p>
+                                            <input type='range' min="0" max="40" value="0" id="sbr" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sbvlp">Tamanho: <span class="emOrange">0px</span></p>
+                                            <input type='range' min="0" max="12" value="0" id="sbvl" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="insbcl">
+                                                <input type="text" class="form-control" id="sbcl" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da borda</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="stextshadow" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse42">Adicionar sombra ao texto</a>
+                        </h6>
+                    </div>
+                    <div id="collapse42" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Text-shadow:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="stextShadowp1">Pos. vertical: <span class="emOrange">0px</span></p>
+                                            <input class="sts" type='range' min="-60" max="60" value="0" id="stextShadowPx1" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="stextShadowp2">Pos. horizontal: <span class="emOrange">0px</span></p>
+                                            <input class="sts" type='range' min="-60" max="60" value="0" id="stextShadowPx2" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="stextShadowp3">Ofuscar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="sts" type='range' min="0" max="60" value="0" id="stextShadowPx3" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="instextShadowColor">
+                                                <input type="text" class="form-control sts" id="stextShadowColor" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da sombra</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="sboxshadow" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse43">Adicionar sombra a caixa</a>
+                        </h6>
+                    </div>
+                    <div id="collapse43" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Box-shadow:</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sboxShadowp1">Pos. vertical: <span class="emOrange">0px</span></p>
+                                            <input class="sbs" type='range' min="-60" max="60" value="0" id="sboxShadowPx1" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sboxShadowp2">Pos. horizontal: <span class="emOrange">0px</span></p>
+                                            <input class="sbs" type='range' min="-60" max="60" value="0" id="sboxShadowPx2" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="sboxShadowp3">Ofuscar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="sbs" type='range' min="0" max="60" value="0" id="sboxShadowPx3" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="sboxShadowp4">Espalhar sombra: <span class="emOrange">0px</span></p>
+                                            <input class="sbs" type='range' min="-60" max="60" value="0" id="sboxShadowPx4" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-6 col-lg-5 col-md-5">
+                                            <div class="input-group" name="colorPicker" id="insboxShadowColor">
+                                                <input type="text" class="form-control sbs" id="sboxShadowColor" name="dcolor" />
+                                                <span class="input-group-addon">
+                                                    <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">&nbsp;&nbsp;cor da sombra</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h6 class="panel-title color2">
+                            <span><input type="checkbox" id="stransform" value=""></span>
+                            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse46">Adicionar transformação</a>
+                        </h6>
+                    </div>
+                    <div id="collapse46" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4 class="color1">Transform:</h4>
+                                        </div>
+                                        <br />
+                                        <div class="col-md-8">
+                                            <p id="stransformr">Rotacionar: <span class="emOrange">0 grau(s)</span></p>
+                                            <input type='range' min="-360" max="360" value="0" id="stransformrv" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-8">
+                                            <p id="stransformsk">Inclinar: <span class="emOrange">0 grau(s)</span></p>
+                                            <input type='range' min="-180" max="180" value="0" id="stransformskv" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="stransformtv">Mover verticalmente: <span class="emOrange">0 px</span></p>
+                                            <input type='range' min="-200" max="200" value="0" id="stransformtvpx" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="stransformth">Mover horizontalmente: <span class="emOrange">0 px</span></p>
+                                            <input type='range' min="-200" max="200" value="0" id="stransformthpx" />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-4">
+                                            <p id="stransformsv">Escala vertical: <span class="emOrange">10/10</span></p>
+                                            <input type='range' min="1" max="15" value="10" id="stransformsvpx" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p id="stransformsh">Escala horizontal: <span class="emOrange">10/10</span></p>
+                                            <input type='range' min="1" max="15" value="10" id="stransformshpx" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,488 @@
+﻿@model Ishopping.MVC.ViewModels.IndexBlueViewModelDeserialize
+@{
+    Layout = null;
+    var i = 0; var ms = "ms"; var ic = "";
+}
+<!DOCTYPE html>
+<html lang="pt-br" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Html.Partial("_PartialMetaTags")
+        
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <!-- Fontawesome Icon font -->
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Blue/css/jquery.fancybox.css">
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Blue/css/bootstrap.min.css">
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Blue/css/owl.carousel.css">
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Blue/css/slit-slider.css">
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Componentes/BasicPro/Blue/css/animate.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/main.css">
+    <link href="~/Componentes/BasicPro/Blue/css/fixed.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css">
+
+    <!-- Modernizer Script for old Browsers -->
+    <script src="~/Componentes/BasicPro/Blue/js/modernizr-2.6.2.min.js"></script>
+
+    <style>
+        /* centered columns styles */
+        .row-centered {
+            text-align: center;
+        }
+
+        .col-centered {
+            display: inline-block;
+            float: none;
+            /* reset the text-align */
+            text-align: left;
+            /* inline-block space fix */
+            margin-right: -4px;
+        }
+    </style>
+
+</head>
+
+<body id="body">
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="loder-box">
+            <div class="battery"></div>
+        </div>
+    </div>
+    <!-- end preloader -->
+    <!--
+    Fixed Navigation
+    ==================================== -->
+    <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- responsive nav button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- /responsive nav button -->
+                <!-- logo -->
+                <h1 class="navbar-brand">
+                    <a href="#body">@Model.Profile.Empresa</a>
+                </h1>
+                <!-- /logo -->
+            </div>
+
+            <!-- main nav -->
+            <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                <ul id="nav" class="nav navbar-nav">
+                    @foreach (var menu in Model.Menu)
+                    {
+                        <li><a href="@menu.ViewLink">@menu.TextMenu</a></li>
+                        foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                        {
+                            <li><a class="@item.TextMenu" href="@item.Link">@item.TextMenu</a></li>
+                        }
+                    }
+                </ul>
+            </nav>
+            <!-- /main nav -->
+
+        </div>
+    </header>
+    <!--
+    End Fixed Navigation
+    ==================================== -->
+
+    <main class="site-content" role="main">
+
+        <!--
+        Home Slider
+        ==================================== -->
+
+        <section id="home-slider">
+            <div id="slider" class="sl-slider-wrapper">
+                <div class="sl-slider">
+                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                        <div class="bg-img" style="background-image: url(../../Content/uploads/@Model.ImagensForm[0])"></div>
+                        <div class="slide-caption">
+                            <div class="caption-content">
+                                <h2 class="animated fadeInDown @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h2>
+                                <span class="animated fadeInDown @Model.Textos[0].StText">@Html.Raw(Model.Textos[1].Text)</span>
+                                @if (Model.Buttons[0].TextButton != "")
+                                {
+                                    <a href="@Model.Buttons[0].UrlButton" class="btn btn-blue btn-effect @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                        <div class="bg-img" style="background-image: url(../../Content/uploads/@Model.ImagensForm[1])"></div>
+                        <div class="slide-caption">
+                            <div class="caption-content">
+                                <h2 class="animated fadeInDown @Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h2>
+                                <span class="animated fadeInDown @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</span>
+                                @if (Model.Buttons[1].TextButton != "")
+                                {
+                                    <a href="@Model.Buttons[1].UrlButton" class="btn btn-blue btn-effect @Model.Buttons[1].StButton">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                        <div class="bg-img" style="background-image: url(../../Content/uploads/@Model.ImagensForm[2])"></div>
+                        <div class="slide-caption">
+                            <div class="caption-content">
+                                <h2 class="animated fadeInDown @Model.Textos[4].StText">@Html.Raw(Model.Textos[4].Text)</h2>
+                                <span class="animated fadeInDown @Model.Textos[5].StText">@Html.Raw(Model.Textos[5].Text)</span>
+                                @if (Model.Buttons[2].TextButton != "")
+                                {
+                                    <a href="@Model.Buttons[2].UrlButton" class="btn btn-blue btn-effect @Model.Buttons[2].StButton">@Html.Raw(Model.Buttons[2].TextButton)</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /sl-slider -->
+                <!--
+                <nav id="nav-arrows" class="nav-arrows">
+                    <span class="nav-arrow-prev">Previous</span>
+                    <span class="nav-arrow-next">Next</span>
+                </nav>
+                -->
+
+                <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+                    <a href="javascript:;" class="sl-prev">
+                        <i class="fa fa-angle-left fa-3x"></i>
+                    </a>
+                    <a href="javascript:;" class="sl-next">
+                        <i class="fa fa-angle-right fa-3x"></i>
+                    </a>
+                </nav>
+                <nav id="nav-dots" class="nav-dots visible-xs visible-sm hidden-md hidden-lg">
+                    <span class="nav-dot-current"></span>
+                    <span></span>
+                    <span></span>
+                </nav>
+            </div><!-- /slider-wrapper -->
+        </section>
+
+        <!--
+        End Home SliderEnd
+        ==================================== -->
+        <!-- about section -->
+        @if (Model.ItemPanel.ItemActive)
+        {
+            <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="sec-title text-center white wow animated fadeInDown">
+                            <h2 class="@Model.ItemPanel.ItemStTitle">@Html.Raw(Model.ItemPanel.ItemTitle)</h2>
+                        </div>
+                        <div class="col-md-8 wow animated fadeInLeft">
+                            <div class="recent-works">
+                                <div id="works">
+                                    @foreach (var item in Model.ItemPanel.ListItens)
+                                    {
+                                        <div class="work-item">
+                                            <h3 class="@item.ComponentPanelOption.Title">@Html.Raw(item.Title)</h3>
+                                            <p class="@item.ComponentPanelOption.Text">@Html.Raw(item.Text)</p>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- end about section -->
+        <!-- Service section -->
+        @if (Model.ItemActivity.ItemActive)
+        {
+            <section id="service">
+                <div class="container">
+                    <div class="row">
+                        <div class="sec-title text-center">
+                            <h2 class="wow animated bounceInLeft @Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h2>
+                            <p class="wow animated bounceInRight @Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</p>
+                        </div>
+                        @{i = 100;}
+                        @foreach (var item in Model.ItemActivity.ListItens)
+                        {
+                            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="@i@ms">
+                                <div class="service-item">
+                                    <div class="service-icon">
+                                        <i class="@item.VectorIcon fa-3x"></i>
+                                    </div>
+                                    <h3 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h3>
+                                    <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description)</p>
+                                </div>
+                            </div>
+                            i = i + 300;
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- end Service section -->
+        <!-- portfolio section -->
+        @if (Model.ItemPortofolio.ItemActive)
+        {
+            <section id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="sec-title text-center wow animated fadeInDown">
+                            <h2 class="@Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h2>
+                            <p class="@Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</p>
+                        </div>
+                        <ul class="project-wrapper wow animated fadeInUp">
+                            @foreach (var item in Model.ItemPortofolio.ListItens)
+                            {
+                                <li class="portfolio-item">
+                                    <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" class="img-responsive" alt="@item.Description">
+                                    <figcaption class="mask">
+                                        <h3 class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</h3>
+                                        <p class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</p>
+                                    </figcaption>
+                                    <ul class="external">
+                                        <li><a class="fancybox" title="@item.Title" data-fancybox-group="works" href="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName"><i class="fa fa-search"></i></a></li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- end portfolio section -->
+        <!-- Testimonial section -->
+        @if (Model.ItemClient.ItemActive)
+        {
+            <section id="testimonials" class="parallax" style="background-image: url(../../Content/uploads/@Model.ImagensForm[3])">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="row">
+                            <div class="sec-title text-center white wow animated fadeInDown">
+                                <h2 class="@Model.ItemClient.ItemStTitle">@Html.Raw(Model.ItemClient.ItemTitle)</h2>
+                            </div>
+                            <div id="testimonial" class=" wow animated fadeInUp">
+                                @foreach (var item in Model.ItemClient.ListItens)
+                                {
+                                    <div class="testimonial-item text-center">
+                                        <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="Our Clients">
+                                        <div class="clearfix">
+                                            <span class="@item.ComponentClientOption.Name">@Html.Raw(item.Name)</span>
+                                            <p class="@item.ComponentClientOption.Comment">@Html.Raw(item.Comment)</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- end Testimonial section -->
+        <!-- Price section -->
+        @if (Model.ItemPricing.ItemActive)
+        {
+            <section id="price">
+                <div class="container">
+                    <div class="row row-centered">
+                        <div class="sec-title text-center wow animated fadeInDown">
+                            <h2 class="@Model.ItemPricing.ItemStTitle">@Html.Raw(Model.ItemPricing.ItemTitle)</h2>
+                            <p class="@Model.ItemPricing.ItemStSubTitle">@Html.Raw(Model.ItemPricing.ItemSubTitle)</p>
+                        </div>
+                        @{i = 100;}
+                        @foreach (var item in Model.ItemPricing.ListItens)
+                        {
+                            if (item.Destacar) { ic = "price-table featured text-center"; }
+                            else { ic = "price-table text-center"; }
+
+                            <div class="col-md-4 col-centered wow animated fadeInUp" data-wow-delay="@i@ms">
+                                <div class="@ic">
+                                    <span class="@item.ComponentPricingOption.NomePlano">@Html.Raw(item.NomePlano)</span>
+                                    <div class="value">
+                                        <span class="@item.ComponentPricingOption.Moeda">@item.Moeda</span>
+                                        <span class="@item.ComponentPricingOption.Price">@item.Price</span><br>
+                                        <span class="@item.ComponentPricingOption.Periodo">@Html.Raw(item.Periodo)</span>
+                                    </div>
+                                    <ul class="@item.ComponentPricingOption.Description">
+                                        <li>@Html.Raw(item.Description)</li>
+                                        <li><a href="@item.UrlButton" target="_blank" class="@item.ComponentPricingOption.TextButton">@Html.Raw(item.TextButton)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            i = i + 400;
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- end Price section -->
+        <!-- Social section -->
+        <section id="social" class="parallax" style="background-image: url(../../Content/uploads/@Model.ImagensForm[4])">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="sec-title text-center white wow animated fadeInDown">
+                            <h2 class="@Model.Textos[6].StText">@Html.Raw(Model.Textos[6].Text)</h2>
+                            <p class="@Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end Social section -->
+        <!-- Contact section -->
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="sec-title text-center wow animated fadeInDown">
+                        <h2 class="@Model.Textos[8].StText">@Html.Raw(Model.Textos[8].Text)</h2>
+                        <p class="@Model.Textos[9].StText">@Html.Raw(Model.Textos[9].Text)</p>
+                    </div>
+                    <div class="col-md-7 contact-form wow animated fadeInLeft">
+                        <form id="main-contact-form" name="contact-form" action="@Url.Action("EmailS","AppServices")" method="post">
+                            <input type="hidden" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                            <div class="input-field">
+                                <input type="text" name="name" class="form-control" placeholder="Seu Nome..." required="required">
+                            </div>
+                            <div class="input-field">
+                                <input type="email" name="email" class="form-control" placeholder="Seu Email..." required="required">
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="subject" class="form-control" placeholder="Assunto..." required="required">
+                            </div>
+                            <div class="input-field">
+                                <textarea name="message" class="form-control" placeholder="Mensagem..." required="required"></textarea>
+                            </div>
+                            <button type="submit" id="submit" class="btn btn-blue btn-effect">Enviar</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-5 wow animated fadeInRight">
+                        <address class="contact-details">
+                            <p><i class="fa fa-map-marker"></i>@Model.Profile.Adress</p>
+                            <p><i class="fa fa-phone"></i>Telefone: @Model.Profile.Phone </p>
+                            @if (Model.Profile.WhatsApp != "")
+                            {
+                                <p><i class="fa fa-whatsapp"></i>WhatsApp: @Model.Profile.WhatsApp </p>
+                            }
+                            <p><i class="fa fa-envelope"></i>Email: @Model.Profile.Email</p>
+                            @if (Model.Profile.Website != "")
+                            {
+                                <p><i class="fa fa-globe"></i>Website: <a href="@Model.Profile.Website" target="_blank"> @Model.Profile.Website</a></p>
+                            }
+                        </address>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- end Contact section -->
+
+        <section id="google-map">
+            <div id="map-canvas" class="wow animated fadeInUp"></div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="footer-content">
+                    <div class="wow animated fadeInDown">
+                        <h4 class="@Model.Textos[10].StText">@Html.Raw(Model.Textos[10].Text)</h4>
+                    </div>
+                    @if (Model.ItemSocialNetwork.ItemActive)
+                    {
+                        if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                        {
+                            <div class="footer-social">
+                                <ul>
+                                    @{i = 300;}
+                                    @foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                    {
+                                        <li class="wow animated zoomIn" data-wow-delay="@i@ms"><a href="@item.Link" target="_blank"><i class="@item.Classe1 fa-3x"></i></a></li>
+                                        i = i + 300;
+                                    }
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="footer-social">
+                                <ul>
+                                    <li class="wow animated zoomIn" data-wow-delay="0.3s"><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u="><i class="fa fa-facebook fa-3x"></i></a></li>
+                                    <li class="wow animated zoomIn" data-wow-delay="0.6s"><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url="><i class="fa fa-twitter fa-3x"></i></a></li>
+                                    <li class="wow animated zoomIn" data-wow-delay="0.9s"><a class="popup" href="https://plus.google.com/share?url="><i class="fa fa-google fa-3x"></i></a></li>
+                                    <li class="wow animated zoomIn" data-wow-delay="1.2s"><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url="><i class="fa fa-linkedin fa-3x"></i></a></li>
+                                    <li class="wow animated zoomIn" data-wow-delay="1.5s"><a class="popup" href="http://www.tumblr.com/share/link?url="><i class="fa fa-tumblr fa-3x"></i></a></li>
+                                </ul>
+                            </div>
+                        }
+                    }
+
+                    <p>Design And developed By <a href="http://themefisher.com/">Themefisher</a>. All rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initMap() {
+
+            var lat = '@Model.Profile._Latitude';
+            var lng = '@Model.Profile._Longitude';
+            var myLatLng = new google.maps.LatLng(lat, lng);
+
+            var mapOptions = {
+                zoom: 16,
+                center: myLatLng,
+                disableDefaultUI: true,
+                scrollwheel: false,
+                navigationControl: true,
+                mapTypeControl: true,
+                scaleControl: false,
+                draggable: true,
+            };
+
+            var mapElement = document.getElementById('map-canvas');
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat, lng),
+                map: map
+            });
+        }
+    </script>
+
+    <!-- Essential jQuery Plugins
+    ================================================== -->
+    <script src="~/Componentes/BasicPro/Blue/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Componentes/BasicPro/Blue/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/BasicPro/Blue/js/jquery.singlePageNav.min.js"></script>   
+    <script src="~/Componentes/BasicPro/Blue/js/jquery.fancybox.pack.js"></script>  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&callback=initMap" async defer></script>
+    <script src="~/Componentes/BasicPro/Blue/js/owl.carousel.min.js"></script>
+    <script src="~/Componentes/BasicPro/Blue/js/jquery.easing.min.js"></script>  
+    <script src="~/Componentes/BasicPro/Blue/js/jquery.slitslider.js"></script>
+    <script src="~/Componentes/BasicPro/Blue/js/jquery.ba-cond.min.js"></script>   
+    <script src="~/Componentes/BasicPro/Blue/js/wow.min.js"></script>
+    <script src="~/Componentes/BasicPro/Blue/js/main.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+</body>
+</html>

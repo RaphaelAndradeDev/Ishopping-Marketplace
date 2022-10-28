@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89389CAE-3B3A-4365-A012-D33AF64A829C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ishopping.Infra.Data</RootNamespace>
+    <AssemblyName>Ishopping.Infra.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DapperExtensions, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DapperExtensions.1.5.0\lib\net45\DapperExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexto\ProjetoModeloContext.cs" />
+    <Compile Include="EntityConfig\AdminImageGalleryConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminSliderConfigConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminFinancialPlanConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminSliderConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminSocialNetWorkConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminTemplateConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminViewDataConfiguration.cs" />
+    <Compile Include="EntityConfig\AdminViewItemConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentActivityOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentBrandOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentClientOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentExtraLinkOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentFaqOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentFeaturesOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPanelOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPanelConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPortofolioOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPostOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPresentationOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPresentationConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPricingOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentProjectOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentScopeOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentScopeConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentServiceOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSimpleProductOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSimpleProductConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSkillOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSummaryOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSummaryConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentTeamOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentThumbnailConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserStyleColorConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentButtonOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentListOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentMenuOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentSliderConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentTextOptionConfiguration.cs" />
+    <Compile Include="EntityConfig\SupportTransactionStatusConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentActivityConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentBrandConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentClientConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentExtraLinkConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentFaqConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentFeaturesConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPortofolioConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPostConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentPricingConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentProjectConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentServiceConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSkillConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentSocialNetworkConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentTeamConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentTeamSocialNetworkConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserAppearanceConfiguration.cs" />
+    <Compile Include="EntityConfig\ComponentMenuConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserDisplayConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserMaintenanceConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserStyleClassConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserViewConfiguration.cs" />
+    <Compile Include="EntityConfig\ConfigUserViewItemConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentButtonConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentIconConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentListConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentTextConfiguration.cs" />
+    <Compile Include="EntityConfig\ContentVideoConfiguration.cs" />
+    <Compile Include="EntityConfig\ECommerceProductCategoryConfiguration.cs" />
+    <Compile Include="EntityConfig\ECommerceProductConfiguration.cs" />
+    <Compile Include="EntityConfig\ECommerceProductGroupConfiguration.cs" />
+    <Compile Include="EntityConfig\ECommerceProductSoldConfiguration.cs" />
+    <Compile Include="EntityConfig\ECommerceShoppingListConfiguration.cs" />
+    <Compile Include="EntityConfig\SupportTransactionConfiguration.cs" />
+    <Compile Include="EntityConfig\RepositoryBaseConfiguration.cs" />
+    <Compile Include="EntityConfig\AppViewConfiguration.cs" />
+    <Compile Include="EntityConfig\SupportErrorConfiguration.cs" />
+    <Compile Include="EntityConfig\SupportInfoConfiguration.cs" />
+    <Compile Include="EntityConfig\SupportNotificationConfiguration.cs" />
+    <Compile Include="EntityConfig\UserFinancialConfiguration.cs" />
+    <Compile Include="EntityConfig\UserFinancialHistoryConfiguration.cs" />
+    <Compile Include="EntityConfig\UserImageGalleryConfiguration.cs" />
+    <Compile Include="EntityConfig\UserMenuViewConfiguration.cs" />
+    <Compile Include="EntityConfig\UserMenuConfiguration.cs" />
+    <Compile Include="EntityConfig\UserMenuViewItemConfiguration.cs" />
+    <Compile Include="EntityConfig\UserRegisterProfileConfiguration.cs" />
+    <Compile Include="EntityConfig\UserRegisterStandardConfiguration.cs" />
+    <Compile Include="EntityConfig\UserSerializeViewDataConfiguration.cs" />
+    <Compile Include="Migrations\201804032326442_inicio.cs" />
+    <Compile Include="Migrations\201804032326442_inicio.Designer.cs">
+      <DependentUpon>201804032326442_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Dapper\AdminFinancialPlanDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\AdminImageGalleryDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\AdminViewDataDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ConfigUserMaintenanceDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\Commun\Repository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentActivityDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentBrandDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentClientDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentExtraLinkDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentFaqDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentFeaturesDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentMenuDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentPanelDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentPortofolioDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentPostDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentPresentationDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentPricingDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentProjectDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentScopeDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentServiceDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentSimpleProductDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentSkillDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentSocialNetworkDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentSummaryDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentTeamDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ComponentThumbnailDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ConfigUserDisplayDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ConfigUserStyleClassDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ConfigUserViewItemDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentButtonDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentIconDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentListDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentSliderDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentTextDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\ContentVideoDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserFinancialDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserFinancialHistoryDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserImageGalleryDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserMenuDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserRegisterProfileDapperRepository.cs" />
+    <Compile Include="Repositories\Dapper\UserSerializeViewDataDapperRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminFinancialPlanRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\EntityOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminImageGalleryRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminSliderConfigRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminSliderRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminSocialNetWorkRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminTemplateRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminViewDataRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\AdminViewItemRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentTextOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentListOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentButtonOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentTeamOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSummaryOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSkillOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSimpleProductOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentServiceOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentScopeOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentProjectOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPricingOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPresentationOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPostOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPortfolioOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPanelOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentMenuOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentFeaturesOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentFaqOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentExtraLinkOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentClientOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentBrandOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentActivityOptionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPanelRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPresentationRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentScopeRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSimpleProductRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSummaryRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentThumbnailRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserStyleColorRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentSliderRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\DeleteComponentRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\DeleteContentRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\SupportTransactionStatusRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentActivityRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentBrandRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentClientRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentExtraLinkRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentFaqRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentFeaturesRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPortofolioRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPostRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentPricingRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentProjectRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentServiceRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSkillRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentSocialNetworkRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentTeamRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentTeamSocialNetworkRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserAppearanceRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ComponentMenuRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserDisplayRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserMaintenanceRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserStyleClassRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserViewItemRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ConfigUserViewRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentButtonRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentIconRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentListRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentTextRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ContentVideoRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ECommerceProductCategoryRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ECommerceProductGroupRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ECommerceProductRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ECommerceProductSoldRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\ECommerceShoppingListRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\SupportTransactionRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\RespositoryBase.cs" />
+    <Compile Include="Repositories\EntityFramework\AppViewRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\SupportErrorRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\SupportInfoRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\SupportNotificationRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserFinancialHistoryRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserFinancialRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserImageGalleryRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserMenuViewRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserMenuViewItemRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserMenuRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserRegisterProfileRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserRegisterStandardRepository.cs" />
+    <Compile Include="Repositories\EntityFramework\UserSerializeViewDataRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ishopping.Common\Ishopping.Common.csproj">
+      <Project>{c9d41b84-17d1-419b-a0aa-00b3920648ef}</Project>
+      <Name>Ishopping.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ishopping.Domain\Ishopping.Domain.csproj">
+      <Project>{984cb356-b992-441e-bf81-a36d1b30add0}</Project>
+      <Name>Ishopping.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804032326442_inicio.resx">
+      <DependentUpon>201804032326442_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

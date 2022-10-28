@@ -1,0 +1,85 @@
+﻿@model Ishopping.ViewModels.Option.PortfolioOptionViewModel
+
+@{
+    ViewBag.Title = "Componentes Portfolio Estilos";
+    Layout = "~/Views/Shared/_LayoutOption.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h2>Propriedades do Componente Portfolio</h2>
+        <p>Em propriedades do componente você pode editar o texto do título ou subtítulo do mesmo, aqui você também pode definir uma classe de estilo para os campos que tenham essa propriedade.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        @Html.Partial("_OptionViewItemPartial")
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para título :</h5>
+                <select class="selectpicker" id="Title" data-title="@Model.ComponentPortfolioOption.Title" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para categoria :</h5>
+                <select class="selectpicker" id="Category" data-category="@Model.ComponentPortfolioOption.Category" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para descrição :</h5>
+                <select class="selectpicker" id="Description" data-description="@Model.ComponentPortfolioOption.Description" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <br />
+        <p>
+            <div class="form-group">
+                <a href="@Url.Action("Alter", "Portofolio")" class="btn btn-primary ">Voltar</a>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Option/ComponentPortfolioOption.min.js"></script>
+}
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+﻿@model Ishopping.MVC.ViewModels.Config.ConfigUserMaintenanceViewModel
+
+@{
+    ViewBag.Title = "Manutenção";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+}
+
+
+<input type="hidden" name="_existItem" value="true">
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Página de Manutenção</h1>
+        <p>Manutenção permite que você faça mudanças na sua página sem que elas sejam exibidas no site, assim você pode ficar livre para realizar as alterações desejadas, testar e corrigir algum erro. Use uma data de retorno para indicar aos seus clientes quando sua página voltara ao normal.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        <div class="checkbox color1">
+            <label>@Html.CheckBox("ativo", Model.IsMaintenance)<text>Ativar manutenção</text></label>
+        </div>
+        <br />
+        <div class="row">
+            <div class="btn-group col-md-4 col-sm-7 col-xs-12 no-gutterTop">
+                <button type="button" class="btn btn-primary views" name="@Model.PartialView" id="viewName" style="width:225px">@Model.ViewName</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var view in ViewBag.views)
+                    {
+                        <li><a name="@view.PartialView" href="#">@view.Name</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-5 col-xs-12 no-gutterTop">
+                <div class='input-group date' id='datetimePicker'>
+                    <input type='text' class="form-control " id="date" name="date" value="@Model._DateReturn" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Data de retorno. Desativa modo de manutenção</small>
+            </div>
+        </div>
+        <h4 class="color1">Título :</h4>
+        <div class="form-group">
+            <input class="form-control texto" id="title" type="text" name="title" placeholder="Título" value="@Model.Title" />
+        </div>
+        <h4 class="color1">Mensagem :</h4>
+        <div class="form-group">
+            <textarea class="form-control texto" rows="3" id="message" name="message">@Model.Message</textarea>
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="margin:2px">Salvar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/moment-with-locales.js" type="text/JavaScript"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js" type="text/JavaScript"></script>
+    <script src="~/Scripts/Ishopping/CommunEntity.min.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserMaintenance.min.js"></script>
+}
+
+
+
+
+

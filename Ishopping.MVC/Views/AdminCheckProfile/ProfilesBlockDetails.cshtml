@@ -1,0 +1,202 @@
+﻿@model Ishopping.MVC.ViewModels.User.UserRegisterProfileViewModel
+
+@{
+    ViewBag.Title = "ProfilesBlockDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Detalhes do Profile</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controller)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Controller)
+        </dd>  
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semantica1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semantica1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semantica2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semantica2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semantica3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semantica3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semantica4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semantica4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumRua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumRua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhatsApp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhatsApp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>          
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Visitar Página", "AdminViewProfiles", (string)Model.Controller, new { id = Model.SiteNumber }, new { target = "_blank" }) |
+    @Html.ActionLink("Desbloquear", "UnLockProfile", new { id = Model.SiteNumber  }) |
+    @Html.ActionLink("Back to List", "ProfilesBlock")
+</p>

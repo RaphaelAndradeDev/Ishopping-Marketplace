@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Alterar Listas";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+@Html.Partial("_StylePartial")
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Conteúdo Listas</h1>
+        <p>Conteúdos são itens fixos que já estão presentes na página e possuem uma quantidade determinada de elementos. Você pode editar um conteúdo ou deixa-lo em branco (nulo), mas não pode adicionar ou remove-lo. Use a posição ou texto para pesquisar algum conteúdo. Esse item pode variar de acordo com cada template.</p>
+        <a href="@Url.Action("About","Home")#Content" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="btn-group col-md-3">
+        <button type="button" class="btn btn-primary views" style="width:225px">Selecione uma view</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dp">
+            @foreach (var item in ViewBag.views)
+            {
+                <li><a id="@item.ViewCod" name="@item.IntKey" href="#">@item.Text</a></li>
+            }
+        </ul>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-3">
+        <div class="input-group no-gutter">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" id="btnPosition" name="btnPosition">Pesquisar</button>
+            </span>
+            <input type="number" class="form-control" id="txtPosition" placeholder="Posição" min="1">
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        <h4 class="color1">Posição :</h4>
+        <div class="form-group">
+            <input class="form-control" type="text" id="position" name="position" />
+        </div>
+        <h4 class="color1">Lista :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="lista" name="lista" placeholder="Item da lista 1; Item da lista 2; Item da lista 3"></textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="slista">@ViewBag.Classe.Lista</span></small>
+            </div>
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary sub" id="anterior" style="margin:2px"><< Anterior</button>
+                <button type="button" class="btn btn-primary sub" id="proximo" style="margin:2px">Próximo >></button>
+                <button type="submit" class="btn btn-primary sub" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger sub" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Content/ContentList.min.js"></script>
+}
+
+

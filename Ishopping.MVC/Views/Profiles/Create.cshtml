@@ -1,0 +1,192 @@
+﻿@model Ishopping.MVC.ViewModels.User.UserRegisterProfileViewModel
+
+@{
+    ViewBag.Title = "Criar Profile";    
+}
+
+<form id="defaultForm" method="post">
+    @Html.AntiForgeryToken()
+
+    <br />
+    <br />
+    <h1 class="color1">IShoopping</h1>
+    <hr />
+    <p class="text-center color1">Escolha o tipo de plano, o modelo de template e a página inicial para o seu profile</p>
+    <br />
+    <div class="form-horizontal">
+        <!-- Split button -->
+        <div class="row">
+            <div class="btn-group col-md-offset-3 col-md-6 col-sm-8 col-sm-offset-2 col-xs-12">
+                <button type="button" class="btn btn-default dropdown-toggle group" data-toggle="dropdown" style="width:100%">
+                    Selecione um Grupo
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.Level)
+                    {
+                        <li><a name="Group" id="@item.Key">@item.Value</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="btn-group col-md-offset-3 col-md-6 col-sm-8 col-sm-offset-2 col-xs-12">
+                <button type="button" class="btn btn-default dropdown-toggle template" data-toggle="dropdown" style="width:100%">
+                    Selecione um Template
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="ddmTemplate"></ul>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="btn-group col-md-offset-3 col-md-6 col-sm-8 col-sm-offset-2 col-xs-12">
+                <button type="button" class="btn btn-default dropdown-toggle view" data-toggle="dropdown" style="width:100%">
+                    Selecione uma página inicial
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="ddmView"></ul>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <p id="value"></p>
+            </div>
+            <div class="col-md-12 col-md-pull-1">
+                <a href="@Url.Action("TemplateView", "Home")" target="_blank"><input type="button" value="Visualizar Todos" class="pull-right btn btn-default" /></a>
+            </div>
+        </div>
+
+        <hr />
+        <p class="text-center color1">Defina um nome e um número para o seu site</p>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Nome do site :</label>
+                <input class="form-control texto" id="" type="text" name="SiteName" placeholder="usado para buscas" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Número :</label>
+                <input class="form-control texto" id="" type="number" name="SiteNumber" placeholder="nove dígitos" />
+            </div>
+        </div>
+        <hr />
+        <p class="text-center color1">Digite 4 palavras que definam o seu tipo de negócio. Isso será usado nas buscas</p>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Palavra Chave 1 :</label>
+                <input class="form-control texto" id="" type="text" name="Semantica1" placeholder="usado para buscas" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Palavra Chave 2 :</label>
+                <input class="form-control texto" id="" type="text" name="Semantica2" placeholder="usado para buscas" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Palavra Chave 3 :</label>
+                <input class="form-control texto" id="" type="text" name="Semantica3" placeholder="usado para buscas" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Palavra Chave 4 :</label>
+                <input class="form-control texto" id="" type="text" name="Semantica4" placeholder="usado para buscas" />
+            </div>
+        </div>
+        <hr />
+        <p class="text-center color1">Digite os dados da sua empresa, serviço ou comércio</p>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Nome :</label>
+                <input class="form-control texto" id="" type="text" name="Empresa" placeholder="nome da empresa" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">CNPJ :</label>
+                <input class="form-control texto" id="" type="text" name="CNPJ" placeholder="81.584.588/0001-70" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Rua :</label>
+                <input class="form-control texto" id="" type="text" name="Rua" placeholder="rua" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Número :</label>
+                <input class="form-control texto" id="" type="text" name="NumRua" placeholder="999" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Distrito :</label>
+                <input class="form-control texto" id="" type="text" name="Distrito" placeholder="bairro ou distrito" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">CEP :</label>
+                <input class="form-control texto" id="" type="text" name="CEP" placeholder="22697-054" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Cidade :</label>
+                <input class="form-control texto" id="" type="text" name="Cidade" placeholder="cidade" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Estado :</label>
+                <input class="form-control texto" id="" type="text" name="Estado" placeholder="SP" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Telefone 1 :</label>
+                <input class="form-control texto" id="" type="number" name="Telefone" placeholder="1488996655" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Telefone 2 :</label>
+                <input class="form-control texto" id="" type="number" name="Telefone2" placeholder="1488996655" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">WhatsApp :</label>
+                <input class="form-control texto" id="" type="number" name="WhatsApp" placeholder="1488996655" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Email do SAC :</label>
+                <input class="form-control texto" id="" type="text" name="Email" placeholder="para atendimento ao cliente" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Website :</label>
+                <input class="form-control texto" id="" type="text" name="Website" placeholder="http://meusite.com" />
+            </div>
+        </div>
+
+        <hr />
+        <p class="text-center color1">Entre com a geolocalização da sua empresa ou comércio (verifique no Google Mapas)</p>
+        <div class="form-group">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
+                <label class="h4 color1 no-gutterTop">Latitude :</label>
+                <input class="form-control texto" id="" type="text" name="Latitude" placeholder="-24.2766979" />
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-1">
+                <label class="h4 color1 no-gutterTop">Longitude :</label>
+                <input class="form-control texto" id="" type="text" name="Longitude" placeholder="-47.3842948" />
+            </div>
+        </div>
+        <p id="results"></p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" value="Criar Profile" class="btn btn-default" />
+            </div>
+            <div class="col-md-12 col-md-pull-1">
+                <input type="button" onclick="getThisLatLong()" value="Usar a atual" class="pull-right btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyD__HTVqBZS8p9DNMX7LnoMxwCAcRp7kvY&amp;libraries=places"></script>
+    <script src="~/Scripts/Ishopping/User/ProfileCreate.min.js"></script>
+}

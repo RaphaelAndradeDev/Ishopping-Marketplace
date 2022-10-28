@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.User.UserImageGalleryViewModel>
+
+<div class="row">    
+    @foreach (var item in Model)
+    {
+        var portfolio = item.FileType == 1 ? "_PortfolioPartialT1I3" : "_PortfolioPartialT1I4";
+        @Html.Partial(portfolio, item)
+    }
+</div>
+
+
+

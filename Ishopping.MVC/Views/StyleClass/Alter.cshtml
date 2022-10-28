@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Configurações Classe de Estilos";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/Colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/SliderRanger/style.css" rel="stylesheet" type="text/css" />
+}
+
+
+@Html.Partial("_ModalPartial")
+@Html.Partial("_SetVarPartial")
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Classes de Estilo</h1>
+        <p>Classes de estilo permite que você personalize textos ou botões da página, alterando a cor, fonte, tamanho da fonte, sombra e etc. Você também pode escolher em qual tipo de evento a alteração deve ser feita. Use span se quiser selecionar apenas uma parte do texto.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<!-- Split button -->
+<div class="row">
+    <div class="btn-group col-md-3">
+        <button type="button" class="btn btn-primary txt" id="className" style="width:225px">Selecione uma classe</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var item in ViewBag.StyleClass)
+            {
+                <li><a>@item</a></li>
+            }
+        </ul>
+    </div>
+    <div class="btn-group col-md-2">
+        <button type="button" class="btn btn-primary" id="load" style="margin:2px">Carregar</button>
+    </div>
+</div>
+<br />
+
+<div class="well">
+    <form id="defaultForm" method="post">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <h4 class="color1">Classe :</h4>
+                <input class="form-control texto" type="text" name="className" id="cn" placeholder="Nome da classe" />
+            </div>
+            <div class="form-group col-md-3">
+                <h4 class="color1">Tag :</h4>
+                <input class="form-control texto" type="text" name="classFor" id="cf" placeholder="tags" />
+            </div>
+        </div>
+        <br />
+        <div class="panel-group" id="accordion">
+            @Html.Partial("_PanelDefaultPartial")
+            @Html.Partial("_PanelHoverPartial")
+            @Html.Partial("_PanelActivePartial")
+            @Html.Partial("_PanelSpanPartial")
+            @Html.Partial("_PanelGoogleFonts")
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div id="errors"></div>
+                </div>
+            </div>
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="reload" style="margin:2px">Novo</button>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Content/Colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="~/Scripts/Ishopping/ModalStyle.min.js"></script>
+    <script src="~/Scripts/Ishopping/CommunEntity.min.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserStyleClass.min.js"></script>
+}
+
+
+

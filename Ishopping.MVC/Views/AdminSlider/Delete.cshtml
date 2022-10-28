@@ -1,0 +1,202 @@
+﻿@model Ishopping.MVC.ViewModels.Admin.AdminSliderViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AdminSliderViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SliderClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SliderClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartialView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartialView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTarget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTarget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHoffset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataHoffset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataVoffset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataVoffset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEndSpeed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEndSpeed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackgroundColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackgroundColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Border)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Border)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextButton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextButton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminViewDataId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminViewDataId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { id = Model.AdminViewDataId })
+        </div>
+    }
+</div>

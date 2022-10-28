@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Adicionar ou Remover Itens";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+@Html.Partial("_SetVarPartial")  
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Configurações dos Itens da View</h1>
+        <p>Em Itens da View é possível configurar os componentes que serão exibidos na página. Caso algum componente não combine com o seu tipo de negócio, você pode desativá-lo. Use Itens da View também para alterar o texto do menu e o título de alguns componentes.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<!-- Split button -->
+<div class="row">
+    <div class="btn-group col-md-3">
+        <button type="button" class="btn btn-primary views" style="width:225px">Selecione uma view</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var item in ViewBag.views)
+            {
+                <li><a id="@item.ViewCod">@item.Text</a></li>
+            }
+        </ul>
+    </div>
+    <button type="submit" class="btn btn-primary" id="load" style="margin:2px">Carregar</button>
+</div>
+<br />
+<div class="well">      
+        <br />
+        <h4 class="color1">Adicionar ou remover itens da view:</h4>
+        <br />
+        <div id="check"></div>
+
+        @*<div class="row">
+            <div class="col-md-offset-1">
+                <div class="col-md-2">
+                    <h4 class="color1" name="viewType">Exemplo</h4>
+                </div>
+                <div class="form-group col-md-2">
+                    <input class="form-control texto" id="" type="text" name="textMenu" placeholder="Texto do menu" value="Exemplo" />
+                </div>
+                <div class="form-group col-md-3">
+                    <input class="form-control texto" id="" type="text" name="textView" placeholder="Texto da View" value="Exemplo" />
+                </div>
+                <div class="checkbox col-md-1 color1">
+                    <label><input type="checkbox" id="" value="">Ativar</label>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary Salvar" id="" style="margin:2px">Salvar</button>
+                </div>
+            </div>
+        </div>*@
+
+        <br />
+        <text id="Status"></text>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/CommunEntity.min.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserViewItem.min.js"></script>
+}
+
+
+
+
+

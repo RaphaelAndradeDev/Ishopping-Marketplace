@@ -1,0 +1,17 @@
+﻿@model Ishopping.Application.ViewModel.Ishopping.AppStoreProductListT4ViewModel
+
+<div class="row g-mx-minus-10">
+    @foreach (var item in Model.BasicProduct)
+    {
+        <div class="col-sm-6 col-md-4 g-px-10 g-mb-30">
+            <article class="u-block-hover">
+                <img class="w-100 u-block-hover__main--zoom-v1 g-mb-minus-8" src="~/Content/uploads/@item.ImgFolder/@item.ImgFile" alt="Image Description">
+                <div class="g-pos-abs g-bottom-30 g-left-30">
+                    <span class="d-block g-color-white">@item.Title</span>
+                    <h2 class="h1 mb-0 g-color-white">@item.Category</h2>
+                </div>
+                <a class="u-link-v2" href="#!"></a>
+            </article>
+        </div>
+    }
+</div>

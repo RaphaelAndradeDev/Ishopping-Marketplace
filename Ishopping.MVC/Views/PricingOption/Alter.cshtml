@@ -1,0 +1,171 @@
+﻿@model Ishopping.ViewModels.Option.PricingOptionViewModel
+
+@{
+    ViewBag.Title = "Componentes Planos Estilos";
+    Layout = "~/Views/Shared/_LayoutOption.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.png" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h2>Propriedades do Componente Planos</h2>
+        <p>Em propriedades do componente você pode editar o texto do título ou subtítulo do mesmo, aqui você também pode definir uma classe de estilo para os campos que tenham essa propriedade.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        @Html.Partial("_OptionViewItemPartial")
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Nome do plano :</h5>
+                <select class="selectpicker" id="NomePlano" data-nomeplano="@Model.ComponentPricingOption.NomePlano" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Moeda :</h5>
+                <select class="selectpicker" id="Moeda" data-moeda="@Model.ComponentPricingOption.Moeda" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Preço :</h5>
+                <select class="selectpicker" id="PriceUnid" data-priceunid="@Model.ComponentPricingOption.PriceUnid" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Centavos :</h5>
+                <select class="selectpicker" id="PriceCent" data-pricecent="@Model.ComponentPricingOption.PriceCent" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Período :</h5>
+                <select class="selectpicker" id="Periodo" data-periodo="@Model.ComponentPricingOption.Periodo" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Descrição :</h5>
+                <select class="selectpicker" id="Description" data-description="@Model.ComponentPricingOption.Description" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Comentário :</h5>
+                <select class="selectpicker" id="Comment" data-comment="@Model.ComponentPricingOption.Comment" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para Butão :</h5>
+                <select class="selectpicker" id="TextButton" data-textbutton="@Model.ComponentPricingOption.TextButton" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <h5 class="color1">Adicionar classe(s) para descrição :</h5>
+                <select class="selectpicker" id="Price" data-price="@Model.ComponentPricingOption.Price" multiple data-max-options="4" data-size="5" title="Adicione classe(s) para propriedade">
+                    <option>SemEstilo</option>
+                    <option data-divider="true"></option>
+                    @foreach (var item in ViewBag.ClassName)
+                    {
+                        <option>@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <br />
+        <p>
+            <div class="form-group">
+                <a href="@Url.Action("Alter", "Pricing")" class="btn btn-primary ">Voltar</a>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Option/ComponentPricingOption.min.js"></script>
+}
+
+
+
+
+

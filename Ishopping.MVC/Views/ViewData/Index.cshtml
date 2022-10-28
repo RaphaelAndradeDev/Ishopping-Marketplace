@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.Admin.AdminViewData_ViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.templateId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Controller)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewCod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewDefault)
+        </th>            
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Controller)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewCod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewTipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewDefault)
+        </td>          
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Galeria", "Index", "AdminImageGallery", new { id = item.Id }, null) |
+            @Html.ActionLink("Itens", "Index", "AdminViewItens", new { id = item.Id }, null) |
+            @Html.ActionLink("Sliders", "Index", "AdminSlider", new { id = item.Id }, null) |
+            @Html.ActionLink("SlidersConfig", "Index", "AdminSliderConfig", new { id = item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,5 @@
+﻿
+.header-description::before
+{
+	background: url(../images/pettern.png) repeat;
+}

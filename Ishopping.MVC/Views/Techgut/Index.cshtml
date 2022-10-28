@@ -1,0 +1,682 @@
+﻿@model Ishopping.ViewModels.TemplateProfessional.IndexTechgutViewModelDeserialize
+
+@{
+    Layout = null;
+    var j = 0; var cl = "";
+}
+
+<!DOCTYPE html>
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    @Html.Partial("_PartialMetaTags")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="~/Componentes/Professional/Techgut/img/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    @if (!string.IsNullOrEmpty(Model.Profile.GoogleFonts))
+    {
+        <link href='@Model.Profile.GoogleFonts' rel='stylesheet' type='text/css'>
+    }
+
+    <!-- Revolution css -->
+    <link rel="stylesheet" type="text/css" href="~/Componentes/Professional/Techgut/vendor/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/rs-plugin/css/extralayer.css">
+
+    <!-- Flat icon css -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/flat-icon/flaticon.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+
+    <!-- Owl Carosel css -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/owl/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/owl/css/owl.theme.default.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/owl/css/owl.theme.css">
+
+    <!-- mmenu -->
+    <link type="text/css" rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/mmenu/css/jquery.mmenu.css" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/vendor/bootstrap/css/bootstrap.css">
+
+    <!-- Animate css -->
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/css/animate.css">
+
+    <!-- Custom Style css -->
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/hover.css">
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/style.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/css/fixed.css" />
+    <link rel="stylesheet" href="~/Content/uploads/@Model.Profile.SiteNumber/iscss.css">
+    <link rel="stylesheet" href="~/Componentes/Professional/Techgut/css/responsive.css">
+
+</head>
+<body>
+    <div class="loader" style=""></div>
+    <div class="main" id="home">
+        <!-- slider -->
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="25" data-masterspeed="2500" data-thumb="../../Content/uploads/@Model.ImagensForm[0]" data-saveperformance="off">
+                        <!-- MAIN IMAGE -->
+                        <img src="~/Content/uploads/@Model.ImagensForm[0]" alt="fullslide2" data-bgposition="center center" data-kenburns="on" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="center center">
+
+                        @foreach (var item in Model.ContentSlider.Where(x => x.Position == 1))
+                        {
+                            @Html.Partial((string)item.PartialView, item)
+                        }
+                    </li>
+
+                    <li class="items" data-transition="slideleft" data-slotamount="1" data-masterspeed="1500" data-thumb="../../Content/uploads/@Model.ImagensForm[1]" data-delay="13000" data-saveperformance="on">
+                        <!-- MAIN IMAGE -->
+                        <img src="~/Content/uploads/@Model.ImagensForm[1]" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+
+                        @foreach (var item in Model.ContentSlider.Where(x => x.Position == 2))
+                        {
+                            @Html.Partial((string)item.PartialView, item)
+                        }
+                    </li>
+
+                    <li class="items" data-transition="slidevertical" data-slotamount="1" data-masterspeed="1500" data-thumb="../../Content/uploads/@Model.ImagensForm[2]" data-delay="13000" data-saveperformance="off">
+                        <!-- MAIN IMAGE -->
+                        <img src="~/Content/uploads/@Model.ImagensForm[2]" alt="kenburns1" data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+
+                        @foreach (var item in Model.ContentSlider.Where(x => x.Position == 3))
+                        {
+                            @Html.Partial((string)item.PartialView, item)
+                        }
+
+                        <!-- LAYER NR. 6 -->
+                        <div class="tp-caption tp-resizeme lfb randomrotate down-arrow"
+                             data-x="center" data-hoffset="0"
+                             data-y="center" data-voffset="230"
+                             data-speed="2200"
+                             data-start="5500"
+                             data-easing="Power4.easeOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.01"
+                             data-endelementdelay="0.1"
+                             data-endspeed="500"
+                             data-endeasing="Power4.easeIn"
+                             style="z-index: 3; max-width: 50px; max-height: 50px; white-space: nowrap;">
+                            <i class="scroll-bottom"><img src="~/Componentes/Professional/Techgut/img/slider_button.png" alt="arrow-down.png" class="img-responsive"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- slider -->
+
+        <header class="header-part">
+            <div id="home" class="wrapper">
+                <!-- Fixed navbar -->
+                <div class="navi navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header page-scroll">
+                            <a href="#menu">
+                                <button type="button" data-effect="st-effect-1" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </a>
+                            <a class="navbar-brand" href="index.html"><img src="~/Content/uploads/@Model.ImagensLogo[0]" alt="TechGut"></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse pull-right hidden-xs">
+                            <ul class="nav navbar-nav navbar-right">
+                                @foreach (var menu in Model.Menu)
+                                {
+                                    <li><a class="page-scroll" href="@menu.ViewLink">@menu.TextMenu</a></li>
+                                    foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                    {
+                                        <li> <a class="page-scroll" href="@item.Link">@item.TextMenu</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div><!-- End of Nav -->
+            </div>
+        </header>
+
+        <!-- WHO WE ARE -->
+        @if (Model.ItemActivity.ItemActive)
+        {
+            <section id="about" class="who-we-are section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 col-lg-12 text-center p-padding">
+                            <h1 class="section-title @Model.ItemActivity.ItemStTitle">@Html.Raw(Model.ItemActivity.ItemTitle)</h1>
+                            <p class="@Model.ItemActivity.ItemStSubTitle">@Html.Raw(Model.ItemActivity.ItemSubTitle)</p>
+                        </div><!-- col-xs-12 -->
+                        @foreach (var item in Model.ItemActivity.ListItens)
+                        {
+                            <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 text-center">
+                                <div class="icon-circle">
+                                    <i class="@item.VectorIcon"></i>
+                                </div><!-- /.icon-circle -->
+                                <div class="who-we-are-content text-center">
+                                    <h2 class="@item.ComponentActivityOption.Title">@Html.Raw(item.Title)</h2>
+                                    <p class="@item.ComponentActivityOption.Description">@Html.Raw(item.Description) </p>
+                                </div><!-- /.who-we-are-content -->
+                            </div><!-- /.col-xs-6 -->
+                        }
+                    </div><!--/row-->
+                </div><!-- /container -->
+            </section><!-- /who we wre -->
+        }
+
+        <!-- OUR SERVICES -->
+        @if (Model.ItemPresentation.ItemActive)
+        {
+            <section id="services" class="service section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 text-center p-padding">
+                            <h1 class="section-title @Model.ItemPresentation.ItemStTitle">@Html.Raw(Model.ItemPresentation.ItemTitle)</h1>
+                            <p class="@Model.ItemPresentation.ItemStSubTitle">@Html.Raw(Model.ItemPresentation.ItemSubTitle)</p>
+                        </div><!-- col-xs-12 -->
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="left-column">
+                                @for (int i = 0; i < Model.ItemPresentation.ListItens.Count(); i++)
+                                {
+                                    if (i % 2 == 0)
+                                    {
+                                        <div class="wow zoomIn media">
+                                            <div class="media-left media-middle">
+                                                <a>
+                                                    <i class="@Model.ItemPresentation.ListItens.ElementAt(i).VectorIcon"></i>
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h2 class="@Model.ItemPresentation.ListItens.ElementAt(i).ComponentPresentationOption.Title">@Html.Raw(Model.ItemPresentation.ListItens.ElementAt(i).Title)</h2>
+                                                <h3 class="@Model.ItemPresentation.ListItens.ElementAt(i).ComponentPresentationOption.Description">@Html.Raw(Model.ItemPresentation.ListItens.ElementAt(i).Description)</h3>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div><!-- col-md-5 -->
+
+                        <div class="col-xs-6 col-sm-2 col-md-2 hidden-xs">
+                            <div class="image-box">
+                                <img class="img-responsive" src="~/Content/uploads/@Model.ImagensForm[3]" alt="">
+                            </div>
+                        </div><!-- /col-md-2 -->
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="right-column">
+                                @for (int i = 0; i < Model.ItemPresentation.ListItens.Count(); i++)
+                                {
+                                    if (i % 2 != 0)
+                                    {
+                                        <div class="wow zoomIn media">
+                                            <div class="media-left media-middle">
+                                                <a>
+                                                    <i class="@Model.ItemPresentation.ListItens.ElementAt(i).VectorIcon"></i>
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h2 class="@Model.ItemPresentation.ListItens.ElementAt(i).ComponentPresentationOption.Title">@Html.Raw(Model.ItemPresentation.ListItens.ElementAt(i).Title)</h2>
+                                                <h3 class="@Model.ItemPresentation.ListItens.ElementAt(i).ComponentPresentationOption.Description">@Html.Raw(Model.ItemPresentation.ListItens.ElementAt(i).Description)</h3>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div><!-- /.right-column -->
+                        </div>
+                    </div><!-- row-->
+                </div><!-- container -->
+            </section>
+        }<!-- /our services -->
+        <!-- CLEAN IDEA AND UNIQUE DESIGN -->
+        <section id="clean" class="clean-idea section-padding" style="background-image:url(../../Content/uploads/@Model.ImagensForm[4])">
+            <div class="container">
+                <div class="row">
+                    <div class="wow zoomIn col-xs-12 text-center p-padding">
+                        <h1 class="section-title @Model.Textos[0].StText">@Html.Raw(Model.Textos[0].Text)</h1>
+                        <p class="@Model.Textos[1].StText">@Html.Raw(Model.Textos[1].Text)</p>
+                        <div class="button-set">
+                            @if (Model.Buttons[0].TextButton != "")
+                            {
+                                <a href="@Model.Buttons[0].UrlButton" class="btn btn-danger @Model.Buttons[0].StButton">@Html.Raw(Model.Buttons[0].TextButton)</a>
+                            }
+                            @if (Model.Buttons[1].TextButton != "")
+                            {
+                                <a href="@Model.Buttons[1].UrlButton" class="page-scroll contact-us @Model.Buttons[1].StButton">@Html.Raw(Model.Buttons[1].TextButton)</a>
+                            }
+                        </div><!-- /.button-set -->
+                    </div><!-- col-xs-12 -->
+                </div><!-- row-->
+            </div><!-- container -->
+        </section><!-- /clean idea and unique design -->
+        <!-- OUR LATEST WORKS -->
+        @if (Model.ItemPortofolio.ItemActive)
+        {
+            <section class="protfolio section-padding" id="product">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 text-center p-padding animated" style="visibility: visible; animation-name: zoomIn;">
+                            <h1 class="section-title @Model.ItemPortofolio.ItemStTitle">@Html.Raw(Model.ItemPortofolio.ItemTitle)</h1>
+                            <p class="@Model.ItemPortofolio.ItemStSubTitle">@Html.Raw(Model.ItemPortofolio.ItemSubTitle)</p>
+                        </div>
+                    </div><!-- row -->
+                </div><!-- container -->
+                <div class="portfolio-menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <ul class="wow zoomIn animated" id="filter" style="visibility: visible; animation-name: zoomIn;">
+                                    <li><a data-group="all" href="#" class="active">all</a></li>
+                                    @foreach (var item in Model.ItemPortofolio.ListItens.Select(x => x.Category).Distinct())
+                                    {
+                                        <li><a style="margin-bottom:4px" data-group="@item.Replace(" ","")">@item</a></li>
+                                    }
+                                </ul><!-- /#filter -->
+                            </div><!-- /.col-xs-12 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="grid" class="shuffle" style="position: relative; height: 600px;">
+                        @{ j = 1;}
+                        @foreach (var item in Model.ItemPortofolio.ListItens)
+                        {
+                            <div data-groups='["all", "@item.Category.Replace(" ", "")"]' class=" portfolio-item col-xs-12 col-sm-6 col-md-3 shuffle-item filtered animated" style="margin:0; padding:0;">
+                                <div class="portfolio">
+                                    <figure class="effect-julia">
+                                        <img alt="" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName">
+                                        <figcaption>
+                                            <div class="socials" id="port">
+                                                <a data-toggle="modal" data-target="#myModal_@j"><i class="fa fa-expand animated"></i></a>
+                                            </div>
+                                            <div class="scoial-heading" id="porttext">
+                                                <p class="@item.ComponentPortofolioOption.Title">@Html.Raw(item.Title)</p>
+                                                <strong class="@item.ComponentPortofolioOption.Description">@Html.Raw(item.Description)</strong>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <!-- MODAL/POPUP -->
+                            <div class="modal fade" id="myModal_@j" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class=" btn btn-default pull-right" data-dismiss="modal">X</button>
+                                            <span class="modal-title" id="myModalLabel">@Html.Raw(item.Title)</span>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            j++;
+                        }
+                    </div> <!-- /grid -->
+                </div><!-- /row -->
+            </section>
+        }<!-- /our latest works -->
+
+        <div class="more-area" style="background-image:url(../../Content/uploads/@Model.ImagensForm[5])">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="pull-left @Model.Textos[2].StText">@Html.Raw(Model.Textos[2].Text)</h2>
+                        @if (Model.Buttons[2].TextButton != "")
+                        {
+                            <a href="@Model.Buttons[2].UrlButton" class="btn btn-success pull-right @Model.Buttons[2].StButton">@Html.Raw(Model.Buttons[2].TextButton)</a>
+                        }
+                    </div>
+                </div><!-- row -->
+            </div><!-- container -->
+        </div><!-- /.more-area -->
+        <!-- OUR TEAM -->
+        @if (Model.ItemTeam.ItemActive)
+        {
+            <section id="team" class="our-team section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 text-center p-padding">
+                            <h1 class="section-title @Model.ItemTeam.ItemStTitle">@Html.Raw(Model.ItemTeam.ItemTitle)</h1>
+                            <p class="@Model.ItemTeam.ItemStSubTitle">@Html.Raw(Model.ItemTeam.ItemSubTitle)</p>
+                        </div><!-- col-xs-12 -->
+                    </div><!-- row -->
+                    <div class="row">
+                        @foreach (var item in Model.ItemTeam.ListItens)
+                        {
+                            <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3">
+                                <div class="grid">
+                                    <figure class="effect-duke">
+                                        <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="">
+                                        <figcaption>
+                                            <div class="icon-holder text-center">
+                                                <ul>
+                                                    @foreach (var sn in item.ComponentTeamSocialNetwork)
+                                                    {
+                                                        <li><a href="@sn.Link" target="_blank"><i class="@sn.Classe1"></i></a></li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="team-designation">
+                                    <p class="@item.ComponentTeamOption.Name">@Html.Raw(item.Name)</p>
+                                    <span class="@item.ComponentTeamOption.Functio">@Html.Raw(item.Functio)</span>
+                                </div>
+                            </div>
+                        }
+                    </div><!-- row -->
+                </div><!-- container -->
+            </section>
+        }<!-- our team -->
+        <!-- COUNTING -->
+        @if (Model.ItemFeatures.ItemActive)
+        {
+            <section class="counting section-padding" style="background-image:url(../../Content/uploads/@Model.ImagensForm[6])">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model.ItemFeatures.ListItens)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                                <span class="counter @item.ComponentFeaturesOption.Count">@item.Count</span>
+                                <p class="@item.ComponentFeaturesOption.Title">@Html.Raw(item.Title)</p>
+                            </div> <!-- /.col-sm-3 -->
+                        }
+                    </div> <!-- /.row -->
+                </div><!-- /.container -->
+            </section>
+        }<!-- counting -->
+        <!-- TESTIMONIAL-->
+        @if (Model.ItemClient.ItemActive)
+        {
+            cl = "active";
+            <section class="wow zoomIn testimmonial section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="testimonial-feed">
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        @foreach (var item in Model.ItemClient.ListItens)
+                                        {
+                                            <div class="item text-center @cl">
+                                                <div class="image-bar"><img src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt=""></div>
+                                                <p class="@item.ComponentClientOption.Comment">@Html.Raw(item.Comment)</p>
+                                                <span class="pull-right @item.ComponentClientOption.Name"> @Html.Raw(item.Name)</span>
+                                            </div>
+                                            cl = "";
+                                        }
+                                    </div><!-- carousel-inner -->
+                                </div><!-- carousel -->
+                            </div><!-- testimonial-feed -->
+                            <div class="control-arrow">
+                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <i class="flaticon-previous11"></i>
+                                </a>
+                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <i class="flaticon-next15"></i>
+                                </a>
+                            </div><!-- /.control-arrow -->
+                        </div><!-- /.col-xs-12 -->
+                    </div><!-- row -->
+                </div><!-- container -->
+            </section>
+        }<!-- testimonial -->
+        <!-- BLOG CONTENT -->
+        @if (Model.ItemPost.ItemActive)
+        {
+            <section id="blog" class="blog-wrapper section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 text-center p-padding">
+                            <h1 class="section-title @Model.ItemPost.ItemStTitle">@Html.Raw(Model.ItemPost.ItemTitle)</h1>
+                            <p class="@Model.ItemPost.ItemStSubTitle">@Html.Raw(Model.ItemPost.ItemSubTitle)</p>
+                        </div><!-- col-xs-12 -->
+                        @foreach (var item in Model.ItemPost.ListItens)
+                        {
+                            <div class="wow zoomIn col-xs-12 col-md-4">
+                                <a href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank">
+                                    <img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.ElementAt(0).Folder/@item.UserImageGallery.ElementAt(0).FileName" alt="Image" />
+                                </a>
+                                <div class="blog-date-wrapper">
+                                    <span class="floatleft"><i class="fa fa-calendar"></i> @item.DataCadastro</span>
+                                    <span class="clearboth"> &nbsp; </span>
+                                </div>
+                                <div class="blog-container">
+                                    <h2><a class="@item.ComponentPostOption.Titulo" href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank">@Html.Raw(item.Titulo)</a></h2>
+                                    <p class="@item.ComponentPostOption.Paragrafo">@Html.Raw(item.Paragrafo1)</p>
+                                    <a class="custom-button" href="@Url.Action("SinglePost", "AppView", new { id = item.IdStr })" target="_blank">Leia Mais <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        }
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+                <div class="more-area" style="background-image:url(../../Content/uploads/@Model.ImagensForm[5])">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="pull-left @Model.Textos[3].StText">@Html.Raw(Model.Textos[3].Text)</h2>
+                                @if (Model.Buttons[3].TextButton != "")
+                                {
+                                    <a href="@Model.Buttons[3].UrlButton" class="btn btn-success pull-right @Model.Buttons[3].StButton">@Html.Raw(Model.Buttons[3].TextButton)</a>
+                                }
+                            </div><!-- col-xs-12 -->
+                        </div><!-- row -->
+                    </div><!-- container -->
+                </div><!-- /.more-area -->
+            </section>
+        }<!-- blog content -->
+        <!-- our partner -->
+        @if (@Model.ItemThumbnail.ItemActive)
+        {
+            <section class="partner-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-sm-12">
+                            <div class="owl-wrap">
+                                <div id="owl-example" class="owl-carousel">
+                                    @foreach (var item in @Model.ItemThumbnail.ListItens)
+                                    {
+                                        <div class="feature-image">
+                                            <a href="@item.WebSite" target="_blank"><img class="img-responsive" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt=""></a>
+                                        </div>
+                                    }
+                                </div><!-- /.owl-carousel -->
+                            </div><!-- /.owl-wrap -->
+                        </div><!-- /.col-sm-12 -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </section><!-- our partner -->
+        }
+
+        <!-- GET IN TOUCH -->
+        <section id="contact" class="contact-wrapper section-padding" style="background-image:url(../../Content/uploads/@Model.ImagensForm[7])">
+            <div class="container">
+                <div class="row">
+                    <div class="wow zoomIn col-xs-12 text-center p-padding">
+                        <h1 class="section-title @Model.Textos[4].StText">@Model.Textos[4].Text</h1>
+                        <p class="@Model.Textos[5].StText">@Model.Textos[5].Text</p>
+                    </div><!-- col-xs-12 -->
+                    <div class="wow zoomIn col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                        <form name="contactForm" id='contact_form'>
+                            <input type="hidden" id="mailTo" name="siteNumber" value="@Model.Profile.SiteNumber" />
+                            <div class="form-inline">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control mailIdentity" name="name" id="exampleInputName" placeholder="Seu Nome">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="email" class="form-control mailFrom" name="email" id="exampleInputEmail" placeholder="Seu Email">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control mailSubject" name="subject" id="exampleInputSubject" placeholder="Assunto">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" name="company" id="exampleInputCompany" placeholder="Empresa">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <textarea class="form-control mailMsg" name="message" rows="3" id="exampleInputMessage" placeholder="Mensagem"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div id='mail_success' class='success' style="display:none;">
+                                    Sua mensagem foi enviada.
+                                </div><!-- success message -->
+                                <div id='mail_fail' class='error' style="display:none;">
+                                    Sua mensagem não pode ser enviada.
+                                </div><!-- error message -->
+                            </div>
+                            <div class="form-group col-sm-12" id='submit'>
+                                <input type="submit" id='send_message' class="btn  btn-lg costom-btn" value="Enviar">
+                            </div>
+                        </form>
+                    </div> <!-- /.col-xs-12 .col-sm-offset-2 .col-sm-8 -->
+                    <div class="col-xs-12">
+                        <div class="contact-or">
+                            <p>ou</p>
+                        </div><!-- /.contact-or -->
+                        <div class="icon-text">
+                            <span class="@Model.Textos[6].StText">@Model.Textos[6].Text</span>
+                        </div><!-- /.icon-text -->
+                        <div class="icon-holder text-center">
+                            <ul>
+                                @if (Model.ItemSocialNetwork.ItemActive)
+                                {
+                                    if (Model.ItemSocialNetwork.ListItens.Count() > 0)
+                                    {
+                                        foreach (var item in Model.ItemSocialNetwork.ListItens)
+                                        {
+                                            <li><a href="@item.Link" target="_blank"><i class="@item.Classe1"></i></a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li><a class="popup" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a class="popup" href="http://twitter.com/share?text=Vejam%20esta%20página&url=" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a class="popup" href="https://plus.google.com/share?url=" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a class="popup" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a class="popup" href="http://www.tumblr.com/share/link?url=" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+                                    }
+                                }
+                            </ul>
+                        </div><!-- /.icon-holder -->
+                    </div><!-- /.col-xs-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- get in touch -->
+        <!-- footer -->
+        <footer>
+            <div class="footer-wrapper section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3">
+                            <a href="index.html"><img src="~/Content/uploads/@Model.ImagensLogo[1]" alt="TechGut"></a>
+                            <p class="footer-content @Model.Textos[7].StText">@Html.Raw(Model.Textos[7].Text)</p>
+                        </div><!-- /.col-xs-12 .col-sm-3 .col-md-3 -->
+                        <div class="wow zoomIn col-xs-12 col-sm-3 col-md-3">
+                            <p class="footer-heading">link</p>
+                            <ul class="footermenu">
+                                @foreach (var menu in Model.Menu)
+                                {
+                                    foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                                    {
+                                        <li><a data-scroll data-options='{ "easing": "easeInQuad" }' href="@item.Link">@item.TextMenu</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div><!-- /.col-xs-12 .col-sm-3 .col-md-3 -->
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-6">
+                            <p class="footer-heading">Contato</p>
+                            <ul class="footercontact">
+                                <li><i class="flaticon-mainpage"></i><span>Endereço: </span> @Model.Profile.Adress</li>
+                                <li><i class="flaticon-phone16"></i><span>Tel: </span><a> @Model.Profile.Phone</a></li>
+                                @if (Model.Profile.WhatsApp != "")
+                                {
+                                    <li><i class="fa fa-whatsapp"></i><span>WhatsApp: </span><a> @Model.Profile.WhatsApp</a></li>
+                                }
+                                <li><i class="flaticon-email21"></i><span>E-Mail:</span><a> @Model.Profile.Email</a></li>
+                                @if (Model.Profile.Website != "")
+                                {
+                                    <li><i class="flaticon-world91"></i><span>Website:</span><a href="@Model.Profile.Website" target="_blank"> @Model.Profile.Website</a></li>
+                                }
+                            </ul>
+                            <i class="flaticon-home78"></i>
+                        </div><!-- /.col-xs-12 .col-sm-3 .col-md-3 -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.container -->
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12">
+                            <p>© 2015 All rights reserved. <span>techgut</span> theme by <a href="http://themerole.com">themerole</a></p>
+                            <div class="backtop  pull-right">
+                                <i class="fa fa-angle-up back-to-top"></i>
+                            </div><!-- /.backtop -->
+                        </div><!-- /.col-xs-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.creditwrapper -->
+        </footer><!-- /Footer -->
+        <!-- MMENU -->
+        <nav id="menu">
+            <ul>
+                @foreach (var menu in Model.Menu)
+                {
+                    <li><a href="#">@menu.TextMenu</a></li>
+                    foreach (var item in menu.UserMenuViewItem.Where(x => x.OnMenu == true))
+                    {
+                        <li> <a href="@item.Link">@item.TextMenu</a></li>
+                    }
+                }
+            </ul>
+        </nav><!-- /#menu -->
+
+    </div><!-- /.main -->
+
+    <script src="~/Componentes/Professional/Techgut/js/jquery-1.11.1.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Techgut/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Techgut/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/jquery.shuffle.min.js"></script>
+    <script type="text/javascript" src="~/Componentes/Professional/Techgut/vendor/mmenu/js/jquery.mmenu.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/vendor/owl/js/owl.carousel.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/wow.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/jquery.counterup.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/jquery.easing.min.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/scrolling-nav.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/smoothscroll.min.js"></script>  
+    <script src="~/Componentes/Professional/Techgut/js/script.js"></script>
+    <script src="~/Componentes/Professional/Techgut/js/email.js"></script>
+    <script src="~/Scripts/Ishopping/Services/SendMail.js"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+    <script>
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > 670) {
+                $('.navbar-default').addClass('navbar-fixed-top');
+            } else {
+                $('.navbar-default').removeClass('navbar-fixed-top');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.Admin.AdminImageGalleryViewModel>
+
+@{
+    ViewBag.Title = "Imagens Ícones PNG";
+}
+<br />
+
+<div class="container">   
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="btn-group btn-group-justified">          
+                <a href="@Url.Action("Index", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Apresentação</a>
+                <a href="#" class="btn btn-default active">Ícones</a>
+                <a href="@Url.Action("GetImgLogo", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Logo</a>
+                <a href="@Url.Action("GetImgSlider", "AdminImageGallery", new { id = ViewBag.ViewDataId })" class="btn btn-default ">Slider</a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            @Html.ActionLink("Adicionar Imagens", "AdminUploadFilePng", "ImgUpload", new { id = ViewBag.ViewDataId }, new { @class = "btn btn-info pull-right no-gutter2" })
+            <input id="alt" type="submit" value="Salvar Posições" class="btn btn-primary pull-right" /><text id="sucess">&nbsp; &nbsp; &nbsp;</text>
+        </div>
+    </div>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        {
+            int j = 0;
+            for (int i = 0; i < Model.Count(); i += 4)
+            {
+                j = i;
+
+                <div class="row">
+
+                    @while (j < i + 4 && j < Model.Count())
+                    {
+                        <div class="col-md-3 portfolio-item">
+
+                            <img class="img-responsive img-portfolio img-hover" src="~/Content/uploads/@Model.ElementAt(j).AdminViewData.ViewCod/@Model.ElementAt(j).FileName" alt="" style="margin-bottom:10px; width:230px;" />
+
+                            <div class="input-group col-md-2">
+                                <span class="input-group-addon">Posição</span>
+                                <input type="number" class="form-control min-width" value="@Model.ElementAt(j).Position">
+                            </div>
+                            <div class="input-group col-md-2">
+                                <a href="@Url.Action("Delete", "AdminImageGallery", new { folder = Model.ElementAt(j).AdminViewData.ViewCod, fileName = Model.ElementAt(j).FileName })" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <br /><br /><br /><br />
+                        </div>
+                        j++;
+                    }
+                </div>
+            }
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    var p = "0";
+    var t;
+    $(document).ready(function () {
+        $('#alt').click(function () {
+            p = "0";
+            $('input[type="number"]').each(function () {
+                p += "," + ($(this).val());
+            });
+            $.ajax({
+                url: '/AdminImageGallery/Edit',
+                contentType: 'application/html; charset=utf-8',
+                data: { p: p, t: 2 },
+                type: 'GET',
+                dataType: 'html'
+            })
+                .success(function () {
+                    location.reload();
+                })
+                .error(function (xhr, status) {
+                    alert('Erro na tentativa de alterar posições');
+                })
+        });
+    });
+
+    // #######################################
+
+    $(document).ready(function () {
+
+        $('.dropdown-toggle').dropdown();
+
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        });
+    });
+
+</script>
+
+
+
+
+

@@ -1,0 +1,482 @@
+﻿@model Ishopping.Application.ViewModel.Ishopping.AppPortfolioViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Title -->
+    <title>IShoopping Portfolio</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Meta Tags For SEO -->
+    <meta name="description" content="Saiba como o ishoopping pode ajudar você a criar um site e como esse site pode ajudar a sua empresa e divulgar os seus produtos. Teste gratuitamente" />
+    <meta name="robots" content="index, follow">
+
+    <!-- Meta Tags Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ishoopping.com.br/Home/About">
+    <meta property="og:title" content="Crie um site fácil e rápido para sua empresa usando o ishoopping" />
+    <meta property="og:description" content="O IShoopping é uma plataforma para criar e manter seu site de maneira fácil e rápida, sem a necessidade de domínio ou plano de hospedagem. Teste gratuitamente" />
+    <meta property="og:image" content="https://www.ishoopping.com.br/Images/Ishopping/ishoopping_midia.jpg" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Componentes/Premium/Unify/favicon.ico">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/bootstrap/bootstrap.min.css">
+    <!-- CSS Global Icons -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-etlinefont/style.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/animate.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/hs-megamenu/src/hs.megamenu.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/fancybox/jquery.fancybox.css">
+
+    <!-- CSS Unify -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/css/unify-core.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/css/unify-components.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/css/unify-globals.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/css/custom.css">
+</head>
+
+<body>
+    <main>
+
+        <!-- Header -->
+        <header id="js-header" class="u-header u-header--static--lg u-header--show-hide--lg u-header--change-appearance--lg" data-header-fix-moment="500" data-header-fix-effect="slide">
+            <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10" data-header-fix-moment-exclude="g-bg-white g-py-10" data-header-fix-moment-classes="g-bg-white-opacity-0_7 u-shadow-v18 g-py-0">
+                <nav class="js-mega-menu navbar navbar-expand-lg">
+                    <div class="container">
+                        <!-- Responsive Toggle Button -->
+                        <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                            <span class="hamburger hamburger--slider">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </span>
+                        </button>
+                        <!-- End Responsive Toggle Button -->
+                        <!-- Logo -->
+                        <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                            <img src="~/Images/Ishopping/logo.png" alt="Image Description">
+                        </a>
+                        <!-- End Logo -->
+                        <!-- Navigation -->
+                        <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
+                            <ul class="navbar-nav text-uppercase g-font-weight-600 ml-auto">
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Index","Home")" class="nav-link px-0">Home</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Index","Home")" class="nav-link px-0">Pesquisar</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("About", "Home")" class="nav-link px-0">Sobre</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Blog","AppView")" class="nav-link px-0">Blog</a>
+                                </li>
+                                @Html.Partial("_LoginPartialIs")
+                            </ul>
+                        </div>
+                        <!-- End Navigation -->
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <section class="g-brd-top g-brd-bottom g-brd-gray-light-v4 g-py-50">
+            <div class="container g-bg-cover__inner">
+                <header class="g-mb-20">
+                    <h2 class="h1 g-font-weight-300 text-uppercase">
+                        Portfolio
+                        <span class="g-color-primary"></span>
+                    </h2>
+                </header>
+                <ul class="u-list-inline">
+                    <li class="list-inline-item g-mr-7">
+                        <a class="u-link-v5 g-color-main" href="@Url.Action("Index", "Home")">Home</a>
+                        <i class="fa fa-angle-right g-ml-7"></i>
+                    </li>
+                    <li class="list-inline-item g-mr-7">
+                        <a class="u-link-v5 g-color-main" href="@Url.Action("Index")">Portfolio</a>
+                        <i class="fa fa-angle-right g-ml-7"></i>
+                    </li>
+                    <li class="list-inline-item g-color-primary">
+                        <span>@Model.Link</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PartialPortfolioResult -->
+        <div id="profiles" data-urlcontroller="/Portfolio/GetResult">
+            <!-- Cube Portfolio Blocks - Content -->
+            <div class="g-bg-secondary">
+                <div class="container g-pt-100 g-pb-70">
+                    <div class="masonry-grid row">
+                        <div class="masonry-grid-sizer col-sm-1"></div>
+                        <div class="masonry-grid-item col-sm-12 col-lg-8 g-mb-30">
+                            <!-- Blog Grid Modern Blocks -->
+                            <article class="row align-items-stretch no-gutters u-shadow-v21 u-shadow-v21--hover g-transition-0_3">
+                                <div class="col-md-6 g-bg-white g-rounded-left-5">
+                                    <div class="g-pa-60">
+                                        <h2 class="h5 g-color-black g-font-weight-600 mb-4">
+                                            <a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="#!">O que é um Portfolio?</a>
+                                        </h2>
+                                        <p class="g-color-gray-dark-v4 g-line-height-1_8 mb-4">Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hampden-Sydney College</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 g-bg-size-cover g-bg-pos-center g-min-height-300 g-rounded-right-5" data-bg-img-src="../../Content/uploads/1101/imgPortfolio1.jpg"></div>
+                            </article>
+                            <!-- End Blog Grid Modern Blocks -->
+                        </div>
+                        @foreach (var item in Model.Portfolio)
+                        {
+                            <div class="masonry-grid-item col-sm-6 col-lg-4 g-mb-30">
+                                <!-- Blog Grid Modern Blocks -->
+                                <article class="u-shadow-v21 u-shadow-v21--hover g-transition-0_3">
+                                    <img class="img-fluid w-100 g-rounded-top-5" src="~/Content/uploads/@item.UserImageGallery.Folder/@item.UserImageGallery.FileName" alt="Image Description">
+                                    <div class="g-bg-white g-pa-30 g-rounded-bottom-5">
+                                        <ul class="list-inline g-color-gray-dark-v4 g-font-weight-600 g-font-size-12">
+                                            <li class="list-inline-item mr-0"><a class="u-link-v5 g-color-main" href="@Url.Action("ByCategory", "Portfolio", new { category = item.Category })">@item.Category</a></li>
+                                            <li class="list-inline-item mx-2">&#183;</li>
+                                            <li class="list-inline-item"><a class="u-link-v5 g-color-main" href="@Url.Action("main", "Portfolio", new { n = item.SiteNumber })">Visitar Página</a></li>
+                                        </ul>
+                                        <h2 class="h5 g-color-black g-font-weight-600 mb-4">
+                                            <a class="u-link-v5 g-color-black g-color-primary--hover g-cursor-pointer" href="@Url.Action("item", "Portfolio", new { n = item.SiteNumber, id = item.Id })">@item.Title</a>
+                                        </h2>
+                                        <ul class="list-inline g-font-size-12 mb-0">
+                                            @foreach (var tags in item._Tags)
+                                            {
+                                                <li class="list-inline-item g-mb-10">
+                                                    <a class="u-tags-v1 g-color-teal g-bg-teal-opacity-0_1 g-bg-teal--hover g-color-white--hover g-rounded-50 g-py-4 g-px-15" href="@Url.Action("ByTag", "Portfolio", new { tag = tags })">@tags</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </article>
+                                <!-- End Blog Grid Modern Blocks -->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- End Cube Portfolio Blocks - Content -->
+        </div>
+        <!-- End PartialPortfolioResult -->
+        <!-- Footer -->
+        <div id="contacts-section" class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">IShoopping</h2>
+                        </div>
+                        <p>Bem Vindo ao Mundo do Marketing Digital.</p>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Últimos Posts</h2>
+                        </div>
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/Appview/Singlepost/3fb15711-43e0-e711-80bc-bc305b867444" target="_blank">Marketing Digital</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/AppView/SinglePost/192d1685-43e0-e711-80bc-bc305b867444" target="_blank">Tipos de Marketign</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/AppView/SinglePost/70e56fdc-43e0-e711-80bc-bc305b867444" target="_blank">Como criar seu Website</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Nossos Links</h2>
+                        </div>
+
+                        <nav class="text-uppercase1">
+                            <ul class="list-unstyled g-mt-minus-10 mb-0">
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("About")">Sobre</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Blog", "AppView")">Blog</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Tutorial")">Tutorial</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Contact")">Contato</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Nossos Contatos</h2>
+                        </div>
+
+                        <address class="g-bg-no-repeat g-font-size-12 mb-0" style="background-image: url(../../Componentes/Premium/Unify/assets/img/maps/map2.png);">
+                            <!-- Location -->
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-map-marker"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">Rio de Janeiro<br> Rio de Janeiro, Brasil</p>
+                            </div>
+                            <!-- End Location -->
+                            <!-- Phone
+                            <div class="d-flex g-mb-20">
+                              <div class="g-mr-10">
+                                <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                  <i class="fa fa-phone"></i>
+                                </span>
+                              </div>
+                              <p class="mb-0">(+123) 456 7890 <br> (+123) 456 7891</p>
+                            </div>
+                            End Phone -->
+                            <!-- Email and Website -->
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-globe"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:suporte@ishoopping.com.br">suporte@ishoopping.com.br</a>
+                                    <br>
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">ishoopping.com.br</a>
+                                </p>
+                            </div>
+                            <!-- End Email and Website -->
+                        </address>
+                    </div>
+                    <!-- End Footer Content -->
+                </div>
+            </div>
+        </div>
+        <!-- End Footer -->
+        <!-- Copyright Footer -->
+        <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
+                        <div class="d-lg-flex">
+                            <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">@DateTime.Now.Year.ToString() © Todos os Direitos Reservados.</small>
+                            <ul class="u-list-inline">
+                                <li class="list-inline-item">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("TermsOfUse")">Termos de Uso</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span>|</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Contact")">Suporte</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 align-self-center">
+                        <ul class="list-inline text-center text-md-right mb-0">
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="g-color-white-opacity-0_5 g-color-white--hover popupIs">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <a href="http://twitter.com/share?text=Crie%20um%20site%20lindo%20e%20rápido%20com%20o%20IShoopping&url=" class="g-color-white-opacity-0_5 g-color-white--hover popupIs">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Google">
+                                <a href="https://plus.google.com/share?url=" class="g-color-white-opacity-0_5 g-color-white--hover popupIs">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=" class="g-color-white-opacity-0_5 g-color-white--hover popupIs">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Tumblr">
+                                <a href="http://www.tumblr.com/share/link?url=" class="g-color-white-opacity-0_5 g-color-white--hover popupIs">
+                                    <i class="fa fa-tumblr"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- End Copyright Footer -->
+
+        <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
+     "bottom": 15,
+     "right": 15
+   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+            <i class="hs-icon hs-icon-arrow-top"></i>
+        </a>
+    </main>
+
+    <div class="u-outer-spaces-helper"></div>
+
+
+    <!-- JS Global Compulsory -->
+    <script src="~/Componentes/Premium/Unify/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/jquery.easing/js/jquery.easing.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/popper.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+
+    <!-- JS Implementing Plugins -->
+    <script src="~/Componentes/Premium/Unify/assets/vendor/appear.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/slick-carousel/slick/slick.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/typedjs/typed.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/hs-bg-video/vendor/player.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/masonry/dist/masonry.pkgd.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/gmaps/gmaps.min.js"></script>
+
+
+    <!-- JS Unify -->
+    <script src="~/Componentes/Premium/Unify/assets/js/hs.core.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.header.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.tabs.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.cubeportfolio.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.onscroll-animation.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.go-to.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.popup.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.carousel.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/text-animation/hs.text-slideshow.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/gmap/hs.map.js"></script>
+
+
+    <!-- JS Customization -->
+    <script src="~/Componentes/Premium/Unify/assets/js/custom.js"></script>
+
+    <!-- Js IShoopping -->   
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>   
+
+        $(document).on('ready', function () {
+            // initialization of carousel
+            $.HSCore.components.HSCarousel.init('.js-carousel');
+
+            // initialization of tabs
+            $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+            // initialization of scroll animation
+            $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+            // initialization of popups
+            $.HSCore.components.HSPopup.init('.js-fancybox');
+
+            // initialization of go to
+            $.HSCore.components.HSGoTo.init('.js-go-to');
+        });
+
+        $(window).on('load', function () {
+            // initialization of header
+            $.HSCore.components.HSHeader.init($('#js-header'));
+            $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+            // initialization of HSMegaMenu component
+            $('.js-mega-menu').HSMegaMenu({
+                event: 'hover',
+                pageContainer: $('.container'),
+                breakpoint: 991
+            });
+
+            // initialization of masonry
+            $('.masonry-grid').imagesLoaded().then(function () {
+                $('.masonry-grid').masonry({
+                    columnWidth: '.masonry-grid-sizer',
+                    itemSelector: '.masonry-grid-item',
+                    percentPosition: true
+                });
+            });
+
+            // initialization of cubeportfolio
+            $.HSCore.components.HSCubeportfolio.init('.cbp');
+        });
+
+        $(window).on('resize', function () {
+            setTimeout(function () {
+                $.HSCore.components.HSTabs.init('[role="tablist"]');
+            }, 200);
+        });
+    </script>
+    
+</body>
+
+</html>
+

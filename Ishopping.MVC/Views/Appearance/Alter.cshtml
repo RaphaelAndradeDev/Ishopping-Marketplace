@@ -1,0 +1,93 @@
+﻿@model Ishopping.MVC.ViewModels.Config.ConfigUserAppearanceViewModel
+
+@{
+    ViewBag.Title = "Alterar Configurações";
+    Layout = "~/Views/Shared/_LayoutIsDefault.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/Colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h2>Configurações da Aparência</h2>
+        <p>Você pode alterar as cores da sua página para combinar melhor com o seu negócio. Use o diretamente o código da cor em hexadecimal, RGBA ou clique no ícone 'gota'.  Clique em Restaurar Padrões se quiser restaurar as cores originais do template.</p>
+        <a href="@Url.Action("About","Home")#Config" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+@using (Html.BeginForm("Salvar", "Appearance", FormMethod.Post, new { id = "defaultForm" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.Hidden("Id")
+    <div class="well">
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 defaultColor">
+                    <h4 class="color1">Cores Padrão</h4>
+                </div>
+                <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4 class="color1">Atual</h4>
+                </div>
+                <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <h4 class="color1">Modificada</h4>
+                </div>
+            </div>
+        </div>
+
+        @foreach (var item in Model.ConfigUserStyleColor)
+        {
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 defaultColor">
+                        <button type="button" class="btn btn-circle" style="background:@item.DefaultColor"><i class="glyphicon glyphicon-tint"></i></button>
+                        <strong>&nbsp;&nbsp;@item.DefaultColor</strong>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <button type="button" class="btn btn-circle" style="background:@item.UserColor"><i class="glyphicon glyphicon-tint"></i></button>
+                        <strong>&nbsp;&nbsp;@item.UserColor</strong>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="input-group colorPicker" name="colorPicker">
+                            <input class="form-control" type="text" name="UserColor" value="@item.UserColor" />
+                            <span class="input-group-addon">
+                                <span class=" glyphicon glyphicon-tint" style="color: #3562b7"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <br />
+        <p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <button type="submit" class="btn btn-primary" style="margin:2px">Salvar</button>
+                    <button type="button" class="btn btn-danger" id="Restaurar" style="margin:2px">Restaurar Padrão</button>
+                    <button type="button" class="btn btn-default pull-right" id="hideDefault" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </div>
+}
+
+@section scripts{  
+    <script src="~/Scripts/Ishopping/CommunEntity.js"></script>  
+    <script src="~/Content/Colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script src="~/Scripts/Ishopping/Config/ConfigUserStyleColor.js"></script>    
+}
+

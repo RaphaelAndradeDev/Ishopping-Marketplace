@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "E-mail Confirmado. Seja Bem-Vindo";
+}
+
+<br />
+<h2>@ViewBag.Title.</h2>
+<div>
+    <p>
+        Seu e-mail foi confirmado com sucesso, seja bem-vindo ao IShoopping. Por favor @Html.ActionLink("Clique aqui para Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

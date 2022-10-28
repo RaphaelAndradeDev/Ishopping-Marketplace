@@ -1,0 +1,33 @@
+﻿@model List<Ishopping.MVC.Models.ImageGallery>
+
+@{
+    int j = 0;
+    for (int i = 0; i < Model.Count(); i += 3)
+    {
+        j = i;
+
+        <div class="row">
+
+            @while (j < i + 3 && j < Model.Count())
+            {
+                <div class="col-md-4 portfolio-item">
+
+                    <img class="img-responsive img-portfolio img-hover" src="~/Content/uploads/@Model[j].FileName" alt="" style="margin-bottom:10px" />
+
+                    <div class="input-group col-xs-6">
+                        <span class="input-group-addon" id="sizing-addon3">Posição</span>
+                        <input type="number" class="form-control" value="@Model[j].Position" aria-describedby="sizing-addon1">
+                    </div>
+
+                    <div class="col-xs-1">@Html.ActionLink("Deletar", "Delete", new { fileName = Model[j].FileName }, new { @class = "btn btn-danger" })</div>
+                    <br /><br /><br /><br />
+
+                </div>
+                j++;
+            }
+        </div>
+    }
+}
+
+      
+

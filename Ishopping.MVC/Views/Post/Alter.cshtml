@@ -1,0 +1,280 @@
+﻿@model Ishopping.MVC.ViewModels.Component.ComponentPostViewModel
+@{
+    ViewBag.Title = "Componentes Posts";
+    Layout = "~/Views/Shared/_LayoutComponent.cshtml";
+    var inner = "item active";
+}
+
+@Html.Partial("_StylePartial")
+
+<input type="hidden" name="_goGallery" value="@Url.Action("GetImgPost", "ImageGallery", null)">
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Componente Post</h1>
+        <p>Componentes são itens dinâmicos. Você pode adicionar, editar ou remover um componente.  Cada template possui a sua lista de componentes, as propriedades dos componentes variam de acordo com cada template, algumas propriedades podem não aparecer em um template e aparecer em outro e vice-versa.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<br />
+<br />
+<br />
+@using (Html.BeginForm("Alter", "Post", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group no-gutter">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success" id="btnPesq" name="btnPesq">Pesquisar</button>
+                </span>
+                <input type="text" class="form-control texto" id="txtTexto" name="txtTexto" placeholder="Título do post">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+}
+<br />
+
+<div class="well">
+    <form id="defaultForm" method="post">
+        <input type="hidden" name="_id" value="@Model.Id" />
+        <br />
+        <div class="checkbox color1">
+            <label>@Html.CheckBox("displayOnPage", Model.DisplayOnPage)<text>Exibir esse item na página</text></label>
+        </div>
+        <div class="checkbox color1">
+            <label>@Html.CheckBox("DisplayOnlyPage", Model.DisplayOnlyPage)<text>Exibir item somente na página</text></label>
+        </div>
+        <br />
+        <div class="row">
+            <div class="btn-group col-md-8 col-sm-8 col-xs-12">
+                <p class="text-muted text-center">Selecione um modelo para o post</p>
+                <button type="button" class="btn btn-default dropdown-toggle model" id="model" data-model="@Model.Model" data-toggle="dropdown" style="width:100%;min-width:390px">
+                    Selecione um modelo
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a name="model" id="_PartialPost_1">1 Imagem seguida de textos</a></li>
+                    <li><a name="model" id="_PartialPost_2">2 Imagens seguidas de textos</a></li>
+                    <li><a name="model" id="_PartialPost_3">3 Imagens seguidas de textos</a></li>
+                    <li><a name="model" id="_PartialPost_4">Slider de Imagens seguidas de textos</a></li>
+                    <li><a name="model" id="_PartialPost_5">Slider de Imagens com 1 texto mais vídeo com 2 texto</a></li>
+                    <li><a name="model" id="_PartialPost_6">Vídeo com 1 texto seguido por imagem com 2 textos</a></li>
+                    <li><a name="model" id="_PartialPost_7">Vídeo com 1 texto seguido por 2 imagens e 2 textos</a></li>
+                    <li><a name="model" id="_PartialPost_8">Vídeo com 1 texto e slider de Imagens com 2 textos</a></li>
+                    <li><a name="model" id="_PartialPost_9">Vídeo seguido de textos</a></li>
+                </ul>
+                <small class="text-center">Escolha o modelo que sera usado no blog</small>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Título :</h4>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                    <div class="input-group">
+                        <input class="form-control texto" type="text" id="titulo" name="titulo" placeholder="Título" value="@Model._Titulo" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                        </span>
+                    </div>
+                    <small class="text-muted">Estilo: <span id="stitulo">@Model.ComponentPostOption.Titulo</span></small>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        @for (int i = 0; i < Model.UserImageGallery.Count(); i++)
+                        {
+                            <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+                        }
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @foreach (var item in Model.UserImageGallery)
+                        {
+                            <div class="@inner">
+                                <img class="img-responsive" src="~/Content/uploads/@item.Folder/@item.FileName" alt="" />
+                            </div>
+                            inner = "item";
+                        }
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h4 class="color1">Código da Imagem 1 :</h4>
+                    <div class="form-group">
+                        <input class="form-control image" type="text" name="img1" value="@Model.UserImageGallery.ElementAt(0).FileName" />
+                    </div>
+                </div>
+                <div>
+                    <h4 class="color1">Código da Imagem 2 :</h4>
+                    <div class="form-group">
+                        <input class="form-control image" type="text" name="img2" value="@Model.UserImageGallery.ElementAt(1).FileName" />
+                    </div>
+                </div>
+                <h4 class="color1">Código da Imagem 3 :</h4>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <input class="form-control image" type="text" name="img3" placeholder="Código da imagem" value="@Model.UserImageGallery.ElementAt(2).FileName" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" id="goToGallery" style="margin:2px">Ir para Galeria</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Subtítulo 1 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="subTitulo1" name="subTitulo1" value="@Model._SubTitulo1" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                <small class="text-muted">Estilo: <span id="ssubtitulo">@Model.ComponentPostOption.SubTitulo</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Parágrafo 1 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="paragrafo1" name="paragrafo1">@Model._Paragrafo1</textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="sparagrafo">@Model.ComponentPostOption.Paragrafo</span></small>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Subtítulo 2 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <input class="form-control texto" type="text" id="subTitulo2" name="subTitulo2" value="@Model._SubTitulo2" />
+                <small class="text-muted">Esse item só é exibido no blog</small>
+            </div>
+        </div>
+        <h4 class="color1">Parágrafo 2 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <textarea class="form-control texto" rows="3" id="paragrafo2" name="paragrafo2">@Model._Paragrafo2</textarea>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Esse item só é exibido no blog</small>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">Subtítulo 3 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <input class="form-control texto" type="text" id="subTitulo3" name="subTitulo3" value="@Model._SubTitulo3" />
+                <small class="text-muted">Esse item só é exibido no blog</small>
+            </div>
+        </div>
+        <h4 class="color1">Parágrafo 3 :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <textarea class="form-control texto" rows="3" id="paragrafo3" name="paragrafo3">@Model._Paragrafo3</textarea>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Esse item só é exibido no blog</small>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="color1">Categoria :</h4>
+                <div class="row">
+                    <div class="btn-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" class="btn btn-default" id="categoria" name="categoria" style="width:200px">@Model.Categoria</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a>Decoração</a></li>
+                            <li><a>Saúde</a></li>
+                            <li><a>Negócios e Finanças</a></li>
+                            <li><a>Utilidade Pública</a></li>
+                            <li><a>Gastronomia</a></li>
+                            <li><a>Tecnologia</a></li>
+                            <li><a>Moda e Beleza</a></li>
+                            <li><a>Informática</a></li>
+                            <li><a>Jogos</a></li>
+                            <li><a>Lugares e Turismo</a></li>
+                            <li><a>Construção e Reforma</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="color1">Autor :</h4>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="input-group">
+                            <input class="form-control texto" type="text" id="autor" name="autor" value="@Model.Autor" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                            </span>
+                        </div>
+                        <small class="text-muted">Estilo: <span id="sautor">@Model.ComponentPostOption.Autor</span></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h4 class="color1">URL do Vídeo :</h4>
+        <div class="form-group">
+            <input class="form-control texto" type="text" id="video" name="video" value="@Model.Video" placeholder="https://www.youtube.com/embed/P_Z1HkpMtng" />
+        </div>
+        <h4 class="color1">Tags de Busca :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="form-group">
+                    <textarea class="form-control texto" rows="3" id="tags" name="tags" placeholder="tag1, tag2, tag3, tag4">@Model.Tags</textarea>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" id="reload" style="margin:2px">Novo</button>
+                    <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                    <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+                    <button type="button" class="btn btn-default pull-right" onclick="GotoSinglePost('@Model.Id')">Visualizar no Blog</button>
+                </div>
+            </div>
+        </div>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Component/CommunComponentT2.min.js"></script>
+    <script src="~/Scripts/Ishopping/Component/ComponentPost.min.js"></script>
+}
+
+
+

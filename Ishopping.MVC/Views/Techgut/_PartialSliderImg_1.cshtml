@@ -1,0 +1,17 @@
+﻿@model Ishopping.Mvc.Serialization.Content.ContentSliderSerialization
+
+<div class="@Model.ClassTarget @Model.Incoming @Model.Outgoing"
+     data-start="@Model.DataStart"
+     data-end="@Model.DataEnd"
+     data-x="@Model.DataX"
+     data-y="@Model.DataY"
+     data-hoffset="@Model.DataHoffset"
+     data-voffset="@Model.DataVoffset"
+     data-speed="@Model.DataSpeed"
+     data-endspeed="@Model.DataEndSpeed"
+     data-easing="@Model.DataEasing"
+     data-endeasing="@Model.DataEndEasing"
+     data-captionhidden="on"
+     style="z-index: @Model.DataImgZindex">
+    <img src="@Model.ImageUrl" alt="" data-ww="@Model.DataImgWidth" data-hh="@Model.DataImgHeight">
+</div>

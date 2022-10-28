@@ -1,0 +1,24 @@
+﻿@model Ishopping.Models.Serialize
+
+@{
+    ViewBag.Title = "Imagens View";
+    Layout = "~/Views/Shared/_LayoutImage.cshtml";
+}  
+
+<input type="hidden" id="data" data-filetype="1" data-imgcontroller="Index" />
+<input type="hidden" id="dataSerialize" data-sitenumber="@Model.SiteNumber" data-controller="@Model.Controller" data-serialize="@Model.IsSerialize" />
+
+@Html.Partial("_ImageGalleryPartial", new ViewDataDictionary(this.ViewData) { { "fileType", "1" } })
+
+<div class="container body-content" id="imageViews"></div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/DataSerialize.min.js"></script>
+    <script src="~/Scripts/Ishopping/ImageGallery/ImageGalleryT1.min.js"></script>
+}
+   
+
+
+
+
+

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.Component.ComponentSocialNetworkViewModel>
+@{
+    ViewBag.Title = "Redes Sociais";
+    Layout = "~/Views/Shared/_LayoutComponent.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <div class="col-md-4">
+        <h1>Componente Redes Sociais</h1>
+        <p>Componentes são itens dinâmicos. Você pode adicionar, editar ou remover um componente.  Cada template possui a sua lista de componentes, as propriedades dos componentes variam de acordo com cada template, algumas propriedades podem não aparecer em um template e aparecer em outro e vice-versa.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div class="well">
+    <form id="addSnForm" method="post">
+        <br />
+        <h4 class="color1">Adicionar Redes Sociais :</h4>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" name="adicionar" style="margin:2px">Adicionar</button>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <input type="text" class="form-control" name="link" placeholder="Entre com o link da rede">
+            </div>
+            <div class="btn-group col-md-2">
+                <button type="button" class="btn btn-primary dropdown-toggle" name="rede" data-toggle="dropdown" aria-expanded="false" style="width:160px;">
+                    Facebook
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    @foreach (var rede in ViewBag.Redes)
+                    {
+                        <li><a>@rede</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </form>
+    <br />
+    <form id="defaultForm" method="post">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <input type="hidden" name="id" value="@item.Id" />
+                <div class="col-md-5">
+                    <input type="text" class="form-control link" name="link" value="@item.Link">
+                </div>
+                <div class="btn-group col-md-2">
+                    <button type="button" class="btn btn-primary dropdown-toggle uni" name="rede" data-toggle="dropdown" aria-expanded="false" style="width:160px">
+                        @item.Rede
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        @foreach (var rede in ViewBag.Redes)
+                        {
+                            <li><a>@rede</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" name="salvar" style="margin:1px">Alterar</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-danger" name="deletar" id="@item.Id" style="margin:1px">Deletar</button>
+                </div>
+            </div>
+            <br />
+        }
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Component/ComponentSocialNetwork.min.js"></script>
+}
+
+
+
+

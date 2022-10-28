@@ -1,0 +1,228 @@
+﻿@model Ishopping.MVC.ViewModels.Component.ComponentProjectViewModel
+@{
+    ViewBag.Title = "Componentes Projetos";
+    Layout = "~/Views/Shared/_LayoutComponent.cshtml";
+    var inner = "item active";
+}
+
+@section styles{
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+}
+
+@Html.Partial("_StylePartial")
+
+<input type="hidden" name="_goGallery" value="@Url.Action("GetImgProjects", "ImageGallery", null)">
+
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="~/Images/Ishopping/slide3.jpg" />
+    </div>
+    <div class="col-md-4">
+        <h1>Componente Projetos</h1>
+        <p>Componentes são itens dinâmicos. Você pode adicionar, editar ou remover um componente.  Cada template possui a sua lista de componentes, as propriedades dos componentes variam de acordo com cada template, algumas propriedades podem não aparecer em um template e aparecer em outro e vice-versa.</p>
+        <a href="@Url.Action("About","Home")#Component" target="_blank" class="btn btn-primary btn-lg">Saiba Mais!</a>
+    </div>
+</div>
+<br />
+<br />
+<br />
+@using (Html.BeginForm("Alter", "Projects", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group no-gutter">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success" id="btnPesq" name="btnPesq">Pesquisar</button>
+                </span>
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" placeholder="Título do Projeto">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+}
+<br />
+<br />
+<div class="well">
+    <form id="defaultForm" method="post">
+        <h4 class="color1">Título :</h4>
+        <div class="form-group">
+            <input type="hidden" name="_id" value="@Model.Id" />
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                    <div class="input-group">
+                        <input class="form-control texto" type="text" id="title" name="title" placeholder="Título" value="@Model._Title" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                        </span>
+                    </div>
+                    @Html.Partial("_IsTagsPartial")
+                    <small class="text-muted">Estilo: <span id="stitle">@Model.ComponentProjectOption.Title</span></small>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        @for (int i = 0; i < Model.UserImageGallery.Count(); i++)
+                        {
+                            <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+                        }
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @foreach (var item in Model.UserImageGallery)
+                        {
+                            <div class="@inner">
+                                <img class="img-responsive" src="~/Content/uploads/@item.Folder/@item.FileName" alt="" />
+                            </div>
+                            inner = "item";
+                        }
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h4 class="color1">Código da Imagem 1 :</h4>
+                    <div class="form-group">
+                        <input class="form-control image" type="text" name="img1" value="@Model.UserImageGallery.ElementAt(0).FileName" />
+                    </div>
+                </div>
+                <div>
+                    <h4 class="color1">Código da Imagem 2 :</h4>
+                    <div class="form-group">
+                        <input class="form-control image" type="text" name="img2" value="@Model.UserImageGallery.ElementAt(1).FileName" />
+                    </div>
+                </div>
+                <h4 class="color1">Código da Imagem 3 :</h4>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <input class="form-control image" type="text" name="img3" placeholder="Código da imagem" value="@Model.UserImageGallery.ElementAt(2).FileName" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" id="goToGallery" style="margin:2px">Ir para Galeria</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-5">
+                <h4 class="color1">Nome :</h4>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="input-group">
+                            <input class="form-control texto" type="text" id="name" name="name" placeholder="Nome do projeto" value="@Model._Name" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                            </span>
+                        </div>
+                        @Html.Partial("_IsTagsPartial")
+                        <small class="text-muted">Estilo: <span id="sname">@Model.ComponentProjectOption.Name</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h4 class="color1">Data :</h4>
+                <div class='input-group date' id='datetimePicker'>
+                    <input type='text' class="form-control" id="date" name="date" value="@Model.DateIn" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <h4 class="color1">Cliente :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="client" name="client" placeholder="Clientes" value="@Model._Client" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="sclient">@Model.ComponentProjectOption.Client</span></small>
+            </div>
+        </div>
+        <h4 class="color1">WebSite :</h4>
+        <div class="form-group">
+            <input class="form-control texto" id="website" name="website" placeholder="WebSite do cliente" value="@Model.WebSite" />
+        </div>
+        <h4 class="color1">Descrição :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <textarea class="form-control texto" rows="3" id="description" name="description" placeholder="Descrição sobre o projeto">@Model._Description</textarea>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="sdescription">@Model.ComponentProjectOption.Description</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Categoria :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="category" name="category" placeholder="Categoria relacionada" value="@Model.Category" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="scategory">@Model.ComponentProjectOption.Category</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Equipe :</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div class="input-group">
+                    <input class="form-control texto" type="text" id="team" name="team" placeholder="Participantes do projeto" value="@Model.Team" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-leaf bntStyle"></span>
+                    </span>
+                </div>
+                @Html.Partial("_IsTagsPartial")
+                <small class="text-muted">Estilo: <span id="steam">@Model.ComponentProjectOption.Team</span></small>
+            </div>
+        </div>
+        <h4 class="color1">Vídeo :</h4>
+        <div class="form-group">
+            <input class="form-control texto" id="video" name="video" placeholder="Url do vídeo relacionado ao projeto" value="@Model.UrlVideo" />
+        </div>
+        <p>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" id="reload" style="margin:2px">Novo</button>
+                <button type="submit" class="btn btn-primary" id="salvar" style="margin:2px">Salvar</button>
+                <button type="button" class="btn btn-danger" id="deletar" style="margin:2px">Deletar</button>
+            </div>
+        </p>
+        <text id="Status"></text>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/moment-with-locales.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/Ishopping/Component/CommunComponentT2.min.js"></script>
+    <script src="~/Scripts/Ishopping/Component/ComponentProject.min.js"></script>
+}
+
+
+
+
+

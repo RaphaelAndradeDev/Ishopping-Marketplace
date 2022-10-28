@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Ishopping.MVC.ViewModels.User.UserImageGalleryViewModel>
+
+@{
+    ViewBag.Title = "ImageProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="color1">Verificação de Imagens</h3>
+        <button type="button" class="btn btn-info pull-right" id="Salvar">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Salvar
+        </button>
+    </div>
+</div>
+
+<hr /><br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail" style="margin-bottom:20px;padding-bottom:5px;height:350px">
+                <img src="~/Content/uploads/@item.Folder/@item.FileName" style="width:100%">
+                <div class="caption">
+                    <input type="hidden" data-sitenumber="@item.SiteNumber" data-imgid="@item.Id" data-imgfiletype="@item.FileType" data-imgfilename="@item.FileName" />
+                    <button type="button" class="btn btn-default noCheck">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Ignorar
+                    </button>
+                    <button type="button" class="btn btn-default pull-right block" style="margin-bottom:6px">
+                        <span class=" glyphicon glyphicon-remove" aria-hidden="true">
+                        </span> Bloquear
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/Admin/AdminImageProfile.js"></script>    
+}
+
+

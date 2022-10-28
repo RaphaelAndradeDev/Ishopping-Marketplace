@@ -1,0 +1,110 @@
+﻿@model Ishopping.ViewModels.Ishopping.SinglePostViewModel
+@{var inner = "carousel-item active"; var innit = "active"; var site = "https://www.ishoopping.com.br"; }
+
+<article class="g-mb-60">
+    <header class="g-mb-30">
+        <h1 class="h1 g-mb-15">@Html.Raw(Model.SinglePost.Titulo)</h1>
+
+        <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-0">
+            <li class="list-inline-item">
+                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="@Url.Action("Blog", new { siteNumber = Model.SinglePost.SiteNumber })">@Model.SinglePost.Autor</a>
+            </li>
+            <li class="list-inline-item g-mx-10">/</li>
+            <li class="list-inline-item">
+                @Model.SinglePost._DataCadastro
+            </li>          
+            <li class="list-inline-item ml-auto">
+                <i class="icon-eye u-line-icon-pro align-middle mr-1"></i> @Model.SinglePost.Views
+            </li>
+        </ul>
+
+        <hr class="g-brd-gray-light-v4 g-my-15">
+
+        <div class="row">
+            <div class="col-md-2">
+                <a class="fb-share-button ml-2" data-href="@site@Url.Action("SinglePost", new { id = Model.SinglePost.Id })" data-layout="button" data-size="large" data-mobile-iframe="true"></a>
+            </div>
+            <div class="col-md-2">
+                <a class="twitter-share-button" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-show-count="true"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="g-font-size-16 g-line-height-1_8 g-mb-30">
+        <figure class="u-shadow-v25 g-mb-30">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < Model.SinglePost.UserImageGallery.Count(); i++)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@innit"></li>
+                    }
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    @foreach (var item in Model.SinglePost.UserImageGallery)
+                    {
+                        <div class="@inner">
+                            <img class="img-fluid w-100" src="~/Content/uploads/@item.Folder/@item.FileName" alt="ishoopping post">
+                        </div>
+                        inner = "carousel-item";
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>  
+        </figure>
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo1)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo1)</p>
+
+        <div style="margin-top:50px"></div>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="@Model.SinglePost.Video"></iframe>
+        </div>
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo2)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo2)</p>
+              
+        <div class="mx-auto g-my-15">
+            <h2 class="g-color-primary">@Html.Raw(Model.SinglePost.SubTitulo3)</h2>
+        </div>
+        <p class="g-color-gray-dark-v2 g-mb-40">@Html.Raw(Model.SinglePost.Paragrafo3)</p>
+
+    </div>
+
+    <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-0">
+        <li class="list-inline-item">
+            Mais sobre: <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="@Url.Action("Blog", new { category = Model.SinglePost.Categoria})"> @Model.SinglePost.Categoria</a>
+        </li>
+    </ul>
+
+    <hr class="g-brd-gray-light-v4">
+
+    <!-- Social Shares -->
+    <div class="row">
+        <div class="col-md-2">
+            <a class="fb-share-button ml-2" data-href="@site@Url.Action("SinglePost", new { id = Model.SinglePost.Id })" data-layout="button" data-size="large" data-mobile-iframe="true"></a>
+        </div>
+        <div class="col-md-2">
+            <a class="twitter-share-button" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-show-count="true"></a>
+        </div>
+    </div>
+    <!-- End Social Shares -->
+
+    <hr class="g-brd-gray-light-v4 g-mb-40">
+
+</article>
+
+
+
+
+
+
+

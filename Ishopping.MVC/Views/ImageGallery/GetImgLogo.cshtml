@@ -1,0 +1,28 @@
+﻿@model Ishopping.ViewModels.ImageGallery.ImageT1ViewModel
+
+@{
+    ViewBag.Title = "Imagens Logo";
+    Layout = "~/Views/Shared/_LayoutImage.cshtml";
+}
+
+<input type="hidden" id="data" data-filetype="3" data-imgcontroller="GetImgLogo" />
+<input type="hidden" id="dataSerialize" data-sitenumber="@Model.Serialize.SiteNumber" data-controller="@Model.Serialize.Controller" data-serialize="@Model.Serialize.IsSerialize" />
+
+@Html.Partial("_ImageGalleryPartial", new ViewDataDictionary(this.ViewData) { { "fileType", "3" } })
+
+<div class="row">
+    @foreach (var item in Model.UserImageGalleryViewModel)
+    {
+        @Html.Partial("_PortfolioPartialT1I4", item)
+    }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Ishopping/DataSerialize.js"></script>
+    <script src="~/Scripts/Ishopping/ImageGallery/ImageGalleryT1.min.js"></script>
+}
+
+
+
+
+

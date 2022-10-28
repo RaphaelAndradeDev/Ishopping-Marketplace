@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="No IShoopping você pode criar uma site profissional para expor o seu negócio de uma maneira fácil e rápida sem precisar de qualquer conhecimento de códigos html">
+    <meta name="author" content="">
+    <title>IShoopping Criador de Site Profissional</title>
+    <link href="~/Componentes/Professional/Patros/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Componentes/Professional/Patros/css/patros.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" style="margin:0;height:100%">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Images/Ishopping/logo.png" alt="company logo" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right custom-menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li><a href="@Url.Action("Index","Home")#about">Profiles</a></li>
+                    <li>@Html.ActionLink("Blog", "Blog", "AppView")</li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+    @RenderBody()
+    
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center color-elements" style="margin-bottom:120px;margin-top:0">
+                        <h2>IShoopping</h2>
+                        <p>A melhor plataforma para por a sua empresa no mundo do Marketing Digital</p>
+                        <p><a href="@Url.Action("Login", "Account")">Clique aqui</a> para criar a sua conta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <div class="container">
+            <div class="row myfooter">
+                <div class="col-sm-6">
+                    <div class="pull-left">
+                        © Copyright Company 2015 | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="pull-right">Designed by <a href="http://www.atis.al">ATIS</a></div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+
+    <div id="fb-root"></div>
+    <script src="~/Scripts/Ishopping/Facebook.js"></script>
+    <script src="~/Componentes/Professional/Patros/js/jquery.js"></script>
+    <script src="/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Componentes/Professional/Patros/js/bootstrap.min.js"></script>
+    <script src="~/Componentes/Professional/Patros/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

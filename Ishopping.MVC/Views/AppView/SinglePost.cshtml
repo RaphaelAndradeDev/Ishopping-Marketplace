@@ -1,0 +1,427 @@
+﻿@model Ishopping.ViewModels.Ishopping.SinglePostViewModel
+
+@{
+    Layout = null;
+    var site = "https://www.ishoopping.com.br";
+    var img = "https://www.ishoopping.com.br/Content/uploads/";
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <!-- Title -->
+    <title>@Model.SinglePost.Titulo</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Meta Tags For SEO -->
+    <meta name="description" content="@Model.SinglePost.SubTitulo1" />
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:url" content="@site@Url.Action("SinglePost","AppView", new { id = @Model.SinglePost.Id })" /> 
+    <meta property="og:title" content="@Model.SinglePost.Titulo" />
+    <meta property="og:description" content="@Model.SinglePost.SubTitulo1" />
+    <meta property="og:image" content="@img@Model.SinglePost.UserImageGallery.ElementAt(0).Folder/@Model.SinglePost.UserImageGallery.ElementAt(0).FileName" />
+
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="@Model.SinglePost.Autor">
+    <meta property="article:section" content="@Model.SinglePost.Categoria">
+    <meta property="article:tag" content="@Model.SinglePost.Titulo">
+    <meta property="article:published_time" content="@Model.SinglePost.DataCadastro">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Componentes/Premium/Unify/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C300%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/bootstrap/bootstrap.min.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="~/Content/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/animate.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/hs-megamenu/src/hs.megamenu.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/vendor/fancybox/jquery.fancybox.css">
+
+    <!-- CSS Unify Theme -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/blog/assets/css/styles.bm-classic.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/Componentes/Premium/Unify/assets/css/custom.css">
+
+</head>
+
+<body>
+    <main>
+        <!-- Header -->
+        <header id="js-header" class="u-header u-header--static--lg u-header--show-hide--lg u-header--change-appearance--lg" data-header-fix-moment="500" data-header-fix-effect="slide">
+            <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10" data-header-fix-moment-exclude="g-bg-white g-py-10" data-header-fix-moment-classes="g-bg-white-opacity-0_7 u-shadow-v18 g-py-0">
+                <nav class="js-mega-menu navbar navbar-expand-lg">
+                    <div class="container">
+                        <!-- Responsive Toggle Button -->
+                        <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+                            <span class="hamburger hamburger--slider">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </span>
+                        </button>
+                        <!-- End Responsive Toggle Button -->
+                        <!-- Logo -->
+                        <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                            <img src="~/Images/Ishopping/logo.png" alt="Image Description">
+                        </a>
+                        <!-- End Logo -->
+                        <!-- Navigation -->
+                        <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
+                            <ul class="navbar-nav text-uppercase g-font-weight-600 ml-auto">
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Index","Home")" class="nav-link px-0">Home</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Index","Home")" class="nav-link px-0">Pesquisar</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("About", "Home")" class="nav-link px-0">Sobre</a>
+                                </li>
+                                <li class="nav-item g-mx-10--lg">
+                                    <a href="@Url.Action("Blog","AppView")" class="nav-link px-0">Blog</a>
+                                </li>
+                                @Html.Partial("_LoginPartialIs")
+                            </ul>
+                        </div>
+                        <!-- End Navigation -->
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <!-- Page Title -->
+        <section class="dzsparallaxer auto-init height-is-based-on-content use-loading" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
+            <!-- Parallax Image -->
+            <div class="divimage dzsparallaxer--target w-100 g-bg-cover g-bg-white-gradient-opacity-v3--after" style="height: 140%; background-image: url(../../Images/Ishopping/ishoopping10.jpg);"></div>
+            <!-- End Parallax Image -->
+            <div class="container text-center g-py-50--md g-py-40">
+                <!-- Search Form -->
+                <form class="g-width-60x--md mx-auto" action="@Url.Action("Blog", "AppView")" method="get">
+                    <div class="form-group g-mb-20">
+                        <div class="input-group u-shadow-v21 rounded g-mb-15">
+                            <input class="form-control form-control-md g-brd-white g-font-size-16 border-right-0 pr-0 g-py-15" type="text" name="txtTexto" id="txtTexto" placeholder="Pesquisar por algum post específico">
+                            <div class="input-group-addon d-flex align-items-center g-bg-white g-brd-white g-color-gray-light-v1 g-pa-2">
+                                <button class="btn u-btn-primary g-font-size-16 g-py-15 g-px-20" type="submit">
+                                    <i class="icon-magnifier g-pos-rel g-top-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <small class="form-text g-opacity-0_8 g-font-size-default">Pesquise por algum conteúdo de sua preferência</small>
+                    </div>
+                </form>
+                <!-- End Search Form -->
+            </div>
+        </section>
+        <!-- Page Title -->
+        <!-- News Content -->
+        <section class="g-pt-70 g-pb-100">
+            <div class="container">
+                <div class="row">
+                    <!-- Articles Content -->
+                    <div class="col-lg-9 g-mb-50 g-mb-0--lg">
+                        @Html.Partial((string)Model.SinglePost.Model, Model)
+                        <div id="stickyblock-end"></div>
+                    </div>
+                    <!-- End Articles Content -->
+                    <!-- Sidebar -->
+                    @Html.Partial("_PartialBlogSidebar")
+                    <!-- End Sidebar -->
+                </div>
+            </div>
+        </section>
+        <!-- End News Content -->
+        <!-- Footer -->
+        <div id="contacts-section" class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">IShoopping</h2>
+                        </div>
+                        <p>Bem Vindo ao Mundo do Marketing Digital.</p>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Últimos Posts</h2>
+                        </div>
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/Appview/Singlepost/3fb15711-43e0-e711-80bc-bc305b867444" target="_blank">Marketing Digital</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/AppView/SinglePost/192d1685-43e0-e711-80bc-bc305b867444" target="_blank">Tipos de Marketign</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+
+                        <hr class="g-brd-white-opacity-0_1 g-my-10">
+
+                        <article>
+                            <h3 class="h6 g-mb-2">
+                                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="/AppView/SinglePost/70e56fdc-43e0-e711-80bc-bc305b867444" target="_blank">Como criar seu Website</a>
+                            </h3>
+                            <div class="small g-color-white-opacity-0_6">Dezembro 5, 2017</div>
+                        </article>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Nossos Links</h2>
+                        </div>
+
+                        <nav class="text-uppercase1">
+                            <ul class="list-unstyled g-mt-minus-10 mb-0">
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("About", "Home")">Sobre</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Blog", "AppView")">Blog</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Tutorial", "Home")">Tutorial</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                                <li class="g-pos-rel g-py-10">
+                                    <h4 class="h6 g-pr-20 mb-0">
+                                        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Contact", "Home")">Contato</a>
+                                        <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
+                                    </h4>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- End Footer Content -->
+                    <!-- Footer Content -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+                            <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Nossos Contatos</h2>
+                        </div>
+
+                        <address class="g-bg-no-repeat g-font-size-12 mb-0" style="background-image: url(../../Componentes/Premium/Unify/assets/img/maps/map2.png);">
+                            <!-- Location -->
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-map-marker"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">Rio de Janeiro<br> Rio de Janeiro, Brasil</p>
+                            </div>
+                            <!-- End Location -->
+                            <!-- Phone
+                            <div class="d-flex g-mb-20">
+                              <div class="g-mr-10">
+                                <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                  <i class="fa fa-phone"></i>
+                                </span>
+                              </div>
+                              <p class="mb-0">(+123) 456 7890 <br> (+123) 456 7891</p>
+                            </div>
+                            End Phone -->
+                            <!-- Email and Website -->
+                            <div class="d-flex g-mb-20">
+                                <div class="g-mr-10">
+                                    <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
+                                        <i class="fa fa-globe"></i>
+                                    </span>
+                                </div>
+                                <p class="mb-0">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:suporte@ishoopping.com.br">suporte@ishoopping.com.br</a>
+                                    <br>
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">ishoopping.com.br</a>
+                                </p>
+                            </div>
+                            <!-- End Email and Website -->
+                        </address>
+                    </div>
+                    <!-- End Footer Content -->
+                </div>
+            </div>
+        </div>
+        <!-- End Footer -->
+        <!-- Copyright Footer -->
+        <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
+                        <div class="d-lg-flex">
+                            <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">@DateTime.Now.Year.ToString() © Todos os Direitos Reservados.</small>
+                            <ul class="u-list-inline">
+                                <li class="list-inline-item">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("TermsOfUse", "Home")">Termos de Uso</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span>|</span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="@Url.Action("Contact", "Home")">Suporte</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 align-self-center">
+                        <ul class="list-inline text-center text-md-right mb-0">
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=" class="g-color-white-opacity-0_5 g-color-white--hover popup">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                <a href="http://twitter.com/share?text=Crie%20um%20site%20lindo%20e%20rápido%20com%20o%20IShoopping&url=" class="g-color-white-opacity-0_5 g-color-white--hover popup">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Google">
+                                <a href="https://plus.google.com/share?url=" class="g-color-white-opacity-0_5 g-color-white--hover popup">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=" class="g-color-white-opacity-0_5 g-color-white--hover popup">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Tumblr">
+                                <a href="http://www.tumblr.com/share/link?url=" class="g-color-white-opacity-0_5 g-color-white--hover popup">
+                                    <i class="fa fa-tumblr"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- End Copyright Footer -->
+
+        <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
+     "bottom": 15,
+     "right": 15
+   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+            <i class="hs-icon hs-icon-arrow-top"></i>
+        </a>
+
+    </main>
+
+    <div class="u-outer-spaces-helper"></div>
+
+    <!-- JS Global Compulsory -->
+    <script src="~/Componentes/Premium/Unify/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/popper.min.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script src="~/Componentes/Premium/Unify/assets/vendor/appear.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/slick-carousel/slick/slick.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+
+    <!-- JS Unify -->
+    <script src="~/Componentes/Premium/Unify/assets/js/hs.core.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.header.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.dropdown.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.counter.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.onscroll-animation.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.sticky-block.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.carousel.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.popup.js"></script>
+    <script src="~/Componentes/Premium/Unify/assets/js/components/hs.go-to.js"></script>
+
+    <!-- JS Customization -->
+    <script src="~/Componentes/Premium/Unify/assets/js/custom.js"></script>
+
+    <!-- JS Ishoopping -->
+    <script src="~/Scripts/Ishopping/Ishopping/SearchPost.js"></script>
+    <script src="~/Scripts/Ishopping/Facebook.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="~/Scripts/Ishopping/SocialNetworks.min.js"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>
+        $(document).on('ready', function () {
+            // initialization of header
+            $.HSCore.components.HSHeader.init($('#js-header'));
+            $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+            // initialization of MegaMenu
+            $('.js-mega-menu').HSMegaMenu();
+
+            // initialization of HSDropdown component
+            $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+                afterOpen: function () {
+                    $(this).find('input[type="search"]').focus();
+                }
+            });
+
+            // initialization of scroll animation
+            $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+            // initialization of go to
+            $.HSCore.components.HSGoTo.init('.js-go-to');
+
+            // initialization of counters
+            var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+            // initialization of carousel
+            $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
+            // initialization of popups
+            $.HSCore.components.HSPopup.init('.js-fancybox');
+        });
+
+        $(window).on('load', function () {
+            // initialization of sticky blocks
+            $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+        });
+    </script>
+
+
+</body>
+</html>
